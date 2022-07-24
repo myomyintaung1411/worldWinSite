@@ -19,23 +19,6 @@
               <RadioGroup v-model="lang" @click="changeLanguage()">
                 <RadioGroupLabel class="sr-only">Server size</RadioGroupLabel>
                 <div class="space-y-2">
-                  <RadioGroupOption as="template" value="cz" v-slot="{ active, checked }">
-                    <div :class="[
-                active
-                  ? 'ring-2 ring-offset-2 ring-offset-primary ring-white ring-opacity-60'
-                  : '',
-                checked ? 'bg-primary bg-opacity-75 text-white ' : 'bg-slate-900  ',
-              ]" class="relative text-white flex w-fit px-7 py-3 rounded-lg shadow-md cursor-pointer focus:outline-none">
-                      <div class="flex items-center justify-between w-full">
-                        <div class="flex items-center">
-                          <div class="text-sm flex items-center justify-center space-x-3 w-fit">
-                            <RadioGroupLabel as="p" :class="checked ? 'text-white' : 'text-white'" class="font-medium w-fit">{{t('zh')}}</RadioGroupLabel>
-                            <img src="@/assets/ch.svg" alt class="w-8 h-8" />
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </RadioGroupOption>
                   <RadioGroupOption as="template" value="en" v-slot="{ active, checked }">
                     <div :class="[
                 active
@@ -48,6 +31,23 @@
                           <div class="text-sm flex items-center justify-center space-x-3 w-fit">
                             <RadioGroupLabel as="p" :class="checked ? 'text-white' : 'text-white'" class="font-medium w-fit" >{{t('en')}}</RadioGroupLabel>
                             <img src="@/assets/us.svg" alt class="w-8 h-8" />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </RadioGroupOption>
+                  <RadioGroupOption as="template" value="cz" v-slot="{ active, checked }">
+                    <div :class="[
+                active
+                  ? 'ring-2 ring-offset-2 ring-offset-primary ring-white ring-opacity-60'
+                  : '',
+                checked ? 'bg-primary bg-opacity-75 text-white ' : 'bg-slate-900  ',
+              ]" class="relative text-white flex w-fit px-7 py-3 rounded-lg shadow-md cursor-pointer focus:outline-none">
+                      <div class="flex items-center justify-between w-full">
+                        <div class="flex items-center">
+                          <div class="text-sm flex items-center justify-center space-x-3 w-fit">
+                            <RadioGroupLabel as="p" :class="checked ? 'text-white' : 'text-white'" class="font-medium w-fit">{{t('zh')}}</RadioGroupLabel>
+                            <img src="@/assets/ch.svg" alt class="w-8 h-8" />
                           </div>
                         </div>
                       </div>
@@ -111,7 +111,7 @@ export default {
   },
   setup() {
    const { t } = useI18n();
-    const lang = ref(localStorage.getItem("l") || "cz");
+    const lang = ref(localStorage.getItem("l") || "en");
     const changeLanguage = () => {
       console.log("l;ee");
       localStorage.setItem("l", lang.value);

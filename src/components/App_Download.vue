@@ -20,7 +20,7 @@
 
         <div class="flex flex-col" :class="innerWidth > 860 ? 'md:w-[60%]' : 'w-full'">
           <!-- <h3 class="text-center text-2xl">This is a paragraph of abc def</h3> -->
-          <p v-if="activeBtn === 1" class="text-center animate-fade px-4 lg:px-24">
+          <p v-if="activeBtn === 1" class="text-left animate-fade px-4 lg:px-24">
            {{t('down_text')}}
           </p>
           <!-- <p v-if="activeBtn === 2" class="text-center animate-fade px-4 lg:px-24">

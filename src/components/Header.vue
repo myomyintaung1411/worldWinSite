@@ -34,7 +34,7 @@
   <div :class="isMenuOpen ? 'relative' : 'sticky top-0 z-30'" class="bg-gray-800 md:sticky md:top-0 md:z-30">
     <div class="px-4 py-1 mx-auto sm:max-w-xl md:max-w-screen-md h-auto lg:max-w-screen-xl md:px-0 lg:px-8">
       <div class="relative flex items-center justify-between">
-        <a href="/" aria-label="Warner International" title="Warner International" class="inline-flex items-center text-gray-100 bg-white rounded-full">
+        <a href="/" aria-label="World Win" title="World Win" class="inline-flex items-center text-gray-100 bg-white rounded-full">
           <img src="@/assets/home/logo.png" alt="logo" draggable="false" class=" w-auto md:w-32 lg:w-20 h-16 sm:h-fit text-teal-accent-400" />
         </a>
         

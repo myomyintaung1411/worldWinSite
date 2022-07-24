@@ -88,7 +88,7 @@ import i18n from './config/index'
 //     }
 
 /* Default title tag */
-const defaultDocumentTitle = 'HN Sports'
+const defaultDocumentTitle = 'World Win Sports'
 
 router.afterEach(to => {
   /* Set document title from route meta */

@@ -8,7 +8,7 @@ import cz from '@/config/zh.json'
 
 const i18n = createI18n({
   legacy: false,
-  locale: localStorage.getItem('l') || 'cz',
+  locale: localStorage.getItem('l') || 'en',
   globalInjection: true,
   messages: {en,cz}
 });

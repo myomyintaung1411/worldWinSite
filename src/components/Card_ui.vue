@@ -3,17 +3,18 @@
     <div class="mx-auto w-full lg:max-w-7xl md:max-w-7xl h-full shadow-lg rounded-lg flex flex-wrap items-center relative overflow-x-hidden sm:bg-HomecardBg py-2 md:py-3">
       <div class="relative my-1 md:hover:translate-y-2 lg:space-x-0 transition duration-300 md:space-y-0 p-0 sm:p-1 md:p-3 w-full mx-0 sm:w-1/3 md:w-1/3 lg:w-1/3">
         <div class="mx-0 md:mx-2">
-          <img @click="playGame(0)" src="@/assets/home/but1.png" draggable="false" alt class="object-cover cursor-pointer object-center w-full rounded-t-md h-fit" />
+          <img @click="playGame(0)" src="@/assets/home/card1.jpg" draggable="false" alt class="object-cover cursor-pointer object-center w-full rounded-t-md h-64" />
         </div>
       </div>
       <div class="relative my-1 md:hover:translate-y-2 lg:space-x-0 transition duration-300 md:space-y-0 p-0 sm:p-1 md:p-3 w-full mx-0 sm:w-1/3 md:w-1/3 lg:w-1/3">
         <div class="mx-0 md:mx-2">
-          <img @click="playGame(1)" src="@/assets/home/but2.png" draggable="false" alt class="object-cover cursor-pointer object-center w-full rounded-t-md h-fit" />
+          <img @click="playGame(1)" src="@/assets/home/card2.jpg" draggable="false" alt class="object-cover cursor-pointer object-center w-full rounded-t-md h-64" />
         </div>
       </div>
       <div class="relative my-1 md:hover:translate-y-2 lg:space-x-0 transition duration-300 md:space-y-0 p-0 sm:p-1 md:p-3 w-full mx-0 sm:w-1/3 md:w-1/3 lg:w-1/3">
-        <div class="mx-0 md:mx-2">
-          <img @click="playGame(2)" src="@/assets/home/but3.png" draggable="false" alt class="object-cover cursor-pointer object-center w-full rounded-t-md h-fit" />
+        <div class="mx-0 md:mx-2 relative">
+          <img @click="playGame(2)" src="@/assets/home/card3.jpg" draggable="false" alt class="object-cover cursor-pointer object-center w-full rounded-t-md h-64" />
+          <button class="bg-red-500 absolute bottom-5">click</button>
         </div>
       </div>
     </div>
