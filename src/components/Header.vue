@@ -75,7 +75,7 @@
               </MenuItems>
             </transition>
           </Menu>
-          <languageswitch></languageswitch>
+          <!-- <languageswitch></languageswitch> -->
         </ul>
         <div class="md:hidden">
           <button aria-label="Open Menu" title="Open Menu" class="p-2 -mr-1 transition duration-200 rounded focus:outline-none focus:shadow-outline" @click="mobileMenuOpen">
@@ -135,9 +135,9 @@
                         <span class="sr-only">View notifications</span>
                         <BellIcon class="h-6 w-6" aria-hidden="true" />
                       </button> -->
-                      <div class="ml-auto">
+                      <!-- <div class="ml-auto">
                         <languageswitch ></languageswitch>
-                      </div>
+                      </div> -->
                     </div>
                   </div>
                 </ul>

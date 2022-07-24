@@ -24,7 +24,9 @@ export default {
           state.service = payload
         },
         Banner_(state, payload) {
-            state.banner = payload
+            let spliceItem = payload.slice(Math.max(payload.length -8,0))
+            //console.log(spliceItem,"%%%%%%%%%%%%");
+            state.banner = spliceItem
         },
         Game_Url(state, payload) {
             state.gameUrl = payload

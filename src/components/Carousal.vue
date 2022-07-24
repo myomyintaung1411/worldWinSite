@@ -6,7 +6,7 @@
   "disableOnInteraction": false,
 }'>
     <swiper-slide v-for="(img,i) in banner" :key="i" class=" lg:h-[600px] w-full overflow-hidden">
-      <img :src="img.url" alt="environment" class=" h-[200px] w-full sm:h-fit  object-cover"/>
+      <img :src="img.url" alt="environment" class=" h-[200px] w-full sm:h-fit   object-cover"/>
     </swiper-slide>
 
   </swiper>

@@ -2,19 +2,21 @@
   <div class="md:pt-7 py-0 sm:py-3 md:py-0 px-2">
     <div class="mx-auto w-full lg:max-w-7xl md:max-w-7xl h-full shadow-lg rounded-lg flex flex-wrap items-center relative overflow-x-hidden sm:bg-HomecardBg py-2 md:py-3">
       <div class="relative my-1 md:hover:translate-y-2 lg:space-x-0 transition duration-300 md:space-y-0 p-0 sm:p-1 md:p-3 w-full mx-0 sm:w-1/3 md:w-1/3 lg:w-1/3">
-        <div class="mx-0 md:mx-2">
-          <img @click="playGame(0)" src="@/assets/home/card1.jpg" draggable="false" alt class="object-cover cursor-pointer object-center w-full rounded-t-md h-64" />
+        <div class="mx-0 md:mx-2 relative" @click="playGame(0)">
+          <img  src="@/assets/home/card1.jpg" draggable="false" alt class="object-cover cursor-pointer object-center w-full rounded-t-md h-64" />
+          <button class=" absolute bottom-0  left-1/2 transform -translate-x-1/2 -translate-y-1/2   game__play_div">Play Game</button>
         </div>
       </div>
       <div class="relative my-1 md:hover:translate-y-2 lg:space-x-0 transition duration-300 md:space-y-0 p-0 sm:p-1 md:p-3 w-full mx-0 sm:w-1/3 md:w-1/3 lg:w-1/3">
-        <div class="mx-0 md:mx-2">
-          <img @click="playGame(1)" src="@/assets/home/card2.jpg" draggable="false" alt class="object-cover cursor-pointer object-center w-full rounded-t-md h-64" />
+        <div class="mx-0 md:mx-2 relative" @click="playGame(1)">
+          <img  src="@/assets/home/card2.jpg" draggable="false" alt class="object-cover cursor-pointer object-center w-full rounded-t-md h-64" />
+          <button class=" absolute bottom-0  left-1/2 transform -translate-x-1/2 -translate-y-1/2   game__play_div">Play Game</button>
         </div>
       </div>
       <div class="relative my-1 md:hover:translate-y-2 lg:space-x-0 transition duration-300 md:space-y-0 p-0 sm:p-1 md:p-3 w-full mx-0 sm:w-1/3 md:w-1/3 lg:w-1/3">
-        <div class="mx-0 md:mx-2 relative">
-          <img @click="playGame(2)" src="@/assets/home/card3.jpg" draggable="false" alt class="object-cover cursor-pointer object-center w-full rounded-t-md h-64" />
-          <button class="bg-red-500 absolute bottom-5">click</button>
+        <div class="mx-0 md:mx-2 relative" @click="playGame(2)">
+          <img  src="@/assets/home/card3.jpg" draggable="false" alt class="object-cover cursor-pointer object-center w-full rounded-t-md h-64" />
+          <button class=" absolute bottom-0  left-1/2 transform -translate-x-1/2 -translate-y-1/2   game__play_div">Play Game</button>
         </div>
       </div>
     </div>
@@ -108,7 +110,7 @@ const playGame = (n) => {
       showCancelButton: false,
       allowOutsideClick: true,
       backdrop: true,
-      confirmButtonText: "确定",
+      confirmButtonText: t('ok'),
       background: "#374151",
       confirmButtonColor: "#a07c51",
       buttonsStyling: {
@@ -128,6 +130,10 @@ const playGame = (n) => {
 <style  scoped>
 .hello {
   background: #a07c51;
+}
+.game__play_div {
+  @apply  w-1/2 py-4 mx-auto flex items-center justify-center bg-primary text-black rounded-lg shadow-lg
+   cursor-pointer tracking-wide  text-base font-bold text-center;
 }
 /* bg-gray-800 sm:bg-slate-900 rounded-xl shadow-lg p-3 */
 </style>

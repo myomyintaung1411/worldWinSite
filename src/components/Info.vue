@@ -8,7 +8,7 @@
         </svg>
       </div>
       <div class=" text-sm tracking-wide w-full font-bold cursor-pointer overflow-hidden text-white   whitespace-nowrap">
-        <span class=" inline-block pl-[100%] animate-marquee">{{marquee}}</span>
+        <span class=" inline-block pl-[100%] animate-marquee">Welcome to HN Gaming the Online Gaming to play at, where all your gaming expectations are met and exceeded. If you are looking for online sports betting, we have your back with lines and odds on every major sport as well as exotic bets such as politics, along with numerous betting options, and more.</span>
       </div>
     </div>
   </div>
