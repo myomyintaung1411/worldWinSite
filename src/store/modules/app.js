@@ -24,7 +24,7 @@ export default {
           state.service = payload
         },
         Banner_(state, payload) {
-            let spliceItem = payload.slice(Math.max(payload.length -8,0))
+            let spliceItem = payload.slice(Math.max(payload.length -4,0))
             //console.log(spliceItem,"%%%%%%%%%%%%");
             state.banner = spliceItem
         },

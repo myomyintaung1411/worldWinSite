@@ -1,8 +1,7 @@
 <template>
   <footer class="bg-slate-700">
-    <div class="max-w-7xl m-auto text-gray-800 flex flex-wrap space-x-3 py-2 justify-center">
-      <!-- <img src="https://senbackkg.salinent.com/clientManage/7399c75c3f784bafbff0573e53a55fbf.png"  draggable="false"
-      alt  class="w-fit h-16 cursor-pointer" onmouseover="this.src='https://senbackkg.salinent.com/clientManage/b00a822ded28408bb7e4498cc5fa612d.png'" onmouseout="this.src='https://senbackkg.salinent.com/clientManage/7399c75c3f784bafbff0573e53a55fbf.png'" /> -->
+    <!-- <div class="max-w-7xl m-auto text-gray-800 flex flex-wrap space-x-3 py-2 justify-center">
+     
       <img draggable="false" src="https://senbackkg.salinent.com/clientManage/702d7151b8e34494aed899b06a8228ad.png" 
       alt class="w-fit h-16 cursor-pointer" onmouseover="this.src='https://senbackkg.salinent.com/clientManage/ebecbecc0b2244aba1dac186785cf858.png'" onmouseout="this.src='https://senbackkg.salinent.com/clientManage/702d7151b8e34494aed899b06a8228ad.png'" />
       <img  src="https://senbackkg.salinent.com/clientManage/01f204b55f5e48e090ed91e98508a1b0.png" draggable="false"
@@ -14,14 +13,14 @@
       <img src="https://senbackkg.salinent.com/clientManage/ae31a2b4605e4fbcae050b80cc2a5172.png" draggable="false"
       alt class="w-fit h-16 cursor-pointer" onmouseover="this.src='https://senbackkg.salinent.com/clientManage/c0f431aea8794c1ebb358a17d8f2af12.png'" 
       onmouseout="this.src='https://senbackkg.salinent.com/clientManage/ae31a2b4605e4fbcae050b80cc2a5172.png'" />
-    </div>
-    <div class="max-w-4xl mx-auto px-4 sm:px-10">
+    </div> -->
+    <div class="max-w-4xl mx-auto px-4 sm:px-10 py-2">
       <p  class="tracking-wider font-bold text-center text-gray-400 text-sm">
        {{t('footer_t')}}
       </p>
     </div>
     <!-- Copyright Bar -->
-    <div class="pt-5 hidden sm:block">
+    <div class="pt-5  sm:block">
       <div class="flex pb-5 px-3 m-auto pt-5 border-t border-gray-500 text-gray-400 text-sm flex-col md:flex-row max-w-6xl">
         <div class="mt-2">© Copyright 2022-year. All Rights Reserved.</div>
         <!-- Required Unicons (if you want) -->
@@ -43,7 +42,7 @@
               <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" />
             </svg>
           </a>
-          <a  class="w-6 mx-1">
+          <!-- <a  class="w-6 mx-1">
           <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" class="h-8 w-full text-blue-500" 
           preserveAspectRatio="xMidYMid meet" viewBox="0 0 1024 1024"><path fill="currentColor" 
            d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448s448-200.6 448-448S759.4 64 512 64zm210.5 
@@ -62,7 +61,7 @@
                 .969.44.969.982a.976.976 0 0 1-.969.983a.976.976 0 0 1-.969-.983c0-.542.434-.982.97-.982zm4.844 0c.535 0 .969.44.969.982a.976.976 0 0 1-.969.983a.976.976 0 0 1-.969-.983c0-.542.434-.982.969-.982z"
               />
             </svg>
-          </a>
+          </a> -->
         </div>
       </div>
     </div>

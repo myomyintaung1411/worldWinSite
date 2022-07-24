@@ -4,19 +4,19 @@
       <div class="relative my-1 md:hover:translate-y-2 lg:space-x-0 transition duration-300 md:space-y-0 p-0 sm:p-1 md:p-3 w-full mx-0 sm:w-1/3 md:w-1/3 lg:w-1/3">
         <div class="mx-0 md:mx-2 relative" @click="playGame(0)">
           <img  src="@/assets/home/card1.jpg" draggable="false" alt class="object-cover cursor-pointer object-center w-full rounded-t-md h-64" />
-          <button class=" absolute bottom-0  left-1/2 transform -translate-x-1/2 -translate-y-1/2   game__play_div">Play Game</button>
+          <button class=" absolute bottom-0  left-1/2 transform -translate-x-1/2 -translate-y-1/2   game__play_div">Play Now</button>
         </div>
       </div>
       <div class="relative my-1 md:hover:translate-y-2 lg:space-x-0 transition duration-300 md:space-y-0 p-0 sm:p-1 md:p-3 w-full mx-0 sm:w-1/3 md:w-1/3 lg:w-1/3">
         <div class="mx-0 md:mx-2 relative" @click="playGame(1)">
           <img  src="@/assets/home/card2.jpg" draggable="false" alt class="object-cover cursor-pointer object-center w-full rounded-t-md h-64" />
-          <button class=" absolute bottom-0  left-1/2 transform -translate-x-1/2 -translate-y-1/2   game__play_div">Play Game</button>
+          <button class=" absolute bottom-0  left-1/2 transform -translate-x-1/2 -translate-y-1/2   game__play_div">Play Now</button>
         </div>
       </div>
       <div class="relative my-1 md:hover:translate-y-2 lg:space-x-0 transition duration-300 md:space-y-0 p-0 sm:p-1 md:p-3 w-full mx-0 sm:w-1/3 md:w-1/3 lg:w-1/3">
         <div class="mx-0 md:mx-2 relative" @click="playGame(2)">
           <img  src="@/assets/home/card3.jpg" draggable="false" alt class="object-cover cursor-pointer object-center w-full rounded-t-md h-64" />
-          <button class=" absolute bottom-0  left-1/2 transform -translate-x-1/2 -translate-y-1/2   game__play_div">Play Game</button>
+          <button class=" absolute bottom-0  left-1/2 transform -translate-x-1/2 -translate-y-1/2   game__play_div">Play Now</button>
         </div>
       </div>
     </div>
@@ -35,7 +35,6 @@ const { t } = useI18n();
 const store = useStore();
 
 const gameUrl = computed(() => store.getters["app/GameURL"]);
-//const gameUrl = store.state.app.gameUrl;
 const lToken = store.state.user.token;
 const userId__ = store.state.user.userId;
 const router = useRouter();
