@@ -21,6 +21,9 @@
       </div>
     </div>
   </div>
+  <!-- <div v-if="iframeUrl" class="w-screen - h-screen">
+  <iframe :src="iframeUrl" frameborder="0" scrolling="yes" seamless="seamless" style="display:block; width:100%; height:100vh;"></iframe>
+  </div> -->
 </template>
 
 <script setup>
@@ -40,6 +43,8 @@ const userId__ = store.state.user.userId;
 const router = useRouter();
 const gameEn = computed(() => store.getters["user/Game_En"]);
 const UserInfo = store.getters["user/GAME_ENTER_INFO"];
+
+const iframeUrl = ref(null)
 
 const card = reactive([
   {
@@ -79,22 +84,27 @@ const playGame = (n) => {
     };
     var endata = AES.encrypt(JSON.stringify(data), gameEn.value);
     console.log(encodeURIComponent(endata), "endata");
+   
 // gameUrl.value.sportUrl
     switch (n) {
       case 0:
+        //let url = gameUrl.value.sportUrl + `?token=${encodeURIComponent(endata)}`
+        //router.push({path:'/sportView',query:{url:url}})
         window.open(
-         gameUrl.value.sportUrl + `?token=${encodeURIComponent(endata)}`
+         'http://localhost:4000/' + `?token=${encodeURIComponent(endata)}`
         );
         break;
       case 1:
-        window.open(
-          gameUrl.value.lotteryUrl + `?token=${encodeURIComponent(endata)}`
-        );
+      // iframeUrl.value = gameUrl.value.lotteryUrl + `?token=${encodeURIComponent(endata)}`
+         window.open(
+           gameUrl.value.lotteryUrl + `?token=${encodeURIComponent(endata)}`
+         );
         break;
       case 2:
-        window.open(
-          gameUrl.value.realBetUrl + `?token=${endata}`
-        );
+         //iframeUrl.value =  gameUrl.value.realBetUrl + `?token=${endata}`
+         window.open(
+           gameUrl.value.realBetUrl + `?token=${endata}`
+         );
         break;
 
       default:

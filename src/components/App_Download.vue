@@ -50,8 +50,8 @@
 
                   <div class="bg-slate-700 p-3 rounded-b-lg">
                     <p class="text-indigo-500 text-md font-medium"></p>
-                    <p class="text-white text-xl font-medium mb-2">扫码下载APP</p>
-                    <p class="text-gray-300 font-light text-md">支持IOS & Android全设备</p>
+                    <p class="text-white text-md font-medium mb-2">Scan QrCode to Download App </p>
+                    <p class="text-gray-300 font-light text-md">Support IOS & Android all devices</p>
                     <p class="text-blue-300 font-light text-md">{{gameUrl.android}}</p>
                   </div>
                 </a>
@@ -71,8 +71,8 @@
 
                   <div class="bg-slate-700 p-3 rounded-b-lg">
                     <p class="text-indigo-500 text-md font-medium"></p>
-                    <p class="text-white text-xl font-medium mb-2">扫码下载APP</p>
-                    <p class="text-gray-300 font-light text-md">支持IOS & Android全设备</p>
+                    <p class="text-white text-md font-medium mb-2">Scan QrCode to Download App</p>
+                    <p class="text-gray-300 font-light text-md">Support IOS & Android all devices</p>
                     <p class="text-blue-300 font-light text-md">{{gameUrl.ios}}</p>
                   </div>
                 </a>

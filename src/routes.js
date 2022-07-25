@@ -141,6 +141,11 @@ const routes = [
   // },
   // for mobile only
   {
+    path: '/sportView',
+    meta: { title: 'sportView', requireAuth:true },
+    component: () => import('./views/sportView.vue')
+  },
+  {
     path: '/register',
     meta: { title: 'Register', requiresVisitor: true },
     component: () => import('./views/Register.vue')

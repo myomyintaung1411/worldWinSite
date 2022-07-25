@@ -1,6 +1,7 @@
 import { createI18n } from "vue-i18n/index"
 import en from '@/config/en.json'
 import cz from '@/config/zh.json'
+import es from '@/config/es.json'
 // const messages = {
 //     'cz': '@/config/zh.json',
 //     'en': '@/config/en.json' 
@@ -10,7 +11,7 @@ const i18n = createI18n({
   legacy: false,
   locale: localStorage.getItem('l') || 'en',
   globalInjection: true,
-  messages: {en,cz}
+  messages: {en,cz,es}
 });
 export default i18n;
 
