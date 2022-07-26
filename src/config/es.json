@@ -69,5 +69,8 @@
     "complete": "Terminado",
     "undone": "Deshecho",
     "no_records": "Sin registros de transacciones",
-    "wallet": "Monto de la cartera:"
+    "wallet": "Monto de la cartera:",
+    "no_acc":"Esta cuenta no está registrada",
+    "invalid_acc":"Nombre de usuario o contraseña incorrecta",
+    "succ_login":"Inicio de sesión correcto"
 }

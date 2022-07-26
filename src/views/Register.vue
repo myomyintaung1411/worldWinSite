@@ -205,7 +205,7 @@ const register = () => {
 
 <style scoped>
 .login__{
-  background-image: url("@/assets/home/casino.jpg");
+  background-image: url("@/assets/home/tt.jpg");
   background-size: cover;
   background-repeat: no-repeat;
 }

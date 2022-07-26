@@ -283,9 +283,9 @@ export default {
             return value;
           });
           console.log(typeof result[1]);
-          if (result[1] === "2") return NoticeMsg.Message("no account", "error");
+          if (result[1] === "2") return NoticeMsg.Message(t('no_acc'), "error");
           if (result[1] === "3")
-            return NoticeMsg.Message("账号或密码错误", "error");
+            return NoticeMsg.Message(t('invalid_acc'), "error");
           store.commit("user/Login_Info", result);
           store.commit("user/Game_Enter_Info", {
             account: name.value,
@@ -295,7 +295,7 @@ export default {
           password.value = "";
           // form.isVerifyPass = false
           router.push("/");
-          NoticeMsg.Message("登录成功", "success");
+          NoticeMsg.Message(t('succ_login'), "success");
         })
 
         .catch((e) => {
@@ -330,7 +330,7 @@ export default {
 
 <style  scoped>
 .login__{
-  background-image: url("@/assets/home/casino.jpg");
+  background-image: url("@/assets/home/tt.jpg");
   background-size: cover;
   background-repeat: no-repeat;
 }

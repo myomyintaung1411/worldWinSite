@@ -59,7 +59,7 @@
               class="px-4 py-2 font-medium tracking-wide text-gray-100 transition-colors duration-200 hover__class "
               :class="{ activeTab: activeRoute === '/sport' }" @click="TabClick(2)">{{ t('s') }}</a>
           </li>
-          <li @mouseover="close(2)">
+          <!-- <li @mouseover="close(2)">
             <a href="#" aria-label="Lottery" title="Lottery" @click="TabClick(3)"
               class="px-4 py-2 font-medium tracking-wide text-gray-100 transition-colors duration-200 hover__class"
               :class="{ activeTab: activeRoute === '/lottery' }">{{ t('l') }}</a>
@@ -68,7 +68,7 @@
             <a href="#" aria-label="LiveCasino" title="LiveCasino" @click="TabClick(4)"
               class="px-4 py-2 font-medium tracking-wide text-gray-100 transition-colors duration-200 hover__class"
               :class="{ activeTab: activeRoute === '/realbet' }">{{ t('r') }}</a>
-          </li>
+          </li> -->
           <li v-if="!lToken">
             <router-link to="/register"
               class="inline-flex items-center justify-center py-2 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-lg bg-gray-900 hover:bg-primary hover:text-black hover:font-bold focus:shadow-outline focus:outline-none"

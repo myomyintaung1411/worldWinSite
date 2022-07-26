@@ -70,6 +70,9 @@
     "complete":"Completed",
     "undone":"Undone",
     "no_records":"No transaction records",
-    "wallet":"Wallet Amount : "
+    "wallet":"Wallet Amount : ",
+    "no_acc":"account not found",
+    "invalid_acc":"Incorrect username or password",
+    "succ_login":"login successful"
 
 }
