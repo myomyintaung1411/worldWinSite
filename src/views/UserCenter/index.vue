@@ -87,7 +87,7 @@
         <div class="m-1 mr-2 w-16 h-16 relative flex justify-center items-center rounded-full bg-gray-500 text-xl text-white">
           <img src="@/assets/home/user.svg" class="rounded-full h-24 w-24" />
         </div>
-        <span class="text-md text-gray-300">{{user?.name}}</span>
+        <span v-if="user.name !== undefined"  class="text-md text-gray-300">{{user?.name}}</span>
         <!-- <span class="text-sm tracking-wide text-gray-300 font-bold">加入欧宝体育第1天</span>
         <div class="mt-4">
           <span class="text-sm text-gray-300">加入欧宝</span>

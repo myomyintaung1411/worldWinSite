@@ -174,9 +174,9 @@ const disableBtn = computed(() => {
 
 const register = () => {
   if (password.value !== confrimPassword.value)
-    return NoticeMsg.Message("两次输入密码不一致", "warning");
+    return NoticeMsg.Message(t('confirm_notmatch'), "warning");
   if (!/\d/.test(password.value) || !/[a-zA-Z]/.test(password.value))
-    return NoticeMsg.Message("密码必须包含数字和英文字母", "warning");
+    return NoticeMsg.Message(t('pass_check'), "warning");
   let pass = md5(password.value);
   let data = {
     data: `02;${name.value};${pass};${reference.value};windows`, // 2/1 success
@@ -188,13 +188,13 @@ const register = () => {
     var result = res.data.split(";").map(function (value) {
       return value;
     });
-    if (result[1] === "2") return NoticeMsg.Message("无此代理", "error"); //no reference agent
-    if (result[1] === "3") return NoticeMsg.Message("注册失败", "error"); //register failed
-    if (result[1] === "4") return NoticeMsg.Message("已存在此帐号", "error"); //user already exist
+    if (result[1] === "2") return NoticeMsg.Message(t('no_ref_agent'), "error"); //no reference agent
+    if (result[1] === "3") return NoticeMsg.Message(t('reg_failed'), "error"); //register failed
+    if (result[1] === "4") return NoticeMsg.Message(t('already_exist'), "error"); //user already exist
     name.value = "";
     password.value = "";
     confrimPassword.value = "";
-    NoticeMsg.Message("Register Success, Please Login", "success");
+    NoticeMsg.Message(t('reg_success'), "success");
     router.push("/login");
   }).catch((e) => {
     console.log(e);

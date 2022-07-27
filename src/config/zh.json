@@ -72,5 +72,11 @@
     "wallet":"中心钱包：",
     "no_acc":"此帐号未注册",
     "invalid_acc":"账号或密码错误",
-    "succ_login":"登录成功"
+    "succ_login":"登录成功",
+    "no_ref_agent":"无此代理",
+    "reg_failed":"注册失败",
+    "already_exist":"已存在此帐号",
+    "reg_success":"注册成功，请登录",
+    "confirm_notmatch":"两次输入密码不一致",
+    "pass_check":"密码必须包含数字和英文字母"
 }

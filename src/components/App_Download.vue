@@ -1,6 +1,6 @@
 <template>
   <div class="md:pt-7 pt-3 sm:py-3 md:py-0 px-2">
-    <div :data-aos="innerWidth > 860 ? 'zoom-in' : ''" class="md:max-w-7xl lg:max-w-7xl w-full py-4 mx-auto bg-HomecardBg shadow-lg rounded-md">
+    <div class="md:max-w-7xl lg:max-w-7xl w-full py-4 mx-auto bg-HomecardBg shadow-lg rounded-md">
       <h3 class="text-center py-1 text-gray-50 text-2xl">{{t('app_down')}}</h3>
       <!-- <p class="text-center py-1 text-gray-400 text-md">Below is the usage of app blah blah blah shit.</p> -->
       <!-- <div class="py-2 flex justify-center sm:justify-end">

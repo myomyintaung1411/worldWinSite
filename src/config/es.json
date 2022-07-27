@@ -72,5 +72,11 @@
     "wallet": "Monto de la cartera:",
     "no_acc":"Esta cuenta no está registrada",
     "invalid_acc":"Nombre de usuario o contraseña incorrecta",
-    "succ_login":"Inicio de sesión correcto"
+    "succ_login":"Inicio de sesión correcto",
+    "no_ref_agent":"ningún agente",
+    "reg_failed":"registro fallido",
+    "already_exist":"Esta cuenta ya existe",
+    "reg_success":"Registro exitoso, por favor inicie sesión",
+    "confirm_notmatch":"Contraseña y confirmar contraseña no coinciden",
+    "pass_check":"La contraseña debe contener números y letras en inglés"
 }

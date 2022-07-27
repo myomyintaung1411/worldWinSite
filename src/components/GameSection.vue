@@ -1,6 +1,6 @@
 <template>
   <div class="md:pt-7 pt-3 sm:py-3 md:py-0 px-2">
-    <div data-aos="zoom-in" class="hidden sm:block md:max-w-7xl lg:max-w-7xl w-full py-4 mx-auto bg-HomecardBg shadow-lg rounded-md">
+    <div  class="hidden sm:block md:max-w-7xl lg:max-w-7xl w-full py-4 mx-auto bg-HomecardBg shadow-lg rounded-md">
       <h3 class="text-center py-1 text-gray-50 text-2xl">{{t('game_sec')}}</h3>
       <p class="text-center py-1 text-gray-400 text-md">{{t('game_sec_text')}}</p>
       <div class="flex space-x-2 w-full">

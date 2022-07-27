@@ -73,6 +73,12 @@
     "wallet":"Wallet Amount : ",
     "no_acc":"account not found",
     "invalid_acc":"Incorrect username or password",
-    "succ_login":"login successful"
+    "succ_login":"login successful",
+    "no_ref_agent":"no reference agent",
+    "reg_failed":"registration failed",
+    "already_exist":"This account  already exists",
+    "reg_success":"Register Success, Please Login",
+    "confirm_notmatch":"Password and confirm password does not match",
+    "pass_check":"Password must contain numbers and English letters"
 
 }
