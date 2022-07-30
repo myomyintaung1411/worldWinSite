@@ -43,9 +43,9 @@
     <div class="px-4 py-1 mx-auto sm:max-w-xl md:max-w-screen-md h-auto lg:max-w-screen-xl md:px-0 lg:px-8">
       <div class="relative flex items-center justify-between">
         <a href="/" aria-label="World Win" title="World Win"
-          class="inline-flex items-center text-gray-100 bg-white rounded-full">
-          <img src="@/assets/home/logo.png" alt="logo" draggable="false"
-            class=" w-auto md:w-32 lg:w-20 h-16 sm:h-fit text-teal-accent-400" />
+          class="inline-flex items-center text-gray-100  rounded-full py-2">
+          <img src="@/assets/home/world-win-logo.png" alt="logo" draggable="false"
+            class=" w-32 md:w-32 lg:w-32 h-fit sm:h-fit " />
         </a>
 
         <ul class="items-center hidden md:flex md:space-x-3 lg:space-x-8 lg:flex">
@@ -122,9 +122,9 @@
           <div v-if="isMenuOpen" class="absolute top-0 left-0 w-full z-10">
             <div class="p-5 bg-gray-900 rounded shadow-sm h-auto">
               <div class="flex items-center justify-between mb-4">
-                <div class="bg-white rounded-full">
-                  <img src="@/assets/home/logo.png" alt="logo" draggable="false"
-                    class="w-auto h-16 text-center text-teal-accent-400" />
+                <div class=" rounded-full">
+                  <img src="@/assets/home/world-win-logo.png" alt="logo" draggable="false"
+                    class="w-32 md:w-32 lg:w-44 h-fit sm:h-fit" />
                 </div>
 
                 <div>

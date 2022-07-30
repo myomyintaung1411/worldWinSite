@@ -58,4 +58,4 @@ const router = useRouter();
 const gameEn = computed(() => store.getters["user/Game_En"]);
 const UserInfo = store.getters["user/GAME_ENTER_INFO"];
 
-</script
+</script>
