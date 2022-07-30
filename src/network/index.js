@@ -112,7 +112,7 @@ instance.interceptors.response.use((response) => {
       default:
         message = '请求失败'
     }
-    NoticeMsg.Message(message,"error")
+    //NoticeMsg.Message(message,"error")
     // ElMessage.error(message)
   //  Swal.fire({
   //     title: message,
