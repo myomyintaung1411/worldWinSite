@@ -146,24 +146,24 @@
                       class="font-medium block hover:bg-gray-700 px-3 py-2 tracking-wide transition-colors duration-200">
                       {{ t('h') }}</router-link>
                   </li>
-                  <li>
+                  <!-- <li>
                     <a @click="TabClick(2)" href="#" :class="activeRoute === '/sport' ? 'text-primary' : 'text-gray-50'"
                       aria-label="Sport" title="Sport"
                       class="font-medium tracking-wide block hover:bg-gray-700 px-3 py-2 transition-colors duration-200">
                       {{ t('s') }}</a>
-                  </li>
-                  <li>
+                  </li> -->
+                  <!-- <li>
                     <a @click="TabClick(3)" href="#" :class="activeRoute === '/lottery' ? 'text-primary' : 'text-gray-50'"
                       aria-label="Lottery" title="Lottery"
                       class="font-medium block tracking-wide hover:bg-gray-700 px-3 py-2 transition-colors duration-200">
                       {{ t('l') }}</a>
-                  </li>
-                  <li>
+                  </li> -->
+                  <!-- <li>
                     <a @click="TabClick(4)" href="#" :class="activeRoute === '/realbet' ? 'text-primary' : 'text-gray-50'"
                       aria-label="LiveCasino" title="LiveCasino"
                       class="font-medium tracking-wide block hover:bg-gray-700 px-3 py-2 transition-colors duration-200">
                       {{ t('r') }}</a>
-                  </li>
+                  </li> -->
                   <li v-if="!lToken">
                     <router-link to="/register"
                       class="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide transition duration-200 rounded shadow-md bg-primary text-black hover:bg-slate-500 focus:shadow-outline focus:outline-none"

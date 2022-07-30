@@ -138,10 +138,10 @@
                         <img src="@/assets/home/noRecord.png" alt="norecord" class="w-[365px] h-[165px]" />
                       </div>
                       <div class="py-3">
-                        <span class="text-gray-300 tracking-wide text-base font-medium">暂无交易记录</span>
+                        <span class="text-gray-300 tracking-wide text-base font-medium">No transaction record</span>
                       </div>
                       <div class="py-3">
-                        <button class="px-6 py-2 tracking-wider  text-black bg-gradient-to-b from-buttonLinearFrom to-buttonLinearTo shadow-lg rounded-md  outline-none focus:outline">立即存款</button>
+                        <button class="px-6 py-2 tracking-wider  text-black bg-gradient-to-b from-buttonLinearFrom to-buttonLinearTo shadow-lg rounded-md  outline-none focus:outline">Deposit now</button>
                       </div>
                     </div>
                   </td>
