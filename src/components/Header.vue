@@ -5,7 +5,7 @@
         <div class="text-gray-200 text-md">{{ currentTime }}</div>
         <div class="cursor-pointer text-center text-md text-gray-300 flex items-center space-x-2">
           <span class="px-1 text-sm tracking-wide font-bold">{{ t('welcome') }},</span>
-          <span v-if="user.name !== undefined" @click="goUserCenter">{{ user?.name || 'name' }}</span>
+          <span v-if="user?.name !== undefined" @click="goUserCenter">{{ user?.name || 'name' }}</span>
           <div class="h-4 w-0.5 bg-gray-400 mx-3"></div>
           <div @click="showMoney = !showMoney" class="cursor-pointer">
             <svg v-if="showMoney" class="h-6 w-6 text-gray-400" width="24" height="24" viewBox="0 0 24 24"
@@ -39,13 +39,13 @@
       </div>
     </div>
   </div>
-  <div :class="isMenuOpen ? 'relative' : 'sticky top-0 z-30'" class="bg-gray-800 md:sticky md:top-0 md:z-30">
+  <div :class="isMenuOpen ? 'relative' : 'sticky top-0 z-30'" class="bg-gray-800 md:sticky md:top-0 md:z-30 h-[56px] sm:h-fit ">
     <div class="px-4 py-1 mx-auto sm:max-w-xl md:max-w-screen-md h-auto lg:max-w-screen-xl md:px-0 lg:px-8">
       <div class="relative flex items-center justify-between">
         <a href="/" aria-label="World Win" title="World Win"
           class="inline-flex items-center text-gray-100  rounded-full py-2">
           <img src="@/assets/home/world-win-logo.png" alt="logo" draggable="false"
-            class=" w-32 md:w-32 lg:w-32 h-fit sm:h-fit " />
+            class=" w-32 md:w-32 lg:w-32 h-8 sm:h-fit " />
         </a>
 
         <ul class="items-center hidden md:flex md:space-x-3 lg:space-x-8 lg:flex">
@@ -124,7 +124,7 @@
               <div class="flex items-center justify-between mb-4">
                 <div class=" rounded-full">
                   <img src="@/assets/home/world-win-logo.png" alt="logo" draggable="false"
-                    class="w-32 md:w-32 lg:w-44 h-fit sm:h-fit" />
+                    class="w-32 md:w-32 lg:w-44 h-8" />
                 </div>
 
                 <div>
@@ -146,12 +146,12 @@
                       class="font-medium block hover:bg-gray-700 px-3 py-2 tracking-wide transition-colors duration-200">
                       {{ t('h') }}</router-link>
                   </li>
-                  <!-- <li>
-                    <a @click="TabClick(2)" href="#" :class="activeRoute === '/sport' ? 'text-primary' : 'text-gray-50'"
+                  <li>
+                    <div @click="TabClick(22)"  :class="activeRoute === '/sport' ? 'text-primary' : 'text-gray-50'"
                       aria-label="Sport" title="Sport"
                       class="font-medium tracking-wide block hover:bg-gray-700 px-3 py-2 transition-colors duration-200">
-                      {{ t('s') }}</a>
-                  </li> -->
+                      {{ t('s') }}</div>
+                  </li>
                   <!-- <li>
                     <a @click="TabClick(3)" href="#" :class="activeRoute === '/lottery' ? 'text-primary' : 'text-gray-50'"
                       aria-label="Lottery" title="Lottery"
@@ -176,19 +176,20 @@
                   </li>
 
                   <div v-if="lToken" class="pt-4 pb-3 border-t border-gray-700">
-                    <div class="flex items-center px-5">
+                    <div @click="goUserCenter__" class="flex items-center px-5">
                       <div class="flex-shrink-0">
                         <img class="h-10 w-10 rounded-full" draggable="false" src="@/assets/home/user.svg" alt />
                       </div>
-                      <div @click="goUserCenter__" class="ml-3">
+                      <div  class="ml-3">
                         <div class="text-base font-medium leading-none text-white py-1">{{ user.name }}</div>
                         <div class="text-sm font-medium leading-none text-primary py-1 opacity-90">
                           {{ Intl.NumberFormat().format(user.balance) }}</div>
                       </div>
-                      <!-- <button type="button" class="ml-auto bg-gray-800 flex-shrink-0 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
+                      
+                      <button type="button" class="ml-auto bg-gray-800 flex-shrink-0 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
                         <span class="sr-only">View notifications</span>
                         <BellIcon class="h-6 w-6" aria-hidden="true" />
-                      </button> -->
+                      </button>
                       <!-- <div class="ml-auto">
                         <languageswitch ></languageswitch>
                       </div> -->
@@ -272,6 +273,7 @@ import {
   RadioGroupLabel,
   RadioGroupDescription,
   RadioGroupOption,
+   
 } from "@headlessui/vue";
 import {
   BellIcon,
@@ -487,23 +489,30 @@ export default {
         };
         var endata = AES.encrypt(JSON.stringify(data), gameEn.value);
         console.log(encodeURIComponent(endata), "endata");
-        // gameUrl.value.sportUrl
+        let url = gameUrl.value.sportUrl + `?token=${encodeURIComponent(endata)}`
         switch (n) {
           case 2:
-            window.open(
-              gameUrl.value.sportUrl + `?token=${encodeURIComponent(endata)}`
+            // window.open(
+            //   gameUrl.value.sportUrl + `?token=${encodeURIComponent(endata)}`
+            // );
+             window.open(
+             url
             );
             break;
-          case 3:
-            window.open(
-              gameUrl.value.lotteryUrl + `?token=${encodeURIComponent(endata)}`
-            );
+            //22 is for mobile
+          case 22:
+            router.push({path:'/sportView',query:{url:url}})
             break;
-          case 4:
-            window.open(
-              gameUrl.value.realBetUrl + `?token=${endata}`
-            );
-            break;
+          // case 3:
+          //   window.open(
+          //     gameUrl.value.lotteryUrl + `?token=${encodeURIComponent(endata)}`
+          //   );
+          //   break;
+          // case 4:
+          //   window.open(
+          //     gameUrl.value.realBetUrl + `?token=${endata}`
+          //   );
+            // break;
 
           default:
             break;

@@ -4,28 +4,28 @@
       <h3 class="text-center py-1 text-gray-50 text-2xl">{{t('game_sec')}}</h3>
       <p class="text-center py-1 text-gray-400 text-md">{{t('game_sec_text')}}</p>
       <div class="flex space-x-2 w-full">
-        <div class="md:w-1/4 pl-5">
+        <div class="md:w-1/4 pl-5  ">
           <div class="bg-slate-700 overflow-hidden flex flex-col justify-center items-center space-y-4 py-6 shadow-lg rounded-lg w-[200px]">
             <div @click="BtnClick(1)" class="game__play_div" :class="{ actvie__btn: activeBtn == 1 }">
-              <span class="px-3">{{t('s')}}</span>
+              <span class="px-3">FootBall</span>
               <img draggable="false" src="@/assets/ball.png" alt="football" class="h-8 w-8 object-cover object-center" />
             </div>
             <div @click="BtnClick(2)" class="game__play_div" :class="{ actvie__btn: activeBtn == 2}">
-              <span class="px-3">{{t('e_sport')}}</span>
-              <img draggable="false" src="@/assets/game.png" alt="football" class="h-8 w-8 object-cover object-center" />
+              <span class="px-3">BasketBall</span>
+              <img draggable="false" src="@/assets/Basketball.png" alt="basketball" class="h-8 w-8 object-cover object-center" />
             </div>
             <div @click="BtnClick(3)" class="game__play_div" :class="{ actvie__btn: activeBtn == 3}">
-              <span class="px-3">{{t('r')}}</span>
-              <img draggable="false" src="@/assets/dice.png" alt="football" class="h-8 w-8 object-cover object-center" />
+              <span class="px-3">Tennis</span>
+              <img draggable="false" src="@/assets/tennis.png" alt="tennis" class="h-8 w-8 object-cover object-center" />
             </div>
-            <div @click="BtnClick(4)" class="game__play_div" :class="{ actvie__btn: activeBtn == 4}">
+            <!-- <div @click="BtnClick(4)" class="game__play_div" :class="{ actvie__btn: activeBtn == 4}">
               <span class="px-3">{{t('cheese_game')}}</span>
               <img draggable="false" src="@/assets/card.png" alt="football" class="h-8 w-8 object-cover object-center" />
             </div>
             <div @click="BtnClick(5)" class="game__play_div" :class="{ actvie__btn: activeBtn == 5}">
               <span class="px-3">{{t('l')}}</span>
               <img draggable="false" src="@/assets/poll.png" alt="football" class="h-8 w-8 object-cover object-center" />
-            </div>
+            </div> -->
             <!-- <div @click="BtnClick(6)" class="game__play_div" :class="{ actvie__btn: activeBtn == 6}">
               <span class="px-3">电子游艺</span>
               <img draggable="false" src="https://senbackkg.yewuxia.com/main-consumer-web/assets-oss/ob/images/home/xuanzhongdianziyouyi@2x.ccd161aad3c1f59057a9029e2882d72d.png?x-oss-process=image/resize,m_lfit,h_80/format,webp" alt="football" class="h-8 w-8 object-cover object-center" />
@@ -40,8 +40,8 @@
         <div class="md:w-9/12 relative animate-fade">
           <div class="relative w-full">
             <img v-if="activeBtn == 1" draggable="false" src="@/assets/1.png" alt class="w-full h-auto animate-fade" />
-            <img v-if="activeBtn == 2" draggable="false" src="@/assets/2.png" alt class="w-full h-auto animate-fade" />
-            <img v-if="activeBtn == 3" draggable="false" src="@/assets/3.png" alt class="w-full h-auto animate-fade" />
+            <img v-if="activeBtn == 2" draggable="false" src="@/assets/basketball.webp" alt class="w-[95%] h-[500px] animate-fade" />
+            <img v-if="activeBtn == 3" draggable="false" src="@/assets/tennis.jpg" alt class="w-[95%] h-[500px] animate-fade" />
             <img v-if="activeBtn == 4" draggable="false" src="@/assets/4.png" alt class="w-full h-auto animate-fade" />
             <img v-if="activeBtn == 5" draggable="false" src="@/assets/5.png" alt class="w-full h-auto animate-fade" />
             <img v-if="activeBtn == 6" draggable="false" src="" alt class="w-full h-auto animate-fade" />
@@ -95,7 +95,7 @@
           <TabList class="flex justify-center px-1 space-x-2 bg-gray-900/20 rounded-xl">
             <Tab v-for="(game,i) in game_one" as="template" :key="i" v-slot="{ selected }" class="flex justify-center">
               <div :class="[selected ? '  text-black bg-gradient-to-b from-buttonLinearFrom to-buttonLinearTo  ' : ' text-white bg-slate-700']" class="px-3 py-2 flex justify-between rounded-lg shadow-lg cursor-pointer text-xs font-bold">
-                <p class="px-1 text-center">{{ t(game.title) }}</p>
+                <p class="px-1 text-center">{{ game.title }}</p>
                 <!-- <img :src="game.img" class="w-5 py-1 h-5 object-cover" :alt="game.title" /> -->
               </div>
             </Tab>
@@ -111,8 +111,8 @@
                   <a class="w-full block h-full">
                     
                     <img v-if="post.id == 1" alt="blog photo" src="@/assets/1.png" class="h-48 w-full object-cover animate-fade" />
-                    <img v-if="post.id == 2" alt="blog photo" src="@/assets/2.png" class="h-48 w-full object-cover animate-fade" />
-                    <img v-if="post.id == 3" alt="blog photo" src="@/assets/3.png" class="h-48 w-full object-cover animate-fade" />
+                    <img v-if="post.id == 2" alt="blog photo" src="@/assets/basketball.webp" class="h-48 w-full object-cover animate-fade" />
+                    <img v-if="post.id == 3" alt="blog photo" src="@/assets/tennis.jpg" class="h-48 w-full object-cover animate-fade" />
                     <!-- <div class="bg-slate-700 w-full p-4">
                       <p class="text-indigo-500 text-md font-medium"></p>
                       <p class="text-blue-300 font-light text-md tex pb-3">{{post.link}}</p>
@@ -125,14 +125,13 @@
           </TabPanels>
         </TabGroup>
       </div>
-      <div class="w-full px-2 py-3 my-2 bg-slate-900 rounded-lg shadow-lg sm:px-0">
+      <!-- <div class="w-full px-2 py-3 my-2 bg-slate-900 rounded-lg shadow-lg sm:px-0">
         <TabGroup>
           <TabList class="flex justify-center px-1 space-x-2 bg-gray-900/20 rounded-xl">
             <Tab v-for="(game,i) in game_two" as="template" :key="i" v-slot="{ selected }" class="flex justify-center">
            
               <div :class="[selected ? '  text-black bg-gradient-to-b from-buttonLinearFrom to-buttonLinearTo  ' : ' text-white bg-slate-700']" class="px-3 py-2 flex justify-between rounded-lg shadow-lg cursor-pointer text-xs font-bold">
                 <p class="px-1">{{ t(game.title) }}  </p>
-                <!-- <img :src="game.img" class="w-5 h-5 object-cover" :alt="game.title" /> -->
               </div>
             </Tab>
           </TabList>
@@ -148,18 +147,13 @@
                     
                     <img v-if="post.id == 4" alt="blog photo" draggable="false" src="@/assets/4.png" class="h-48 w-full object-cover animate-fade" />
                     <img v-if="post.id == 5" alt="blog photo" draggable="false" src="@/assets/4.png" class="h-48 w-full object-cover animate-fade" />
-                    <!-- <div class="bg-slate-700 w-full p-4">
-                      <p class="text-indigo-500 text-md font-medium"></p>
-                      <p class="text-blue-300 font-light text-md tex pb-3">{{post.link}}</p>
-                      <button class="button__">{{post.title}}</button>
-                    </div>-->
                   </a>
                 </div>
               </div>
             </TabPanel>
           </TabPanels>
         </TabGroup>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
@@ -174,7 +168,7 @@ const activeBtn = ref(1);
 const { t } = useI18n();
 let game_one = reactive([
   {
-    title: "s",
+    title: "FootBall",
     img: "https://senbackkg.yewuxia.com/main-consumer-web/assets-oss/ob/images/home/xuanzhongtiyu@2x.876783ff5a66e88140ce3370a090dac7.png?x-oss-process=image/resize,m_lfit,h_80/format,webp",
     desc: [
       {
@@ -186,7 +180,7 @@ let game_one = reactive([
     ],
   },
   {
-    title: "e_sport",
+    title: "BasketBall",
     img: "https://senbackkg.yewuxia.com/main-consumer-web/assets-oss/ob/images/home/games/dj@3x.83d58e52fe3dcdae81076bb9270a7067.png?x-oss-process=image/resize,m_lfit,w_2292/format,webp",
     desc: [
       {
@@ -198,7 +192,7 @@ let game_one = reactive([
     ],
   },
   {
-    title: "r",
+    title: "Tennis",
     img: "https://senbackkg.yewuxia.com/main-consumer-web/assets-oss/ob/images/home/xuanzhongzhenren@2x.295aa86dd994a2340b6c48f378338743.png?x-oss-process=image/resize,m_lfit,h_80/format,webp",
     desc: [
       {
@@ -255,7 +249,7 @@ const BtnClick = (n) => {
 
 <style  scoped>
 .game__play_div {
-  @apply px-4 py-2 mx-auto flex items-center justify-between bg-gray-900 hover:bg-primary hover:text-black rounded-lg shadow-lg
+  @apply px-4 py-2 w-[80%] mx-auto flex items-center justify-between bg-gray-900 hover:bg-primary hover:text-black rounded-lg shadow-lg
    cursor-pointer tracking-wide font-normal text-base;
 }
 .button__ {

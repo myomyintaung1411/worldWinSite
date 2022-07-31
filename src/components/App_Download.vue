@@ -12,13 +12,14 @@
       </div>-->
       <div class="flex flex-col py-2 w-full" :class="innerWidth > 860 ? 'md:flex-row' : ''">
         <div class="w-full p-3 self-center" :class="innerWidth > 860 ? 'md:w-[40%]' : 'w-full'">
-          <img :class="innerWidth < 860 && innerWidth > 400 ? 'w-[50%]' : ''" v-if="activeBtn == 1" draggable="false" src="@/assets/1111.png" alt class="h-auto animate-fade mx-auto" />
+          <img :class="innerWidth < 860 && innerWidth > 400 ? 'w-[50%]' : ''" v-if="activeBtn == 1" draggable="false" src="@/assets/2222.png" 
+          alt class="h-auto animate-fade mx-auto" />
           <img :class="innerWidth < 860 && innerWidth > 400 ? 'w-[50%]' : ''" v-if="activeBtn == 2" draggable="false" src="https://senbackkg.yewuxia.com/main-consumer-web/assets-oss/ob/images/home/app-download/cp.f7fd720b5960205cd8dfeaec4c048379.png?x-oss-process=image/resize,m_lfit,w_1396/format,webp" alt class="w-full h-auto animate-fade" />
           <img :class="innerWidth < 860 && innerWidth > 400 ? 'w-[50%]' : ''" v-if="activeBtn == 3" draggable="false" src="https://senbackkg.yewuxia.com/main-consumer-web/assets-oss/ob/images/home/app-download/qp.07e41c5b711af6021e3cc2378e21b948.png?x-oss-process=image/resize,m_lfit,w_1392/format,webp" alt class="w-full h-auto animate-fade" />
           <!-- <img v-if="activeBtn == 4" src="https://senbackkg.yewuxia.com/main-consumer-web/assets-oss/ob/images/home/app-download/zh.362e9e141ea5be7505e921577983e622.png?x-oss-process=image/resize,m_lfit,w_1396/format,webp" alt class="w-full h-auto animate-fade" /> -->
         </div>
 
-        <div class="flex flex-col" :class="innerWidth > 860 ? 'md:w-[60%]' : 'w-full'">
+        <div class="flex flex-col" :class="innerWidth > 860 ? 'md:w-[60%] ' : 'w-full'">
           <!-- <h3 class="text-center text-2xl">This is a paragraph of abc def</h3> -->
           <p v-if="activeBtn === 1" class="text-left animate-fade px-4 lg:px-24">
            {{t('down_text')}}
@@ -37,20 +38,21 @@
           </p> -->
 
           <div v-if="gameUrl.android && gameUrl.ios !== undefined || gameUrl.android && gameUrl.ios !== null" class="flex flex-col sm:flex-row mx-auto">
-            <div class="cursor-pointer my-5">
-              <div class="shadow-lg md:mx-auto mx-2 px-2">
+            <div class="cursor-pointer my-5   overflow-hidden">
+              <div class="shadow-lg md:mx-auto mx-2 px-2 max-w-[300px]  ">
                 <a href="#" class="block h-full animate-fade">
-                  <figure class="inline-block -mb-2 relative w-full">
-                    <vue-qrcode :value="gameUrl.android" class="sm:max-h-52 w-full object-cover rounded-t-lg" tag="img" :options="{
+                  <figure class="inline-block -mb-2 relative w-full ">
+                    <vue-qrcode :value="gameUrl.android" class=" sm:max-h-fit mx-0 my-0   w-full  rounded-t-lg" tag="img" :options="{
                      errorCorrectionLevel: 'Q',
-                     width:300
+                     width:300,
+                     
                       }"></vue-qrcode>
                     <img class="qrcode__image" src="@/assets/home/logo.png" alt="qrcode" />
                   </figure>
 
                   <div class="bg-slate-700 p-3 rounded-b-lg">
                     <p class="text-indigo-500 text-md font-medium"></p>
-                    <p class="text-white text-md font-medium mb-2">Scan QrCode to Download App </p>
+                    <p class="text-white text-md font-medium mb-2">Scan QrCode to Download App</p>
                     <p class="text-gray-300 font-light text-md">Support IOS & Android all devices</p>
                     <p class="text-blue-300 font-light text-md">{{gameUrl.android}}</p>
                   </div>
@@ -59,10 +61,10 @@
             </div>
 
             <div class="cursor-pointer my-5">
-              <div class="shadow-lg md:mx-auto mx-2 px-2">
+              <div class="shadow-lg md:mx-auto mx-2 px-2 max-w-[300px]">
                 <a href="#" class="block h-full animate-fade">
                   <figure class="inline-block -mb-2 relative w-full">
-                    <vue-qrcode :value="gameUrl.ios" class="sm:max-h-52 w-full object-cover rounded-t-lg" tag="img" :options="{
+                    <vue-qrcode :value="gameUrl.ios" class="sm:max-h-fit w-full  rounded-t-lg" tag="img" :options="{
                      errorCorrectionLevel: 'Q',
                      width:300
                       }"></vue-qrcode>

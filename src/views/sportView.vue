@@ -2,12 +2,13 @@
   <!-- <div style="margin:0px;padding:0px;overflow:hidden" class="h-full" >
         <iframe :src="route.query.url" frameborder="0" style="overflow:hidden !important;height:100%;width:100%" height="100%" width="100%"></iframe>
   </div> -->
-  <div class="h-screen">
-    <div class="sticky top-0 z-50 w-full h-8 px-2 flex justify-between items-center bg-slate-700">
+  <div class="h-screen relative">
+    <!-- <div class="sticky top-0 z-50 w-full h-8 px-2 flex justify-between items-center bg-slate-700">
       <div class="flex items-center">
         <ChevronLeftIcon @click="goBack" class="w-6 h-6 text-primary" />
       </div>
-    </div>
+    </div> -->
+    <Header></Header>
       <!-- <div id="floating-snap-btn-wrapper">
 
       <div v-touch:tap="tapHandler" v-touch:longtap="longtapHandler" v-touch:swipe.left="swipeLeftHandler" v-touch:press="startHandler" v-touch:release="endHandler" v-touch:swipe.right="swipeRightHandler"  class="fab-btn cursor-pointer" >
@@ -18,7 +19,8 @@
 
     </div> -->
   <body style="overflow: hidden !important" class="__iframe">
-    <iframe :src="route.query.url" scrolling="no" seamless="seamless"  frameborder="0" style="overflow:hidden;height:100%;width:100%" height="100%" width="100%"></iframe>
+    <iframe :src="route.query.url" scrolling="no" seamless="seamless"  frameborder="0" 
+    style="overflow:hidden;height:100%;width:100%" height="100%" width="100%"></iframe>
 </body>
 </div>
 </template>
@@ -33,6 +35,7 @@ import md5 from "js-md5";
 import AES from "@/utils/aes";
 import { useI18n } from "vue-i18n/index";
 import { ChevronLeftIcon } from "@heroicons/vue/outline";
+import Header from "@/components/Header.vue";
 
 const activeBtn = ref(1);
 const mobiletab = ref(0);
@@ -53,6 +56,7 @@ function onTapItem(mouseEvent) { // you can remove the `mouseEvent` argument
 </script>
 
 <style scoped>
+
       /* iframe {
         display: block;
         background: #000;
@@ -60,9 +64,11 @@ function onTapItem(mouseEvent) { // you can remove the `mouseEvent` argument
         height: 100vh;
         width: 100vw;
     } */
-    .__iframe{
-      height: calc(100% - 32px);
-    }
+        .__iframe {
+          height: calc(100% - 56px);
+          position: relative;
+          background: inherit;
+        }
     #floating-snap-btn-wrapper {
   
   position: absolute;

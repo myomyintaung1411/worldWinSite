@@ -1,8 +1,10 @@
 <template>
-  <div class="md:pt-7 py-0 sm:py-3 md:py-0 px-2">
+<!-- mobile -->
+  <div class="md:pt-7 py-0 sm:py-3 md:py-0 px-2 sm:hidden">
     <div class="mx-auto w-full lg:max-w-7xl md:max-w-7xl h-full shadow-lg rounded-lg flex flex-wrap items-center relative overflow-x-hidden sm:bg-HomecardBg py-2 md:py-3">
       <div class="relative my-1 md:hover:translate-y-2 lg:space-x-0 transition duration-300 md:space-y-0 p-0 sm:p-1 md:p-3 w-full mx-0 sm:w-1/3 md:w-1/3 lg:w-1/3">
-        <div class="mx-0 md:mx-2 relative" @click="playGame(0)">
+
+        <div class=" mx-0 md:mx-2 relative" @click="playGame(0)">
           <img  src="@/assets/home/card1.jpg" draggable="false" alt class="object-cover cursor-pointer object-center w-full rounded-t-md h-64" />
           <button class=" absolute bottom-0  left-1/2 transform -translate-x-1/2 -translate-y-1/2   game__play_div">Play Now</button>
         </div>
@@ -15,6 +17,30 @@
       </div>
       <div class="relative my-1 md:hover:translate-y-2 lg:space-x-0 transition duration-300 md:space-y-0 p-0 sm:p-1 md:p-3 w-full mx-0 sm:w-1/3 md:w-1/3 lg:w-1/3">
         <div class="mx-0 md:mx-2 relative" @click="playGame(2)">
+          <img  src="@/assets/card3.jpg" draggable="false" alt class="object-cover cursor-pointer object-center w-full rounded-t-md h-64" />
+          <button class=" absolute bottom-0  left-1/2 transform -translate-x-1/2 -translate-y-1/2   game__play_div">Play Now</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- pc -->
+  <div class="md:pt-7 py-0 sm:py-3 md:py-0 px-2 hidden sm:block">
+    <div class="mx-auto w-full lg:max-w-7xl md:max-w-7xl h-full shadow-lg rounded-lg flex flex-wrap items-center relative overflow-x-hidden sm:bg-HomecardBg py-2 md:py-3">
+      <div class="relative my-1 md:hover:translate-y-2 lg:space-x-0 transition duration-300 md:space-y-0 p-0 sm:p-1 md:p-3 w-full mx-0 sm:w-1/3 md:w-1/3 lg:w-1/3">
+
+        <div class=" mx-0 md:mx-2 relative" @click="playGame(3)">
+          <img  src="@/assets/home/card1.jpg" draggable="false" alt class="object-cover cursor-pointer object-center w-full rounded-t-md h-64" />
+          <button class=" absolute bottom-0  left-1/2 transform -translate-x-1/2 -translate-y-1/2   game__play_div">Play Now</button>
+        </div>
+      </div>
+      <div class="relative my-1 md:hover:translate-y-2 lg:space-x-0 transition duration-300 md:space-y-0 p-0 sm:p-1 md:p-3 w-full mx-0 sm:w-1/3 md:w-1/3 lg:w-1/3">
+        <div class="mx-0 md:mx-2 relative" @click="playGame(4)">
+          <img  src="@/assets/card2.jpg" draggable="false" alt class="object-cover cursor-pointer object-center w-full rounded-t-md h-64" />
+          <button class=" absolute bottom-0  left-1/2 transform -translate-x-1/2 -translate-y-1/2   game__play_div">Play Now</button>
+        </div>
+      </div>
+      <div class="relative my-1 md:hover:translate-y-2 lg:space-x-0 transition duration-300 md:space-y-0 p-0 sm:p-1 md:p-3 w-full mx-0 sm:w-1/3 md:w-1/3 lg:w-1/3">
+        <div class="mx-0 md:mx-2 relative" @click="playGame(5)">
           <img  src="@/assets/card3.jpg" draggable="false" alt class="object-cover cursor-pointer object-center w-full rounded-t-md h-64" />
           <button class=" absolute bottom-0  left-1/2 transform -translate-x-1/2 -translate-y-1/2   game__play_div">Play Now</button>
         </div>
@@ -84,25 +110,26 @@ const playGame = (n) => {
     console.log(encodeURIComponent(endata), "endata");
    
 // gameUrl.value.sportUrl
+    let url = gameUrl.value.sportUrl + `?token=${encodeURIComponent(endata)}`
+    
     switch (n) {
       case 0:
-        // let url = 'http://192.168.1.9:4000/' + `?token=${encodeURIComponent(endata)}`
-        // router.push({path:'/sportView',query:{url:url}})
-        window.open(
-         gameUrl.value.sportUrl + `?token=${encodeURIComponent(endata)}`
-        );
+        router.push({path:'/sportView',query:{url:url}})
         break;
       case 1:
-      // iframeUrl.value = gameUrl.value.lotteryUrl + `?token=${encodeURIComponent(endata)}`
-        window.open(
-         gameUrl.value.sportUrl + `?token=${encodeURIComponent(endata)}`
-        );
+        router.push({path:'/sportView',query:{url:url}})
         break;
       case 2:
-         //iframeUrl.value =  gameUrl.value.realBetUrl + `?token=${endata}`
-        window.open(
-         gameUrl.value.sportUrl + `?token=${encodeURIComponent(endata)}`
-        );
+        router.push({path:'/sportView',query:{url:url}})
+        break;
+      case 3:
+        window.open(url)
+        break;
+      case 4:
+        window.open(url)
+        break;
+      case 5:
+        window.open(url)
         break;
 
       default:
@@ -139,7 +166,7 @@ const playGame = (n) => {
   background: #a07c51;
 }
 .game__play_div {
-  @apply  w-1/2 py-4 mx-auto flex items-center justify-center bg-primary text-black rounded-lg shadow-lg
+  @apply  w-1/2 py-4 mx-auto flex items-center justify-center bg-primary text-black  shadow-lg
    cursor-pointer tracking-wide  text-base font-bold text-center;
 }
 /* bg-gray-800 sm:bg-slate-900 rounded-xl shadow-lg p-3 */

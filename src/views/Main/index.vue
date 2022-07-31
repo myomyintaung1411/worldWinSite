@@ -14,12 +14,13 @@ import { onMounted, ref, computed, reactive } from "vue";
 import allApi from "@/network/allApi.js";
 import { useStore } from "vuex";
 import Loading from "@/utils/loader";
-
+import { useRouter, useRoute } from "vue-router";
 import Header from "@/components/Header.vue";
 import Footer from "@/components/Footer.vue";
 
 const store = useStore();
-
+const router = useRouter();
+const route = useRoute();
  const lToken = store.state.user.token;
  const userId__ = store.state.user.userId;
 
@@ -44,9 +45,10 @@ const getGameUrl = () => {
     (userId__ && lToken !== undefined) ||
     (userId__ && lToken !== "")
   ) {
+
     let userId = userId__;
-    let t = lToken;
-    const req_ = { userId: userId, token: t };
+   let t = lToken;
+    const req_ = { userId: userId};
     allApi
       .getGameUrl({ data: req_ })
       .then((res) => {
