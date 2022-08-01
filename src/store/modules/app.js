@@ -7,7 +7,8 @@ export default {
         drawer: false,
         gameUrl: {},
         banner: [],
-        service:''
+        service:'',
+        getappUrl:{},
     },
 
     getters: {
@@ -15,6 +16,7 @@ export default {
         isTablet: state => state.isTablet,
         isDesktop: state => state.isDesktop,
         GameURL: state => state.gameUrl,
+        GETAPPURL: state => state.getappUrl,
         Banner: state => state.banner,
         SERVICE:state => state.service
     },
@@ -30,6 +32,9 @@ export default {
         },
         Game_Url(state, payload) {
             state.gameUrl = payload
+        },
+        getApp_Url(state, payload) {
+            state.getappUrl = payload
         },
         CHANGE_WINDOW_SIZE(state, width) {
             if (width < 786) {

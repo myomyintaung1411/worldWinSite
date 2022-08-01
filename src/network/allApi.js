@@ -66,6 +66,12 @@ export default {
             method: 'post',
             data
         })
+    },
+    getAppLink() {
+        return network({
+            url: '/main/getAppUrl',
+            method: 'post',
+        })
     }
 
 }

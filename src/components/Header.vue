@@ -24,9 +24,10 @@
           <span @click="goUserCenter" class="text-sm text-center">{{ showMoney ?
               `${Intl.NumberFormat().format(user.balance)}` : `*****`
           }} </span>
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <CurrencyDollarIcon class="h-6 w-6 text-primary"></CurrencyDollarIcon>
+            <!-- <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 8l3 5m0 0l3-5m-3 5v4m-3-5h6m-6 3h6m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
+              </svg> -->
           <div @click="reqtUserInfo()" class="px-1 cursor-pointer">
             <svg class="h-5 w-5 text-primary" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
               stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -282,6 +283,7 @@ import {
   SelectorIcon,
   CheckIcon,
   SearchIcon,
+  CurrencyDollarIcon 
 } from "@heroicons/vue/outline";
 import { useI18n } from "vue-i18n/index";
 import { onMounted, reactive, ref, watch, computed } from "vue";
@@ -314,6 +316,7 @@ export default {
     SelectorIcon,
     CheckIcon,
     SearchIcon,
+    CurrencyDollarIcon
   },
   setup() {
     const { t } = useI18n();

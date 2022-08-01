@@ -60,6 +60,18 @@ const getGameUrl = () => {
       });
   }
 };
+const getAppUrl = () => {
+
+    allApi
+      .getAppLink()
+      .then((res) => {
+        console.log(res, "getgame getAppLink ------------------------------------->");
+        store.commit("app/getApp_Url",res.data.data)
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+};
 
 const getUserInfo = () => {
    if (
@@ -102,6 +114,7 @@ onMounted(() => {
   getUserInfo()
   getBannerInfo();
   getGameUrl();
+  getAppUrl()
 });
 </script>
 

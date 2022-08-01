@@ -37,7 +37,7 @@
             2D模式随心切换极致享受，扫码即刻体验“非同凡响”3D棋牌竞技场。
           </p> -->
 
-          <div v-if="gameUrl.android && gameUrl.ios !== undefined || gameUrl.android && gameUrl.ios !== null" class="flex flex-col sm:flex-row mx-auto">
+          <div v-if="gameUrl?.android && gameUrl?.ios !== undefined || gameUrl?.android && gameUrl?.ios !== null" class="flex flex-col sm:flex-row mx-auto">
             <div class="cursor-pointer my-5   overflow-hidden">
               <div class="shadow-lg md:mx-auto mx-2 px-2 max-w-[300px]  ">
                 <a href="#" class="block h-full animate-fade">
@@ -211,7 +211,7 @@ let categories = ref({
 
 const store = useStore();
 
-const gameUrl = computed(() => store.getters["app/GameURL"]);
+const gameUrl = computed(() => store.getters["app/GETAPPURL"]);
 
 const innerWidth = ref(window.innerWidth);
 
