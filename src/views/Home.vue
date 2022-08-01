@@ -118,12 +118,12 @@ onMounted(() => {
     <GameSection></GameSection>
     <GridCard></GridCard>
     <div class="hidden md:flex sidebar__">
-      <div  @click="goService()" class="sidebar__item__3ZxEn bg-slate-900 hover:bg-slate-700">
+      <!-- <div  @click="goService()" class="sidebar__item__3ZxEn bg-slate-900 hover:bg-slate-700">
         <div>
           <div class="sidebar__kefu__2c9mp"></div>
           <p>{{t('service')}}</p>
         </div>
-      </div>
+      </div> -->
       <!-- <div @click="goApp" class="sidebar__item__3ZxEn bg-slate-600 hover:bg-slate-900">
         <div>
           <div class="sidebar__kefu__2c9mp"></div>

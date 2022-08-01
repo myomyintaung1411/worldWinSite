@@ -47,13 +47,13 @@
                      width:300,
                      
                       }"></vue-qrcode>
-                    <img class="qrcode__image" src="@/assets/home/logo.png" alt="qrcode" />
+                    <img class="qrcode__image" src="@/assets/home/Android.png" alt="qrcode" />
                   </figure>
 
                   <div class="bg-slate-700 p-3 rounded-b-lg">
                     <p class="text-indigo-500 text-md font-medium"></p>
                     <p class="text-white text-md font-medium mb-2">Scan QrCode to Download App</p>
-                    <p class="text-gray-300 font-light text-md">Support IOS & Android all devices</p>
+                    <p class="text-gray-300 font-light text-md">Support all Android  devices</p>
                     <p class="text-blue-300 font-light text-md">{{gameUrl.android}}</p>
                   </div>
                 </a>
@@ -68,13 +68,13 @@
                      errorCorrectionLevel: 'Q',
                      width:300
                       }"></vue-qrcode>
-                    <img class="qrcode__image" src="@/assets/home/logo.png" alt="qrcode" />
+                    <img class="qrcode__image" src="@/assets/home/ios.png" alt="qrcode" />
                   </figure>
 
                   <div class="bg-slate-700 p-3 rounded-b-lg">
                     <p class="text-indigo-500 text-md font-medium"></p>
                     <p class="text-white text-md font-medium mb-2">Scan QrCode to Download App</p>
-                    <p class="text-gray-300 font-light text-md">Support IOS & Android all devices</p>
+                    <p class="text-gray-300 font-light text-md">Support all IOS  devices</p>
                     <p class="text-blue-300 font-light text-md">{{gameUrl.ios}}</p>
                   </div>
                 </a>
