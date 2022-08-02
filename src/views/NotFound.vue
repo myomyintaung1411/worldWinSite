@@ -8,8 +8,7 @@
             <span class="text-red-500">Oops!</span> Page not found
           </p>
           <p class="mb-8 text-center text-gray-300 px-3 md:px-10 md:text-lg">
-            亲爱的用户，对不起，此页面未找到，
-            请您联系客服获得最优质高效的解决方法;对您造成不便，我们深表歉意，感谢您的理解与支持！
+            Dear user, I'm sorry, this page was not found, please contact customer service to get the best quality and efficient solution; we apologize for the inconvenience caused to you, thank you for your understanding and support!
           </p>
           <router-link to="/" class="px-6 py-2 text-sm font-semibold text-gray-700 rounded-lg shadow-lg  bg-gradient-to-b from-buttonLinearFrom to-buttonLinearTo">Go home</router-link>
         </div>

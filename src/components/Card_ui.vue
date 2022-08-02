@@ -111,7 +111,7 @@ const playGame = (n) => {
    
 // gameUrl.value.sportUrl
     let url = gameUrl.value.sportUrl + `?token=${encodeURIComponent(endata)}`
-    
+     //var features = 'directories=no,menubar=no,status=no,titlebar=no,toolbar=no,width=100%,height=100%';
     switch (n) {
       case 0:
         router.push({path:'/sportView',query:{url:url}})
@@ -123,7 +123,8 @@ const playGame = (n) => {
         router.push({path:'/sportView',query:{url:url}})
         break;
       case 3:
-        window.open(url)
+         window.open(url)
+        //window.open(url, 'mypopup', features);
         break;
       case 4:
         window.open(url)

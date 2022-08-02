@@ -48,7 +48,7 @@
           <img src="@/assets/home/world-win-logo.png" alt="logo" draggable="false"
             class=" w-32 md:w-32 lg:w-32 h-8 sm:h-fit " />
         </a>
-
+        <!-- <div @click="toAppDown"  class=" sm:hidden text-primary">App Download</div> -->
         <ul class="items-center hidden md:flex md:space-x-3 lg:space-x-8 lg:flex">
           <li>
             <router-link to="/" aria-label="Home" title="Home"
@@ -113,6 +113,7 @@
           <button aria-label="Open Menu" title="Open Menu"
             class="p-2 -mr-1 transition duration-200 rounded focus:outline-none focus:shadow-outline"
             @click="mobileMenuOpen">
+             
             <svg class="w-5 text-gray-200" viewBox="0 0 24 24">
               <path fill="currentColor" d="M23,13H1c-0.6,0-1-0.4-1-1s0.4-1,1-1h22c0.6,0,1,0.4,1,1S23.6,13,23,13z" />
               <path fill="currentColor" d="M23,6H1C0.4,6,0,5.6,0,5s0.4-1,1-1h22c0.6,0,1,0.4,1,1S23.6,6,23,6z" />
@@ -127,7 +128,7 @@
                   <img src="@/assets/home/world-win-logo.png" alt="logo" draggable="false"
                     class="w-32 md:w-32 lg:w-44 h-8" />
                 </div>
-
+                
                 <div>
                   <button aria-label="Close Menu" title="Close Menu"
                     class="p-2 -mt-2 -mr-2 transition duration-200 rounded hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
@@ -286,7 +287,7 @@ import {
   CurrencyDollarIcon 
 } from "@heroicons/vue/outline";
 import { useI18n } from "vue-i18n/index";
-import { onMounted, reactive, ref, watch, computed } from "vue";
+import { onMounted, reactive, ref, watch, computed ,inject} from "vue";
 import { useRouter, useRoute } from "vue-router";
 import { useStore } from "vuex";
 import Util from "@/utils/countdown.js";
@@ -296,6 +297,7 @@ import languageswitch from "./LanguageSwitch.vue";
 import Swal from "sweetalert2";
 import md5 from "js-md5";
 import AES from "@/utils/aes";
+
 export default {
   components: {
     Disclosure,
@@ -316,7 +318,8 @@ export default {
     SelectorIcon,
     CheckIcon,
     SearchIcon,
-    CurrencyDollarIcon
+    CurrencyDollarIcon,
+    
   },
   setup() {
     const { t } = useI18n();
@@ -331,7 +334,7 @@ export default {
     const router = useRouter();
     const route = useRoute();
     const store = useStore();
-
+  const smoothScroll = inject('smoothScroll')
     const plans = [
       {
         id: 1,
@@ -342,7 +345,7 @@ export default {
     ];
 
     const selected = ref(plans[0]);
-
+    
     const lToken = computed(() => store.getters["user/LToken"]);
     const user = computed(() => store.getters["user/USER"]);
     const lang = ref(localStorage.getItem("l") || "cz");
@@ -430,7 +433,15 @@ export default {
       },
       { immediate: true, deep: true }
     );
-
+  // const  toAppDown = () =>{
+  //   //console.log("leeeeeeeeeeeeeeeeee"); return
+  //   let scroll =  document.getElementById("appdownload")
+  //    smoothScroll({
+  //     scrollTo:scroll,
+  //     duration: 1000,
+  //    updateHistory: false
+  //   })
+  // }
     const mobileMenuOpen = () => {
       isMenuOpen.value = true;
       window.scrollTo({

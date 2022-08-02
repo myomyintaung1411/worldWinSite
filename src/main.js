@@ -17,6 +17,7 @@ import VCalendar from 'v-calendar';
 import VueQrcode from '@chenfengyuan/vue-qrcode';
 // import { createI18n } from 'vue-i18n/index'
 import i18n from './config/index'
+import VueSmoothScroll from 'vue3-smooth-scroll'
 
 // document.onkeydown = function(e) {
 //     if(event.keyCode === 123) {
@@ -127,6 +128,7 @@ app.use(store)
 app.use(i18n)
 app.use(VueSweetalert2,options)
 app.use(VueLoading)
+app.use(VueSmoothScroll)
 app.use(VCalendar, {})
 app.component(VueQrcode.name, VueQrcode);
 app.mount('#app')

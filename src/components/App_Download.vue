@@ -1,7 +1,7 @@
 <template>
-  <div class="md:pt-7 pt-3 sm:py-3 md:py-0 px-2">
-    <div class="md:max-w-7xl lg:max-w-7xl w-full py-4 mx-auto bg-HomecardBg shadow-lg rounded-md">
-      <h3 class="text-center py-1 text-gray-50 text-2xl">{{t('app_down')}}</h3>
+  <div id="appdownload"  class="md:pt-7 pt-3 sm:py-3 md:py-0 px-2">
+    <div   class="md:max-w-7xl lg:max-w-7xl w-full py-4 mx-auto bg-HomecardBg shadow-lg rounded-md">
+      <h3  class="text-center py-1 text-gray-50 text-2xl">{{t('app_down')}}</h3>
       <!-- <p class="text-center py-1 text-gray-400 text-md">Below is the usage of app blah blah blah shit.</p> -->
       <!-- <div class="py-2 flex justify-center sm:justify-end">
       <div class="flex space-x-3  sm:px-2 sm:py-5">
@@ -10,7 +10,7 @@
         <button @click="BtnClick(3)" class="button__" :class="{ actvie__btn: activeBtn == 3 }">棋牌APP</button>
       </div>
       </div>-->
-      <div class="flex flex-col py-2 w-full" :class="innerWidth > 860 ? 'md:flex-row' : ''">
+      <div  class="flex flex-col py-2 w-full" :class="innerWidth > 860 ? 'md:flex-row' : ''">
         <div class="w-full p-3 self-center" :class="innerWidth > 860 ? 'md:w-[40%]' : 'w-full'">
           <img :class="innerWidth < 860 && innerWidth > 400 ? 'w-[50%]' : ''" v-if="activeBtn == 1" draggable="false" src="@/assets/2222.png" 
           alt class="h-auto animate-fade mx-auto" />
@@ -40,21 +40,24 @@
           <div v-if="gameUrl?.android && gameUrl?.ios !== undefined || gameUrl?.android && gameUrl?.ios !== null" class="flex flex-col sm:flex-row mx-auto">
             <div class="cursor-pointer my-5   overflow-hidden">
               <div class="shadow-lg md:mx-auto mx-2 px-2 max-w-[300px]  ">
-                <a href="#" class="block h-full animate-fade">
-                  <figure class="inline-block -mb-2 relative w-full ">
-                    <vue-qrcode :value="gameUrl.android" class=" sm:max-h-fit mx-0 my-0   w-full  rounded-t-lg" tag="img" :options="{
+                <a  class="block h-full animate-fade">
+                  <figure @click="downloadImage(0)" class="inline-block -mb-2 relative w-full">
+                    <vue-qrcode  :value="gameUrl.android" ref="qr" class=" sm:max-h-fit mx-0 my-0   w-full  rounded-t-lg" tag="img" :options="{
                      errorCorrectionLevel: 'Q',
                      width:300,
-                     
+                     type:'png'
                       }"></vue-qrcode>
-                    <img class="qrcode__image" src="@/assets/home/Android.png" alt="qrcode" />
+                    <img class="qrcode__image" src="@/assets/home/Android.png"  alt="qrcode" />
                   </figure>
 
-                  <div class="bg-slate-700 p-3 rounded-b-lg">
+                  <div class="bg-slate-700 p-3 rounded-b-lg text-left">
                     <p class="text-indigo-500 text-md font-medium"></p>
                     <p class="text-white text-md font-medium mb-2">Scan QrCode to Download App</p>
                     <p class="text-gray-300 font-light text-md">Support all Android  devices</p>
-                    <p class="text-blue-300 font-light text-md">{{gameUrl.android}}</p>
+                     <a :href="gameUrl.android" target="_blank" class="mt-1
+                     game__play_div
+                    
+                    ">Download Android App</a>
                   </div>
                 </a>
               </div>
@@ -62,20 +65,24 @@
 
             <div class="cursor-pointer my-5">
               <div class="shadow-lg md:mx-auto mx-2 px-2 max-w-[300px]">
-                <a href="#" class="block h-full animate-fade">
-                  <figure class="inline-block -mb-2 relative w-full">
-                    <vue-qrcode :value="gameUrl.ios" class="sm:max-h-fit w-full  rounded-t-lg" tag="img" :options="{
+                <a class="block h-full animate-fade">
+                  <figure @click="downloadImage(1)" class="inline-block -mb-2 relative w-full">
+                    <vue-qrcode :value="gameUrl.ios" class="sm:max-h-fit w-full  rounded-t-lg" tag="img" ref="Iosqr" :options="{
                      errorCorrectionLevel: 'Q',
-                     width:300
+                     width:300,
+                     type:'png'
                       }"></vue-qrcode>
-                    <img class="qrcode__image" src="@/assets/home/ios.png" alt="qrcode" />
+                    <img class="qrcode__image" src="@/assets/home/ios.png"  alt="qrcode" />
                   </figure>
 
-                  <div class="bg-slate-700 p-3 rounded-b-lg">
+                  <div class="bg-slate-700 p-3 rounded-b-lg text-left">
                     <p class="text-indigo-500 text-md font-medium"></p>
                     <p class="text-white text-md font-medium mb-2">Scan QrCode to Download App</p>
                     <p class="text-gray-300 font-light text-md">Support all IOS  devices</p>
-                    <p class="text-blue-300 font-light text-md">{{gameUrl.ios}}</p>
+                    <a :href="gameUrl.ios" target="_blank" class="mt-1
+                     game__play_div
+                    
+                    ">Download IOS App</a>
                   </div>
                 </a>
               </div>
@@ -148,7 +155,11 @@ import { onMounted, ref, computed } from "vue";
 import { TabGroup, TabList, Tab, TabPanels, TabPanel } from "@headlessui/vue";
 import { useStore } from "vuex";
 import { useI18n } from "vue-i18n/index";
+import axios from "axios";
+
 const { t } = useI18n();
+const qr = ref('')
+const Iosqr = ref('')
 const activeBtn = ref(1);
 let categories = ref({
   体育APP: [
@@ -215,6 +226,30 @@ const gameUrl = computed(() => store.getters["app/GETAPPURL"]);
 
 const innerWidth = ref(window.innerWidth);
 
+const downloadImage = (n) => {
+       const androidImage = qr.value.$el.src
+       const iosImage = Iosqr.value.$el.src
+       switch (n) {
+         case 0:
+        let link = document.createElement("a");
+        link.href = androidImage;
+        link.setAttribute("download", "android.png"); //or any other extension
+        document.body.appendChild(link);
+        link.click();
+          break;
+        case 1:
+        const linkIos = document.createElement("a");
+        linkIos.href = iosImage;
+        linkIos.setAttribute("download", "ios.png"); //or any other extension
+        document.body.appendChild(linkIos);
+        linkIos.click();
+          break;
+       
+        default:
+          break;
+       }
+}
+
 const BtnClick = (n) => {
   activeBtn.value = n;
 };
@@ -246,5 +281,10 @@ onMounted(() => {
   top: 50%;
   transform: translate(-50%, -50%);
   width: 15%;
+}
+
+.game__play_div {
+  @apply  w-[99%] py-3 mx-auto flex items-center justify-center bg-gradient-to-b from-buttonLinearFrom to-buttonLinearTo text-black  shadow-lg
+   cursor-pointer tracking-wide  text-base font-medium text-center;
 }
 </style>
