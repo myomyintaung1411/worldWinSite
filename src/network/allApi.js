@@ -72,6 +72,13 @@ export default {
             url: '/main/getAppUrl',
             method: 'post',
         })
+    },
+    getOfficialCoinAddress(data) {
+        return network({
+            url: '/main/getOfficialCoinAddress',
+            method: 'post',
+            data
+        })
     }
 
 }

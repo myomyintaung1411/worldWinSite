@@ -85,6 +85,10 @@ const getUserInfo = () => {
     allApi
       .getUserInfo({ data: req_ })
       .then((res) => {
+        // if(res.data.status == 403){
+        //   localStorage.clear()
+        //   router.push('/login')
+        // }
         console.log(res, "getUserInfo *************");
         store.commit("user/User",res.data.data)
       })

@@ -1,5 +1,5 @@
 <template>
-  <div class="hidden md:block w-full" style="height:700px">
+  <div class="hidden md:block w-full overflow-y-scroll" style="height:700px">
     <div class="flex justify-between items-center py-3">
       <div>
         <span class="px-3 text-lg text-gray-100 tracking-wide font-bold">{{t('online_re')}}</span>
@@ -13,7 +13,7 @@
       </div>-->
     </div>
     <!-- two card -->
-    <div v-if="checkArray()">
+    <div >
       <!-- <div class="grid grid-cols-2 gap-4 w-full px-2">
         <div v-for="max in 1" :key="max" class="w-full">
           <div class="w-full flex rounded-lg justify-between items-center shadow-lg bg-slate-600 py-2 px-3">
@@ -33,41 +33,40 @@
         </div>
       </div>-->
       <!-- multiple card -->
-
-      <div class="mx-2 my-2">
-        <div  class="w-fit 
+      <div class="flex flex-wrap">
+      <div class="mx-2 my-2 w-[320px]" v-for="(coin,i) in coinAdd" :key="i">
+        <div  class=" w-full 
         rounded-lg space-y-5 shadow-lg bg-gradient-to-b from-buttonLinearFrom to-buttonLinearTo py-4 px-6">
-          <p class="text-md font-bold text-gray-700">USDT-TRC20</p>
+          <p class="text-md font-bold text-gray-700">{{coin.name}}</p>
           <div class="space-x-2 flex items-center">
-            <span id="textToBecopied" class="text-md text-gray-500 py-2 leading-tight">{{user.adress[0]}}</span>
-            <div @click="copyAddress(user.adress[0])" title="复制" class="text-md text-black rounded-full cursor-pointer shadow-lg px-1 inline-block w-fit bg-HomecardBg py-1 leading-tight">
+            <span id="textToBecopied" class="text-md text-gray-700 py-2 leading-tight w-[90%] break-words">{{coin.token}}</span>
+            <div @click="copyAddress(coin.token)" title="copy address" class="text-md text-black rounded-full cursor-pointer shadow-lg px-1 inline-block w-fit bg-HomecardBg py-1 leading-tight">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
               </svg>
             </div>
           </div>
-             <!-- <figure class="inline-block   relative w-full">
-                <vue-qrcode :value="user.adress[0]" class="sm:max-h-52 md:max-h-56 w-full object-cover rounded-t-lg" tag="img" :options="{
-                   errorCorrectionLevel: 'Q',
+             <figure class="inline-block   relative w-full">
+                <vue-qrcode :value="coin.token" class="sm:max-h-52 md:max-h-56 w-full object-cover rounded-t-lg" tag="img" :options="{
+                   errorCorrectionLevel: 'M',
                     width:300
                     }"></vue-qrcode>
-                    <img class="qrcode__image" src="https://avatars.githubusercontent.com/u/3456749" alt="Chen Fengyuan" />
-            </figure> -->
+                    <!-- <img class="qrcode__image" src="https://avatars.githubusercontent.com/u/3456749" alt="Chen Fengyuan" /> -->
+            </figure>
         </div>
       </div>
     </div>
+    </div>
 
-    <div v-else class="flex w-full h-full flex-col justify-center items-center">
+    <!-- <div v-else class="flex w-full h-full flex-col justify-center items-center">
       <div class="py-3">
         <img src="@/assets/home/noRecord.png" alt="norecord" class="w-[365px] h-[165px]" />
       </div>
       <div class="py-3">
         <span class="text-gray-300 tracking-wide text-base font-medium">{{t('coin_add')}}</span>
       </div>
-      <div class="py-3">
-        <button @click="goService()" class="px-6 py-2 tracking-wider text-black bg-gradient-to-b from-buttonLinearFrom to-buttonLinearTo shadow-lg rounded-md outline-none focus:outline-none">{{t('go_ser')}}</button>
-      </div>
-    </div>
+
+    </div> -->
 
     <!-- <div v-if="activeTab === 2">
       <div class="grid grid-cols-2 gap-4 w-full px-2">
@@ -109,6 +108,8 @@
 </template>
 
 <script setup>
+import useClipboard from 'vue-clipboard3'
+
 import { computed, onMounted, ref } from "vue";
 import NoticeMsg from "@/utils/alert";
 import { useStore } from "vuex";
@@ -118,9 +119,14 @@ const store = useStore();
 const user = computed(() => store.getters["user/USER"]);
 const service = computed(() => store.getters["app/SERVICE"]);
 const { t } = useI18n();
-
+const coinAdd = ref(null)
  const lToken = store.state.user.token;
  const userId__ = store.state.user.userId;
+  const { toClipboard } = useClipboard()
+
+onMounted(()=>{
+  getOfficialCoinAddress()
+})
 
 /** check coin address */
 function checkArray() {
@@ -133,6 +139,31 @@ function checkArray() {
   //   return val
   // }
 }
+
+const getOfficialCoinAddress = () => {
+  let userId = userId__;
+  const req_ = { userId: userId };
+  allApi
+    .getOfficialCoinAddress({ data: req_ })
+    .then((res) => {
+      console.log("getOfficialCoinAddress", res.data.coin_info);
+      let removeCC = JSON.parse(res.data.coin_info)
+      coinAdd.value = removeCC;
+      console.log(removeCC, "removeCC");
+    //   let cccc = res.data.coin_info.split(',')
+    // //console.log(nn, "nnnn");
+    // // nn.pop();
+    // var splitData = [];
+    // for (let i = 0; i < nn?.length; i++) {
+    //     splitData.push(nn[i].split("-")[0])
+    // }
+      //store.commit("app/Service", res.data.service_link);
+      //serviceLink.value = res.data.service_link;
+    })
+    .catch((e) => {
+      console.log(e);
+    });
+};
 
 //const address = ref("TGz4Ugg4uTW5J4T2HcfiXGCbwhUfixRWWK");
 let activeTab = ref(1);
@@ -147,24 +178,16 @@ const goService = () => {
   }
 };
 
-const copyAddress = (copyTxt) => {
- // var text_to_copy = document.getElementById("textToBecopied").innerHTML;
-  var text_to_copy = copyTxt;
-
-  if (!navigator.clipboard) {
-    document.execCommand("copy", text_to_copy);
-    NoticeMsg.Message("copy success", "success");
-  } else {
-    navigator.clipboard
-      .writeText(text_to_copy)
-      .then(function () {
+const copyAddress = async (copyTxt) => {
+      try {
+        await toClipboard(copyTxt)
         NoticeMsg.Message("copy success", "success");
-      })
-      .catch(function (e) {
-        console.error("err",e); // error
-      });
-  }
-};
+        console.log('Copied to clipboard')
+      } catch (e) {
+        alert('copy error')
+        console.error(e)
+      }
+    }
 </script>
 
 <style  scoped>

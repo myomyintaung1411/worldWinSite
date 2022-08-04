@@ -17,10 +17,12 @@
     "swiper": "^7.4.1",
     "v-calendar": "^3.0.0-alpha.6",
     "vue": "^3.2.31",
+    "vue-clipboard3": "^2.0.0",
     "vue-i18n": "^9.1.9",
     "vue-loading-overlay": "^5.0.1",
     "vue-router": "^4.0.12",
     "vue-sweetalert2": "^5.0.2",
+    "vue3-clipboard": "^1.0.0",
     "vue3-smooth-scroll": "^0.8.1",
     "vuex": "^4.0.2"
   },

@@ -22,7 +22,7 @@
           </div>
           <span class="px-1 text-sm tracking-wide font-bold">{{ t('total') }} :</span>
           <span @click="goUserCenter" class="text-sm text-center">{{ showMoney ?
-              `${Intl.NumberFormat().format(user.balance)}` : `*****`
+              `${Intl.NumberFormat().format(user?.balance)}` : `*****`
           }} </span>
           <CurrencyDollarIcon class="h-6 w-6 text-primary"></CurrencyDollarIcon>
             <!-- <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -185,7 +185,7 @@
                       <div  class="ml-3">
                         <div class="text-base font-medium leading-none text-white py-1">{{ user.name }}</div>
                         <div class="text-sm font-medium leading-none text-primary py-1 opacity-90">
-                          {{ Intl.NumberFormat().format(user.balance) }}</div>
+                          {{ Intl.NumberFormat().format(user?.balance) }}</div>
                       </div>
                       
                       <button type="button" class="ml-auto bg-gray-800 flex-shrink-0 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">

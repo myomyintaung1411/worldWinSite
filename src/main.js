@@ -19,6 +19,8 @@ import VueQrcode from '@chenfengyuan/vue-qrcode';
 import i18n from './config/index'
 import VueSmoothScroll from 'vue3-smooth-scroll'
 
+import VueClipboard from 'vue3-clipboard'
+
 // document.onkeydown = function(e) {
 //     if(event.keyCode === 123) {
 //         return false;
@@ -126,6 +128,7 @@ app.use(AOS.init({
 app.use(router)
 app.use(store)
 app.use(i18n)
+app.use(VueClipboard)
 app.use(VueSweetalert2,options)
 app.use(VueLoading)
 app.use(VueSmoothScroll)
