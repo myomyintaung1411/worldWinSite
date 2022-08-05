@@ -79,6 +79,22 @@ export default {
             method: 'post',
             data
         })
+    },
+    getbindCoinAddress(data) {
+        return network({
+            url: '/main/bindCoinAddress',
+            method: 'post',
+            data
+        })
+    },
+    getmemberRequestRecharge(data) {
+        return network({
+            url: '/main/memberRequestRecharge',
+            method: 'post',
+            data
+        })
     }
 
 }
+
+// http://127.0.0.1:6195/main/memberRequestRecharge

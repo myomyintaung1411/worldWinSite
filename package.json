@@ -11,6 +11,7 @@
     "@popperjs/core": "^2.11.2",
     "aos": "^2.3.4",
     "axios": "^0.24.0",
+    "bitcoin-address-validation": "^2.2.1",
     "crypto-js": "^4.1.1",
     "js-md5": "^0.7.3",
     "qrcode": "^1.5.0",
@@ -24,7 +25,8 @@
     "vue-sweetalert2": "^5.0.2",
     "vue3-clipboard": "^1.0.0",
     "vue3-smooth-scroll": "^0.8.1",
-    "vuex": "^4.0.2"
+    "vuex": "^4.0.2",
+    "wallet-address-validator": "^0.2.4"
   },
   "devDependencies": {
     "@headlessui/vue": "^1.4.2",

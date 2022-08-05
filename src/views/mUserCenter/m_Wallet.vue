@@ -6,7 +6,7 @@
       <!-- <span class="ml-6 text-gray-200 text-sm tracking-wide font-bold">场馆钱包和场馆钱包之间不可以互转</span> -->
     </div>
     <div v-if="coinAdd != null || coinAdd?.length > 0">
-    <div  class="mt-2 mx-auto h-fit w-full" v-for="(coin,i) in coinAdd" :key="i">
+    <div  class="my-4 mx-auto h-fit w-[80%]" v-for="(coin,i) in coinAdd" :key="i">
       <div class="w-full mx-auto">
         <div class="mx-2 my-2 rounded-lg 
          shadow-lg bg-gradient-to-b from-buttonLinearFrom to-buttonLinearTo py-3 px-3">
@@ -20,7 +20,7 @@
             </div>
           </div>
           <div class="flex justify-center items-center">
-            <figure class="   relative w-[200px]">
+            <figure class="   relative w-[230px]">
                 <vue-qrcode :value="coin.token" class=" w-full  " tag="img" :options="{
                    errorCorrectionLevel: 'M',
                     width:300

@@ -80,7 +80,7 @@
         <span class="text-base text-white tracking-wide">{{t('time_t')}}</span>
       </div>
       <div class="py-2">
-        <v-date-picker locale="zh" v-model="range" :masks="masks" is-range :max-date="new Date()" @drag="updateDate($event)">
+        <v-date-picker locale="en" v-model="range" :masks="masks" is-range :max-date="new Date()" @drag="updateDate($event)">
           <template v-slot="{ inputValue, inputEvents }">
             <div class="flex items-center">
               <input :value="inputValue.start" v-on="inputEvents.start" class="border px-2 py-2 w-28 rounded focus:outline-none focus:border-indigo-300" />
@@ -200,46 +200,7 @@ const lToken = store.state.user.token;
 const userId__ = store.state.user.userId;
 
 const transRecord = ref([
-  {
-    serialNumber: 123,
-    time: "2022-01-14 20:22:27",
-    orderNumber: "231234123",
-    TranscationType: "上分",
-    money: 1000,
-    status: 1,
-  },
-  {
-    serialNumber: 123,
-    time: "2022-01-14 20:22:27",
-    orderNumber: "231234123",
-    TranscationType: "上分",
-    money: 1000,
-    status: 1,
-  },
-  {
-    serialNumber: 123,
-    time: "2022-01-14 20:22:27",
-    orderNumber: "231234123",
-    TranscationType: "上分",
-    money: 1000,
-    status: 1,
-  },
-  {
-    serialNumber: 123,
-    time: "2022-01-14 20:22:27",
-    orderNumber: "231234123",
-    TranscationType: "上分",
-    money: 1000,
-    status: 1,
-  },
-  {
-    serialNumber: 123,
-    time: "2022-01-14 20:22:27",
-    orderNumber: "231234123",
-    TranscationType: "上分",
-    money: 1000,
-    status: 1,
-  },
+ 
 ]);
 const card = reactive([
   { id: 3, name: "all" },//全部
@@ -360,8 +321,8 @@ const getTransactionRecord = () => {
     let userId_ = userId__;
     let token_ = lToken;
     let TransactionType_ = selectCardOne.value.id;
-    let startTime_ = range.start.toISOString().slice(0, 10);
-    let endTime_ = range.end.toISOString().slice(0, 10);
+    let startTime_ = range.start.toISOString().replace("T"," ").substring(0, 19);
+    let endTime_ = range.end.toISOString().replace("T"," ").substring(0, 19);
     let orderStatus_ = selectOrderStatus.value.id;
     let pageSize_ = pagination.pageSize;
     let currentPage_ = pagination.currentPage;

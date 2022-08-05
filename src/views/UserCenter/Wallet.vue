@@ -155,6 +155,18 @@ const getOfficialCoinAddress = () => {
       console.log(e);
     });
 };
+// const getbindCoinAddress = () => {
+//   let userId = userId__;
+//   const req_ = { coinAddress:'bc1qzxxwfanp26pxuv7zfq26nzxt9r8uurewgeqz2m',conType:'BTC',userId: userId };
+//   allApi
+//     .getbindCoinAddress({ data: req_ })
+//     .then((res) => {
+//       console.log("getbindCoinAddress", res);
+//     })
+//     .catch((e) => {
+//       console.log(e);
+//     });
+// };
 
 //const address = ref("TGz4Ugg4uTW5J4T2HcfiXGCbwhUfixRWWK");
 let activeTab = ref(1);

@@ -64,6 +64,18 @@ const routes = [
             meta: { title: 'TransferRecord' },
             component: () => import('./views/UserCenter/transRecord.vue')
           },
+          {
+            path: '/bindCoinAddress',
+            name: 'bindCoinAddress',
+            meta: { title: 'bindCoinAddress' },
+            component: () => import('./views/UserCenter/bindCoinAdd.vue')
+          },
+          {
+            path: '/RequstWithdraw',
+            name: 'RequstWithdraw',
+            meta: { title: 'RequstWithdraw' },
+            component: () => import('./views/UserCenter/RequstWithdraw.vue')
+          },
           // {
           //   path: '/betRecord',
           //   name: 'betRecord',
@@ -166,6 +178,18 @@ const routes = [
     name: 'mTransRecord',
     meta: { title: 'mTransRecord',requireAuth:true  },
     component: () => import('./views/mUserCenter/m_TransRecord.vue')
+  },
+  {
+    path: '/m/m_bindCoinAddress',
+    name: 'mbindCoinAddress',
+    meta: { title: 'mbindCoinAddress',requireAuth:true },
+    component: () => import('./views/mUserCenter/m_bindCoinAdd.vue')
+  },
+  {
+    path: '/m/m_RequstWithdraw',
+    name: 'mRequstWithdraw',
+    meta: { title: 'mRequstRecharge',requireAuth:true },
+    component: () => import('./views/mUserCenter/m_RequstWithdraw.vue')
   },
   // {
   //   path: '/m/m_betRecord',

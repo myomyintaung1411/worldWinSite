@@ -88,7 +88,7 @@
         <span class="text-sm hidden md:block text-gray-300 tracking-wide">{{t('time_t')}}</span>
       </div>
       <div class="text-center">
-        <v-date-picker locale="zh" v-model="range" :masks="masks" is-range :max-date="new Date()" @drag="updateDate($event)">
+        <v-date-picker locale="en" v-model="range" :masks="masks" is-range :max-date="new Date()" @drag="updateDate($event)">
           <template v-slot="{ inputValue, inputEvents }">
             <div class="flex justify-center items-center">
               <input :value="inputValue.start" v-on="inputEvents.start" class="border px-2 py-2 w-60 rounded focus:outline-none focus:border-indigo-300" />
@@ -319,8 +319,9 @@ const getTransactionRecord = () => {
     let userId_ = userId__;
     let token_ = lToken;
     let TransactionType_ = selectCardOne.value.id;
-    let startTime_ = range.start.toISOString().slice(0, 10);
-    let endTime_ = range.end.toISOString().slice(0, 10);
+    let startTime_ = range.start.toISOString().replace("T"," ").substring(0, 19);
+
+    let endTime_ = range.end.toISOString().replace("T"," ").substring(0, 19);
     let orderStatus_ = selectOrderStatus.value.id;
     let pageSize_ = pagination.pageSize;
     let currentPage_ = pagination.currentPage;
@@ -329,8 +330,10 @@ const getTransactionRecord = () => {
       userId: userId_,
       token: token_,
       TransactionType: TransactionType_,
-      startTime: startTime_,
-      endTime: endTime_,
+      // startTime: startTime_ + ' 00:00:00',
+      // endTime: endTime_ + ' 00:00:00',
+      startTime: startTime_ ,
+      endTime: endTime_ ,
       orderStatus: orderStatus_,
       pageSize: pageSize_,
       currentPage: currentPage_,

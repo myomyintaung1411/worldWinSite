@@ -52,7 +52,7 @@
             <div class="px-2 py-2 text-sm font-normal tracking-wide leading-3 text-gray-100">中等额度常规交易推荐</div>
             <form @click.prevent class="py-5 px-2">
               <div class="flex text-center items-center">
-                <input :autocomplete="false" name="password" class="text-sm placeholder-gray-400 text-gray-300 px-5 border border-gray-400 max-w-sm w-80 py-2 focus:outline-none focus:border-blue-400 bg-slate-800" placeholder="请输入 100.00元-500,000.00元" />
+                <input autocomplete="off" name="password" class="text-sm placeholder-gray-400 text-gray-300 px-5 border border-gray-400 max-w-sm w-80 py-2 focus:outline-none focus:border-blue-400 bg-slate-800" placeholder="请输入 100.00元-500,000.00元" />
                 <span class="text-gray-300 tracking-wide text-sm font-normal px-4">建议您存入带尾数的金额（例101、503），以便存款后能更快匹配到账</span>
               </div>
             </form>

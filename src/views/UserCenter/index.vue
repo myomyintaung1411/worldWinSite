@@ -55,11 +55,8 @@
             <div v-for="(menu,index) in menuList" :key="index" @click="NavClick(menu,index)"
               :class="activeRoute === menu.path? 'bg-primary bg-opacity-20 text-primary' : 'text-gray-200'"
               class="py-2 w-full hover:text-blue-200 shadow-md hover:bg-slate-700 cursor-pointer">
-              <div class="flex justify-center">
-                <div>
-                  <!-- <svg v-if="menu.path === '/wallet'" xmlns="http://www.w3.org/2000/svg" :class="activeRoute === menu.path? 'text-primary' : 'text-gray-400' " class="hidden lg:block h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
-                  </svg> -->
+              <div class="flex  items-center justify-center ">
+                <!-- <div>
                   <DatabaseIcon v-if="menu.path === '/wallet'"
                     :class="activeRoute === menu.path? 'text-primary' : 'text-gray-400' "
                     class="h-7 w-7 hidden lg:block" />
@@ -82,8 +79,8 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                       d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
                   </svg>
-                </div>
-                <div class="mx-4">{{t(menu.title)}}</div>
+                </div> -->
+                <div class="mx-4 text-left">{{t(menu.title)}}</div>
               </div>
             </div>
           </div>
@@ -151,7 +148,9 @@
             <DatabaseIcon v-if="i === 0" class="h-7 w-7   text-primary"></DatabaseIcon>
             <DocumentTextIcon v-if="i === 1" class="h-7 w-7  text-primary">
             </DocumentTextIcon>
-            <LogoutIcon v-if="i === 2" class="h-7 w-7 text-primary"></LogoutIcon>
+            <ChipIcon v-if="i === 2" class="h-7 w-7 text-primary"></ChipIcon>
+            <IdentificationIcon v-if="i === 3" class="h-7 w-7 text-primary"></IdentificationIcon>
+            <LogoutIcon v-if="i === 4" class="h-7 w-7 text-primary"></LogoutIcon>
             <span class="text-sm px-4 text-white tracking-wide">{{t(menu.title)}}</span>
           </div>
           <div>
@@ -173,7 +172,7 @@ import { useStore } from "vuex";
 import allApi from "@/network/allApi.js";
 import Loading from "@/utils/loader";
 import { useI18n } from "vue-i18n/index";
-import { DocumentTextIcon, DocumentReportIcon,DatabaseIcon,LogoutIcon ,CurrencyDollarIcon} from "@heroicons/vue/solid";
+import { DocumentTextIcon, DocumentReportIcon,DatabaseIcon,LogoutIcon ,CurrencyDollarIcon,ChipIcon,IdentificationIcon } from "@heroicons/vue/solid";
 const router = useRouter();
 
 const store = useStore();
@@ -198,6 +197,19 @@ const menuList = reactive([
     title: "t_record",
     path: "/transRecord",
   },
+  {
+    title: "bind_coin",
+    path: "/bindCoinAddress",
+  },
+  {
+    title: "recharge_requst",
+    path: "/RequstWithdraw",
+  },
+  //   {
+  //   id: 2,
+  //   title: "转账",
+  //   path: "/transfer",
+  // },
   // {
   //   title: "投注记录",
   //   path: "/betRecord",
@@ -237,6 +249,14 @@ const m_menuList = reactive([
   {
     title: "t_record",
     path: "/m/m_transRecord",
+  },
+    {
+    title: "bind_coin",
+    path: "/m/m_bindCoinAddress",
+  },
+    {
+    title: "recharge_requst",
+    path: "/m/m_RequstWithdraw",
   },
   // {
   //   title: "投注记录",
