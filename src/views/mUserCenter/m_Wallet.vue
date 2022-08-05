@@ -1,24 +1,41 @@
 <template>
   <div class="md:hidden relative max-h-screen h-screen overflow-y-scroll w-full bg-gray-900">
-    <div class="sticky top-0 z- w-full py-2 px-2 flex items-center bg-slate-700">
+    <div class="sticky top-0 z-10 w-full py-2 px-2 flex items-center bg-slate-700">
       <ChevronLeftIcon @click="goBack" class="w-6 h-6 text-primary" />
       <span class="ml-6 text-gray-200 text-md tracking-wide font-bold">{{t('online_re')}}</span>
       <!-- <span class="ml-6 text-gray-200 text-sm tracking-wide font-bold">场馆钱包和场馆钱包之间不可以互转</span> -->
     </div>
-    <div v-if="checkArray()" class="mt-2 mx-auto h-fit w-full">
+    <div v-if="coinAdd != null || coinAdd?.length > 0">
+    <div  class="mt-2 mx-auto h-fit w-full" v-for="(coin,i) in coinAdd" :key="i">
       <div class="w-full mx-auto">
-        <div class="mx-2 my-2 rounded-lg justify-between items-center shadow-lg bg-gradient-to-b from-buttonLinearFrom to-buttonLinearTo py-3 px-3">
-          <p class="text-md font-bold text-gray-700">USDT-TRC20</p>
+        <div class="mx-2 my-2 rounded-lg 
+         shadow-lg bg-gradient-to-b from-buttonLinearFrom to-buttonLinearTo py-3 px-3">
+          <p class="text-md font-bold text-gray-700">{{coin.name}}</p>
           <div class="space-x-2 flex items-center justify-between">
-            <span id="textToBecopied" class="text-md overflow-hidden text-ellipsis w-11/12 text-gray-500 py-2 leading-tight">{{user.adress[0]}}</span>
-            <div @click="copyAddress(user.adress[0])" title="复制" class="text-md text-black rounded-full cursor-pointer shadow-lg px-1 inline-block w-fit bg-HomecardBg py-1 leading-tight">
+            <span id="textToBecopied" class="text-md overflow-hidden text-ellipsis w-11/12 text-gray-500 py-2 leading-tight">{{coin.token}}</span>
+            <div @click="copyAddress(coin.token)" title="copy address" class="text-md text-black rounded-full cursor-pointer shadow-lg px-1 inline-block w-fit bg-HomecardBg py-1 leading-tight">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
               </svg>
             </div>
           </div>
+          <div class="flex justify-center items-center">
+            <figure class="   relative w-[200px]">
+                <vue-qrcode :value="coin.token" class=" w-full  " tag="img" :options="{
+                   errorCorrectionLevel: 'M',
+                    width:300
+                    }"></vue-qrcode>
+            </figure>
+          </div>
+          <!-- <figure class=" self-center  textc  relative w-[200px]">
+                <vue-qrcode :value="coin.token" class=" w-full  rounded-t-lg" tag="img" :options="{
+                   errorCorrectionLevel: 'M',
+                    width:300
+                    }"></vue-qrcode>
+            </figure> -->
         </div>
       </div>
+    </div>
     </div>
     <div v-else class="flex w-full h-full flex-col mx-auto  justify-center text-center items-center">
       <div class="py-3">
@@ -27,9 +44,6 @@
       </div>
       <div class="py-3  w-full">
         <p class="text-gray-300 tracking-wide text-base font-medium">{{t('coin_add')}}</p>
-      </div>
-      <div class="py-3">
-        <button @click="goService()" class="px-6 py-2 tracking-wider text-black bg-gradient-to-b from-buttonLinearFrom to-buttonLinearTo shadow-lg rounded-md outline-none focus:outline-none">{{t('go_ser')}}</button>
       </div>
     </div>
   </div>
@@ -50,6 +64,8 @@ import { useStore } from "vuex";
 import { ChevronLeftIcon, EmojiSadIcon } from "@heroicons/vue/outline";
 import { TabGroup, TabList, Tab, TabPanels, TabPanel } from "@headlessui/vue";
 import { useI18n } from "vue-i18n/index";
+import allApi from "@/network/allApi.js";
+import useClipboard from 'vue-clipboard3'
 
 const { t } = useI18n();
 
@@ -59,6 +75,9 @@ const address = ref("TGz4Ugg4uTW5J4T2HcfiXGCbwhUfixRWWK");
 const store = useStore();
 const user = computed(() => store.getters["user/USER"]);
 const service = computed(() => store.getters["app/SERVICE"]);
+const coinAdd = ref(null)
+ const userId__ = store.state.user.userId;
+  const { toClipboard } = useClipboard()
 
 const goService = () => {
   console.log(service.value);
@@ -70,6 +89,26 @@ const goService = () => {
 const goBack = () => {
   router.go(-1);
 };
+
+const getOfficialCoinAddress = () => {
+  let userId = userId__;
+  const req_ = { userId: userId };
+  allApi
+    .getOfficialCoinAddress({ data: req_ })
+    .then((res) => {
+      console.log("getOfficialCoinAddress", res.data.coin_info);
+      let removeCC = JSON.parse(res.data.coin_info)
+      coinAdd.value = removeCC;
+      console.log(removeCC, "removeCC");
+    })
+    .catch((e) => {
+      console.log(e);
+    });
+};
+
+onMounted(()=>{
+  getOfficialCoinAddress()
+})
 
 /** check coin address */
 function checkArray() {
@@ -95,24 +134,16 @@ const changeWindowSize = () => {
   innerWidth.value = window.innerWidth;
 };
 
-const copyAddress = (copyTxt) => {
- // var text_to_copy = document.getElementById("textToBecopied").innerHTML;
-  var text_to_copy = copyTxt;
-
-  if (!navigator.clipboard) {
-    document.execCommand("copy", text_to_copy);
-    NoticeMsg.Message("copy success", "success");
-  } else {
-    navigator.clipboard
-      .writeText(text_to_copy)
-      .then(function () {
+const copyAddress = async (copyTxt) => {
+      try {
+        await toClipboard(copyTxt)
         NoticeMsg.Message("copy success", "success");
-      })
-      .catch(function (e) {
-        console.error("err",e); // error
-      });
-  }
-};
+        console.log('Copied to clipboard')
+      } catch (e) {
+        alert('copy error')
+        console.error(e)
+      }
+    }
 
 watch(
   () => innerWidth.value,

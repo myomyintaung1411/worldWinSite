@@ -33,7 +33,7 @@
         </div>
       </div>-->
       <!-- multiple card -->
-      <div class="flex flex-wrap">
+      <div v-if="coinAdd?.length > 0" class="flex flex-wrap">
       <div class="mx-2 my-2 w-[320px]" v-for="(coin,i) in coinAdd" :key="i">
         <div  class=" w-full 
         rounded-lg space-y-5 shadow-lg bg-gradient-to-b from-buttonLinearFrom to-buttonLinearTo py-4 px-6">
@@ -47,7 +47,7 @@
             </div>
           </div>
              <figure class="inline-block   relative w-full">
-                <vue-qrcode :value="coin.token" class="sm:max-h-52 md:max-h-56 w-full object-cover rounded-t-lg" tag="img" :options="{
+                <vue-qrcode :value="coin.token" class=" w-full " tag="img" :options="{
                    errorCorrectionLevel: 'M',
                     width:300
                     }"></vue-qrcode>
@@ -56,9 +56,7 @@
         </div>
       </div>
     </div>
-    </div>
-
-    <!-- <div v-else class="flex w-full h-full flex-col justify-center items-center">
+    <div v-else class="flex w-full h-full flex-col justify-center items-center">
       <div class="py-3">
         <img src="@/assets/home/noRecord.png" alt="norecord" class="w-[365px] h-[165px]" />
       </div>
@@ -66,7 +64,9 @@
         <span class="text-gray-300 tracking-wide text-base font-medium">{{t('coin_add')}}</span>
       </div>
 
-    </div> -->
+    </div>
+    </div>
+
 
     <!-- <div v-if="activeTab === 2">
       <div class="grid grid-cols-2 gap-4 w-full px-2">
@@ -150,15 +150,6 @@ const getOfficialCoinAddress = () => {
       let removeCC = JSON.parse(res.data.coin_info)
       coinAdd.value = removeCC;
       console.log(removeCC, "removeCC");
-    //   let cccc = res.data.coin_info.split(',')
-    // //console.log(nn, "nnnn");
-    // // nn.pop();
-    // var splitData = [];
-    // for (let i = 0; i < nn?.length; i++) {
-    //     splitData.push(nn[i].split("-")[0])
-    // }
-      //store.commit("app/Service", res.data.service_link);
-      //serviceLink.value = res.data.service_link;
     })
     .catch((e) => {
       console.log(e);
