@@ -333,10 +333,10 @@ const NavClick = (menu, index) => {
 // here is using for mobileeeeeeeeeeeeeee
 const m_NavClick = (menu, index) => {
   console.log(index, menu);
-  if (index === 2 && menu.path === "/login") {
+  if (index == 4 && menu.path == "/login") {
     sessionStorage.clear();
     window.location.reload();
-    router.push("/login");
+    router.push("/");
     return;
   }
   router.push(menu.path);

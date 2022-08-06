@@ -18,16 +18,17 @@
       </div>
 
     </div> -->
-  <body style="overflow: hidden !important" class="__iframe">
-    <iframe :src="route.query.url" scrolling="no" seamless="seamless"  frameborder="0" 
+  <div  style="overflow: hidden !important" class="__iframe">
+    <iframe  :src="url"  scrolling="no" seamless="seamless"  frameborder="0" 
     style="overflow:hidden;height:100%;width:100%" height="100%" width="100%"></iframe>
-</body>
+</div>
+
 </div>
 </template>
 
 <script setup>
 import { TabGroup, TabList, Tab, TabPanels, TabPanel } from "@headlessui/vue";
-import { computed, ref } from "vue";
+import { computed, onMounted, ref } from "vue";
 import { useStore } from "vuex";
 import { useRouter, useRoute } from "vue-router";
 import Swal from "sweetalert2";
@@ -39,15 +40,19 @@ import Header from "@/components/Header.vue";
 
 const activeBtn = ref(1);
 const mobiletab = ref(0);
-
+const url = ref('')
 const { t } = useI18n();
-
+ const iframeShow = ref(false)
 const router = useRouter();
 const route = useRoute();
 
 const goBack = () => {
   router.replace("/");
 };
+
+onMounted(()=>{
+  url.value = route.query.url
+})
 
 function onTapItem(mouseEvent) { // you can remove the `mouseEvent` argument
 		console.log("Tapped!");
@@ -67,7 +72,8 @@ function onTapItem(mouseEvent) { // you can remove the `mouseEvent` argument
         .__iframe {
           height: calc(100% - 56px);
           position: relative;
-          background: inherit;
+          /* background: inherit; */
+          @apply bg-slate-700
         }
     #floating-snap-btn-wrapper {
   

@@ -321,8 +321,9 @@ const getTransactionRecord = () => {
     let userId_ = userId__;
     let token_ = lToken;
     let TransactionType_ = selectCardOne.value.id;
-    let startTime_ = range.start.toISOString().replace("T"," ").substring(0, 19);
-    let endTime_ = range.end.toISOString().replace("T"," ").substring(0, 19);
+    let startTime_ = range.start.toISOString().slice(0, 10);
+
+    let endTime_ = range.end.toISOString().slice(0, 10);
     let orderStatus_ = selectOrderStatus.value.id;
     let pageSize_ = pagination.pageSize;
     let currentPage_ = pagination.currentPage;
@@ -331,8 +332,8 @@ const getTransactionRecord = () => {
       userId: userId_,
       token: token_,
       TransactionType: TransactionType_,
-      startTime: startTime_,
-      endTime: endTime_,
+      startTime: startTime_ + ' 00:00:00',
+      endTime: endTime_ + ' 23:59:59',
       orderStatus: orderStatus_,
       pageSize: pageSize_,
       currentPage: currentPage_,

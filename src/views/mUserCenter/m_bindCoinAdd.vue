@@ -22,7 +22,7 @@
 
                         <transition leave-active-class="transition duration-100 ease-in" leave-from-class="opacity-100"
                             leave-to-class="opacity-0">
-                            <ListboxOptions
+                            <ListboxOptions style="z-index:99999"
                                 class="absolute w-full py-1 mt-1 overflow-auto text-base bg-white rounded-md shadow-lg max-h-60 ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
                                 <ListboxOption v-slot="{ active, selected }" v-for="select in coinType"
                                     :key="select.name" :value="select" as="template">

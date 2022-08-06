@@ -9,10 +9,10 @@
          <div class="px-7 py-3">
             <span class="text-gray-300 font-medium tracking-wide text-sm px-2">Select Coin</span>
 
-            <div class="w-64 px-1 cursor-pointer z-10">
-                <Listbox v-model="selectCoinType">
-                    <div class="relative mt-1">
-                        <ListboxButton
+            <div class="w-64 px-1 cursor-pointer" >
+                <Listbox v-model="selectCoinType" >
+                    <div class="relative mt-1" >
+                        <ListboxButton 
                             class="relative w-full py-2 pl-3 pr-10 text-left bg-white rounded-lg shadow-md cursor-default focus:outline-none focus-visible:ring-2 focus-visible:ring-opacity-75 focus-visible:ring-white focus-visible:ring-offset-orange-300 focus-visible:ring-offset-2 focus-visible:border-indigo-500 sm:text-sm">
                             <span class="block truncate">{{ selectCoinType.name }}</span>
                             <span class="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
@@ -22,9 +22,9 @@
 
                         <transition leave-active-class="transition duration-100 ease-in" leave-from-class="opacity-100"
                             leave-to-class="opacity-0">
-                            <ListboxOptions
+                            <ListboxOptions style="z-index:99999"
                                 class="absolute w-full py-1 mt-1 overflow-auto text-base bg-white rounded-md shadow-lg max-h-60 ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
-                                <ListboxOption v-slot="{ active, selected }" v-for="select in coinType"
+                                <ListboxOption  v-slot="{ active, selected }" v-for="select in coinType"
                                     :key="select.name" :value="select" as="template">
                                     <li :class="[
                   active ? 'text-amber-900 bg-amber-100' : 'text-gray-900',
@@ -51,8 +51,10 @@
             <form @click.prevent class="py-1 px-2">
                 <div class="flex text-center items-center relative">
                     <input autocomplete="off" name="coinAddress" type="text" v-model="coinAddress"
-                        class="text-sm placeholder-gray-400 text-gray-300 pl-5 pr-10 border border-gray-400 max-w-sm w-80 py-2 focus:outline-none focus:border-blue-400 bg-slate-800"
-                        placeholder="Please Enter  Address" />
+                        class="text-sm placeholder-gray-400 text-gray-300 
+                        pl-5 pr-10 border border-gray-400 max-w-sm w-80 py-2
+                         focus:outline-none focus:border-blue-400 bg-slate-800"
+                        placeholder="Please Enter  Address"  />
                         <XIcon v-if="coinAddress" @click="coinAddress = ''"  class="h-5 w-5 text-white absolute right-3"></XIcon>
                 </div>
             </form>
@@ -62,7 +64,9 @@
             <form @click.prevent class="py-1 px-2">
                 <div class="flex text-center items-center relative">
                     <input autocomplete="off" name="coinAddress" type="number" v-model="coin"
-                        class="text-sm placeholder-gray-400 text-gray-300 pl-5 pr-10 border border-gray-400 max-w-sm w-80 py-2 focus:outline-none focus:border-blue-400 bg-slate-800"
+                        class="text-sm placeholder-gray-400 text-gray-300 
+                        pl-5 pr-10 border border-gray-400 max-w-sm w-80 py-2
+                         focus:outline-none focus:border-blue-400 bg-slate-800"
                         placeholder="Please Enter  Amount" />
                         <XIcon v-if="coin" @click="coin = ''"  class="h-5 w-5 text-white absolute right-3"></XIcon>
                 </div>
