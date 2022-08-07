@@ -19,7 +19,7 @@
 
     </div> -->
   <div  style="overflow: hidden !important" class="__iframe">
-    <iframe  :src="service"  scrolling="no" seamless="seamless"  frameborder="0" 
+    <iframe  :src="url"  scrolling="no" seamless="seamless"  frameborder="0" 
     style="overflow:hidden;height:100%;width:100%" height="100%" width="100%"></iframe>
 </div>
 
@@ -47,12 +47,11 @@ const router = useRouter();
 const route = useRoute();
 const store = useStore();
 
-const service = computed(() => store.getters["app/SERVICE"]);
-
+// const service = computed(() => store.getters["app/SERVICE"]);
+    // const user = computed(() => store.getters["user/USER"]);
 
 onMounted(()=>{
-  console.log("eleeeeeeee",service.value);
-  //url.value = service.value
+   url.value = route.query.url
 })
 
 function onTapItem(mouseEvent) { // you can remove the `mouseEvent` argument

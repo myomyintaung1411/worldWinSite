@@ -57,6 +57,7 @@ const closeAd = (n) => {
 };
 const lToken = store.state.user.token;
 const userId__ = store.state.user.userId;
+const user = computed(() => store.getters["user/USER"]);
 
 const getWelcomeMsg = () => {
   const token = {
@@ -92,7 +93,9 @@ const goService = () => {
   console.log(service.value);
   if (service.value) {
    // return window.open(service.value);
-    router.push("/service");
+    //router.push("/service");
+    let url = service.value + '&nick_name=' +  user?.value.name
+    router.push({path:'/service',query:{url:url}})
   } else {
     return Alert.Message("please login", "error");
   }
