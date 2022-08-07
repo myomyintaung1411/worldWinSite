@@ -115,7 +115,7 @@ const getServiceLink = () => {
 
 onMounted(() => {
   // getServiceLink()
-  // getUserInfo()
+   getUserInfo()
   // getBannerInfo();
   // getGameUrl();
   // getAppUrl()
