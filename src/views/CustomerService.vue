@@ -18,7 +18,10 @@
       </div>
 
     </div> -->
-  <div  style="overflow: hidden !important" class="__iframe">
+  <div  style="overflow: hidden !important" class="__iframe relative">
+   <div @click="goBack()" class="absolute top-[18px] z-40 right-1 sm:hidden ">
+    <XCircleIcon class="h-6 w-6 text-white" title="close"></XCircleIcon>
+   </div>
     <iframe  :src="url"  scrolling="no" seamless="seamless"  frameborder="0" 
     style="overflow:hidden;height:100%;width:100%" height="100%" width="100%"></iframe>
 </div>
@@ -35,7 +38,7 @@ import Swal from "sweetalert2";
 import md5 from "js-md5";
 import AES from "@/utils/aes";
 import { useI18n } from "vue-i18n/index";
-import { ChevronLeftIcon } from "@heroicons/vue/outline";
+import { ChevronLeftIcon,XCircleIcon } from "@heroicons/vue/outline";
 import Header from "@/components/Header.vue";
 
 const activeBtn = ref(1);
@@ -49,7 +52,9 @@ const store = useStore();
 
 // const service = computed(() => store.getters["app/SERVICE"]);
     // const user = computed(() => store.getters["user/USER"]);
-
+function goBack() {
+  router.push('/')
+}
 onMounted(()=>{
    url.value = route.query.url
 })
