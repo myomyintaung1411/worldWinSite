@@ -24,7 +24,7 @@
                 </svg>
               </div>
 
-              <input v-model="name" id="name" autocomplete="off" type="name" name="name"
+              <input v-model.trim="name" id="name" @keydown.space.prevent autocomplete="off" type="name" name="name"
                 class="text-sm placeholder-gray-500 text-gray-500 pl-10 pr-4 rounded-2xl w-full py-2 focus:outline-none outline-none"
                 :placeholder="t('enter_u')" />
             </div>
@@ -39,7 +39,7 @@
                     d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                 </svg>
               </div>
-              <input v-model="password" id="password" autocomplete="off" :type="passwordField" name="password" class="__p text-sm placeholder-gray-500 text-gray-500 pl-10 pr-16 rounded-2xl w-full py-2 focus:outline-0 outline-none focus:outline-none selection:outline-none
+              <input v-model.trim="password" id="password" @keydown.space.prevent autocomplete="off" :type="passwordField" name="password" class="__p text-sm placeholder-gray-500 text-gray-500 pl-10 pr-16 rounded-2xl w-full py-2 focus:outline-0 outline-none focus:outline-none selection:outline-none
                border-none focus:border-none outline-hidden shadow-none outline-0" :placeholder="t('enter_p')" />
               <div
                 class="inline-flex items-center justify-center absolute right-3 top-0 h-full w-10 text-gray-400 md:cursor-pointer">
@@ -56,7 +56,7 @@
               <div class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400">
                 <ExclamationCircleIcon class="h-6 w-6"></ExclamationCircleIcon>
               </div>
-              <input v-model="code" type="text" autocomplete="off"
+              <input v-model.trim="code" type="text" autocomplete="off" @keydown.space.prevent
                 class="__p text-sm placeholder-gray-500 text-ellipsis overflow-hidden text-gray-500 pl-10 pr-16 rounded-2xl w-full py-2 focus:outline-0 outline-none focus:outline-none selection:outline-none border-none focus:border-none outline-hidden shadow-none outline-0"
                 :placeholder="t('enter_code')" />
               <div
@@ -262,7 +262,7 @@ export default {
         data: `01;${name.value};${pass};windows;1`,
       };
       console.log(state.imgCode+ "     state imagecode is ******");
-       if (code.value.toLowerCase() != state.imgCode.toLowerCase()) {
+       if (code.value.replace(/\s/g, "").toLowerCase() != state.imgCode.replace(/\s/g, "").toLowerCase()) {
         state.imgCode = ''
         NoticeMsg.Message(
           t('correct_vir'),

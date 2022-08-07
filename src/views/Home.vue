@@ -9,7 +9,7 @@ import AppDown from "@/components/App_Download.vue";
 import GameSection from "@/components/GameSection.vue";
 import GridCard from "@/components/GridCard.vue";
 import { onMounted, ref, onBeforeUpdate,computed } from "vue";
-import { useRouter } from "vue-router";
+import { useRouter,useRoute } from "vue-router";
 import allApi from "@/network/allApi.js";
 import { useStore } from "vuex";
 import Loading from "@/utils/loader";
@@ -19,6 +19,7 @@ const store = useStore();
 const scTimer = ref(0);
 const scY = ref(0);
 const router = useRouter();
+const route = useRoute();
 const showAdOne = ref(false);
 const showAdTwo = ref(false);
 const { t } = useI18n();
@@ -90,7 +91,8 @@ const getWelcomeMsg = () => {
 const goService = () => {
   console.log(service.value);
   if (service.value) {
-    return window.open(service.value);
+   // return window.open(service.value);
+    router.push("/service");
   } else {
     return Alert.Message("please login", "error");
   }
@@ -118,25 +120,26 @@ onMounted(() => {
     <GameSection></GameSection>
     <GridCard></GridCard>
     <div class="hidden md:flex sidebar__">
-      <!-- <div  @click="goService()" class="sidebar__item__3ZxEn bg-slate-900 hover:bg-slate-700">
+      <div  @click="goService()" class="sidebar__item__3ZxEn bg-slate-900 hover:bg-slate-700">
         <div>
           <div class="sidebar__kefu__2c9mp"></div>
           <p>{{t('service')}}</p>
         </div>
-      </div> -->
-      <!-- <div @click="goApp" class="sidebar__item__3ZxEn bg-slate-600 hover:bg-slate-900">
-        <div>
-          <div class="sidebar__kefu__2c9mp"></div>
-          <p>二维码</p>
-        </div>
-      </div>-->
+      </div>
       <div v-show="scY > 800" @click="toTop" class="sidebar__item__3ZxEn bg-slate-900 hover:bg-slate-700">
         <div>
           <div class="sidebar__kefu__2c9mp scroll_img animate-bounce"></div>
           <p>{{t('top')}}</p>
         </div>
       </div>
-      <!--  -->
+    </div>
+    <div class="sm:hidden sidebar__">
+      <div  @click="goService()" class="sidebar__item__3ZxEn bg-slate-900 hover:bg-slate-700">
+        <div>
+          <div class="sidebar__kefu__2c9mp"></div>
+          <p>{{t('service')}}</p>
+        </div>
+      </div>
     </div>
     <!-- ad banner -->
 
@@ -165,7 +168,7 @@ onMounted(() => {
 }
 .sidebar__ {
   position: fixed;
-  top: 50vh;
+  top: 80vh;
   right: 0px;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;

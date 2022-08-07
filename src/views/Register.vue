@@ -28,7 +28,7 @@
                 </svg>
               </div>
 
-              <input v-model="name" id="name" autocomplete="off" type="text" name="name" class="text-sm text-gray-500 placeholder-gray-500 
+              <input v-model.trim="name" id="name" autocomplete="off" type="text" name="name" class="text-sm text-gray-500 placeholder-gray-500 
               pl-10 pr-4 rounded-2xl border border-gray-400 w-full py-2 
               focus:outline-none border-none focus:border-none outline-none" :placeholder="t('enter_u')" />
             </div>
@@ -46,7 +46,7 @@
                 </span>
               </div>
 
-              <input v-model="password" id="password" :type="passwordField" name="password" autocomplete="off" class="text-sm text-gray-500 
+              <input v-model.trim="password" id="password" :type="passwordField" name="password" autocomplete="off" class="text-sm text-gray-500 
               placeholder-gray-500 pl-10 pr-4 rounded-2xl border border-gray-400 w-full py-2 
               focus:outline-none border-none focus:border-none outline-none" :placeholder="t('enter_p')" />
               <div
@@ -70,7 +70,7 @@
                 </span>
               </div>
 
-              <input v-model="confrimPassword" id="confrimPassword" autocomplete="off" :type="C_passwordField"
+              <input v-model.trim="confrimPassword" id="confrimPassword" autocomplete="off" :type="C_passwordField"
                 name="confrimPassword" class="text-sm text-gray-500 placeholder-gray-500 pl-10 pr-16 rounded-2xl border 
               border-gray-400 w-full py-2 focus:outline-none border-none focus:border-none outline-none"
                 :placeholder="t('enter_confirm_p')" />
@@ -94,7 +94,7 @@
                 <CodeIcon class="h-6 w-6"></CodeIcon>
               </div>
 
-              <input v-model="reference" id="reference" autocomplete="off" type="text" name="reference" class="text-sm text-gray-500 placeholder-gray-500 
+              <input v-model.trim="reference" id="reference" autocomplete="off" type="text" name="reference" class="text-sm text-gray-500 placeholder-gray-500 
               pl-10 pr-4 rounded-2xl border border-gray-400 w-full py-2 
               focus:outline-none border-none focus:border-none outline-none" :placeholder="t('agent_code')" />
             </div>

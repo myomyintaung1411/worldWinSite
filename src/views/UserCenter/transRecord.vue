@@ -182,7 +182,7 @@ import {
   ListboxOption,
 } from "@headlessui/vue";
 import { useI18n } from "vue-i18n/index";
-
+import moment from 'moment'
 const activeDate = ref(1);
 
 const range = reactive({
@@ -319,9 +319,11 @@ const getTransactionRecord = () => {
     let userId_ = userId__;
     let token_ = lToken;
     let TransactionType_ = selectCardOne.value.id;
-    let startTime_ = range.start.toISOString().slice(0, 10);
+   // let startTime_ = range.start.toISOString().slice(0, 10);
+    let startTime_ = moment(new Date(range.start)).startOf('day').format("YYYY-MM-DD HH:mm:ss");
+    let endTime_ = moment(new Date(range.end)).endOf('day').format("YYYY-MM-DD HH:mm:ss");
 
-    let endTime_ = range.end.toISOString().slice(0, 10);
+    //let endTime_ = range.end.toISOString().slice(0, 10);
     let orderStatus_ = selectOrderStatus.value.id;
     let pageSize_ = pagination.pageSize;
     let currentPage_ = pagination.currentPage;
@@ -330,8 +332,8 @@ const getTransactionRecord = () => {
       userId: userId_,
       token: token_,
       TransactionType: TransactionType_,
-      startTime: startTime_ + ' 00:00:00',
-      endTime: endTime_ + ' 23:59:59',
+      startTime: startTime_ ,
+      endTime: endTime_ ,
       // startTime: startTime_ ,
       // endTime: endTime_ ,
       orderStatus: orderStatus_,
