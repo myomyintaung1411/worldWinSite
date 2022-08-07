@@ -50,9 +50,10 @@ const store = useStore();
 const service = computed(() => store.getters["app/SERVICE"]);
 
 
-// onMounted(()=>{
-//   url.value = route.query.url
-// })
+onMounted(()=>{
+  console.log("eleeeeeeee",service.value);
+  //url.value = service.value
+})
 
 function onTapItem(mouseEvent) { // you can remove the `mouseEvent` argument
 		console.log("Tapped!");

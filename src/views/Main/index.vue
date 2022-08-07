@@ -114,11 +114,11 @@ const getServiceLink = () => {
 };
 
 onMounted(() => {
-  getServiceLink()
-  getUserInfo()
-  getBannerInfo();
-  getGameUrl();
-  getAppUrl()
+  // getServiceLink()
+  // getUserInfo()
+  // getBannerInfo();
+  // getGameUrl();
+  // getAppUrl()
 });
 </script>
 

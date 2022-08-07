@@ -1,24 +1,33 @@
 <script setup>
-import { onUnmounted, ref } from "vue";
-import { computed, onMounted } from "vue";
+import { onMounted, ref, computed, reactive } from "vue";
+import allApi from "@/network/allApi.js";
 import { useStore } from "vuex";
+import Loading from "@/utils/loader";
+import { useRouter, useRoute } from "vue-router";
 import Header from "@/components/Header.vue";
 import Footer from "@/components/Footer.vue";
-import allApi from "@/network/allApi.js";
-import Swal from "sweetalert2";
-import NoticeMsg from "@/utils/alert";
 
-// window.onbeforeunload = function() {
-//   localStorage.clear();
-//   return '';
-// };
+
 
 const store = useStore();
-const lToken = store.state.user.token;
-const userId__ = store.state.user.userId;
+const router = useRouter();
+const route = useRoute();
+ const lToken = store.state.user.token;
+ const userId__ = store.state.user.userId;
 
-const changeWindowSize = () => {
-  store.commit("app/CHANGE_WINDOW_SIZE", window.innerWidth);
+const getBannerInfo = () => {
+  // Loading.showLoading();
+  allApi
+    .getBannerInfo()
+    .then((res) => {
+      //Loading.hideLoading();
+      console.log(res, "banner res is");
+      store.commit("app/Banner_",res.data.data)
+    })
+    .catch((e) => {
+      // Loading.hideLoading();
+      console.log(e);
+    });
 };
 
 const getGameUrl = () => {
@@ -26,81 +35,86 @@ const getGameUrl = () => {
     (userId__ && lToken !== null) ||
     (userId__ && lToken !== undefined) ||
     (userId__ && lToken !== "")
-  ) {    let userId = userId__;
-    let t = lToken;
-    const req_ = { userId: userId, token: t };
+  ) {
+
+    let userId = userId__;
+   let t = lToken;
+    const req_ = { userId: userId};
     allApi
       .getGameUrl({ data: req_ })
       .then((res) => {
         console.log(res, "getgame url res is");
-        store.commit("app/Game_Url", res.data.data);
+        store.commit("app/Game_Url",res.data.data)
       })
       .catch((e) => {
         console.log(e);
       });
+  }
+};
+const getAppUrl = () => {
 
+    allApi
+      .getAppLink()
+      .then((res) => {
+        console.log(res, "getgame getAppLink ------------------------------------->");
+        store.commit("app/getApp_Url",res.data.data)
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+};
+
+const getUserInfo = () => {
+   if (
+    (userId__ && lToken !== null) ||
+    (userId__ && lToken !== undefined) ||
+    (userId__ && lToken !== "")
+  ) {
+    let userId = userId__;
+    let t = lToken;
+    const req_ = { userId: userId, token: t };
+    allApi
+      .getUserInfo({ data: req_ })
+      .then((res) => {
+        // if(res.data.status == 403){
+        //   localStorage.clear()
+        //   router.push('/login')
+        // }
+        console.log(res, "getUserInfo *************");
+        store.commit("user/User",res.data.data)
+      })
+      .catch((e) => {
+        console.log(e);
+      });
   }
 };
 
-// setInterval(function() {
-//   debugger;
-// }, 1000);
+const getServiceLink = () => {
+  let userId = userId__;
+  const req_ = { userId: userId };
+  allApi
+    .getServiceLink({ data: req_ })
+    .then((res) => {
+      console.log("getServiceLink", res);
+      store.commit("app/Service", res.data.service_link);
+      //serviceLink.value = res.data.service_link;
+    })
+    .catch((e) => {
+      console.log(e);
+    });
+};
 
-// window.addEventListener("beforeunload", function (e) {
-//   var confirmationMessage = "\o/";
-
-//   (e || window.event).returnValue = confirmationMessage;     // Gecko + IE
-//   return confirmationMessage;                                /* Safari, Chrome, and other
-//                                                               * WebKit-derived browsers */
-// });
+const changeWindowSize = () => {
+  store.commit("app/CHANGE_WINDOW_SIZE", window.innerWidth);
+};
 
 
 onMounted(() => {
-  // const bc = new BroadcastChannel("HN-Sports");
-  // bc.onmessage = (event) => {
-  //   console.log(event, "event");
-  //   if (event.data === `Am I the first?`) {
-  //     bc.postMessage(`No you're not.`);
-  //     alert(`Another tab of this site just got opened`);
-  //     // return Swal.fire({
-  //     //   title: "Oops...",
-  //     //   text: "Another tab of this site just got opened",
-  //     //   icon: "error",
-  //     //   showCancelButton: false,
-  //     //   allowOutsideClick: false,
-  //     //   backdrop: true,
-  //     //   confirmButtonText: "确定",
-  //     //   color: "#000",
-  //     // }).then((res) => {
-  //     //   if (res.isConfirmed) {
-  //     //    window.location.href="about:blank";
-  //     //     window.close();
-  //     //   }
-  //     // });
-  //   }
-  //   if (event.data === `No you're not.`) {
-  //     //alert(`An instance of this site is already running`);
-  //     return Swal.fire({
-  //       title: "Oops... Please close window",
-  //       text: "An instance of this site is already running",
-  //       icon: "error",
-  //       showCancelButton: false,
-  //       allowOutsideClick: false,
-  //       backdrop: true,
-  //       confirmButtonText: "确定",
-  //       color: "#000",
-  //     }).then((res) => {
-  //       if (res.isConfirmed) {
-  //         let opened = (window.location.href = "about:blank");
-  //         opened.opener = null;
-  //         opened.close();
-  //       }
-  //     });
-  //   }
-  // };
-  // bc.postMessage(`Am I the first?`);
-
-  // getGameUrl()
+  getServiceLink()
+  getUserInfo()
+  getBannerInfo();
+  getGameUrl();
+  getAppUrl()
   store.commit("app/CHANGE_WINDOW_SIZE", window.innerWidth);
   window.addEventListener("resize", changeWindowSize);
 });
