@@ -109,6 +109,7 @@
 
 <script setup>
 import useClipboard from 'vue-clipboard3'
+import Loading from "@/utils/loader";
 
 import { computed, onMounted, ref } from "vue";
 import NoticeMsg from "@/utils/alert";
@@ -143,15 +144,18 @@ function checkArray() {
 const getOfficialCoinAddress = () => {
   let userId = userId__;
   const req_ = { userId: userId };
+  //Loading.showLoading();
   allApi
     .getOfficialCoinAddress({ data: req_ })
     .then((res) => {
+      // Loading.hideLoading();
       console.log("getOfficialCoinAddress", res.data.coin_info);
       let removeCC = JSON.parse(res.data.coin_info)
       coinAdd.value = removeCC;
       console.log(removeCC, "removeCC");
     })
     .catch((e) => {
+       //Loading.hideLoading();
       console.log(e);
     });
 };

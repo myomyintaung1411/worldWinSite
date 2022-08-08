@@ -66,6 +66,7 @@ import { TabGroup, TabList, Tab, TabPanels, TabPanel } from "@headlessui/vue";
 import { useI18n } from "vue-i18n/index";
 import allApi from "@/network/allApi.js";
 import useClipboard from 'vue-clipboard3'
+import Loading from "@/utils/loader";
 
 const { t } = useI18n();
 
@@ -93,9 +94,11 @@ const goBack = () => {
 const getOfficialCoinAddress = () => {
   let userId = userId__;
   const req_ = { userId: userId };
+   Loading.showLoading();
   allApi
     .getOfficialCoinAddress({ data: req_ })
     .then((res) => {
+      Loading.hideLoading();
       console.log("getOfficialCoinAddress", res.data.coin_info);
       let removeCC = JSON.parse(res.data.coin_info)
       coinAdd.value = removeCC;
@@ -103,6 +106,7 @@ const getOfficialCoinAddress = () => {
     })
     .catch((e) => {
       console.log(e);
+      Loading.hideLoading();
     });
 };
 
