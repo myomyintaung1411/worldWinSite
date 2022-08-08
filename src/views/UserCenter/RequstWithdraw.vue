@@ -153,7 +153,7 @@ if(selectCoinType.value.name == 'TRC20'){
 
  let userId = userId__;
     const req_ = {
-        username: user?.value.name, coins: coin.value,
+        username: user?.value.name, coins: '-' + coin.value,
         coin_address: coinAddress.value, conType: selectCoinType.value.name, userId: userId,
     };
   if(coinAddress.value == '' || selectCoinType.value.name == '' || coin.value == '') {
