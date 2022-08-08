@@ -132,13 +132,13 @@ const goBack = () => {
 const rechageRequst = () => {
  if(selectCoinType.value.name == 'BTC') {
   let isValidBtc =  validate(coinAddress.value)
-  if(!isValidBtc) return NoticeMsg.Message('Please Enter avalid address', "warning");
+  if(!isValidBtc) return NoticeMsg.Message('Please Enter valid address', "warning");
  }
  if(selectCoinType.value.name == 'ETH') {
     var address = coinAddress.value;
     let resp = address.match(/^0x[a-fA-F0-9]{40}$/g)
 //   console.log(resp);
-   if(resp == null) return NoticeMsg.Message('Please Enter  valid address', "warning");
+   if(resp == null) return NoticeMsg.Message('Please Enter valid address', "warning");
  }
  let userId = userId__;
     const req_ = {
@@ -146,7 +146,7 @@ const rechageRequst = () => {
         coin_address: coinAddress.value, conType: selectCoinType.value.name, userId: userId,
     };
   if(coinAddress.value == '' || selectCoinType.value.name == '' || coin.value == '') {
-    return  NoticeMsg.Message('Please Enter  coin address', "warning");
+    return  NoticeMsg.Message('Please Enter coin address', "warning");
   }
   allApi
     .getmemberRequestRecharge({ data: req_ })

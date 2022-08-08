@@ -132,7 +132,7 @@ const bindCoinAdrr = () => {
  let userId = userId__;
   const req_ = { coinAddress:selectCoinType.value.name + ',' + coinAddress.value,conType:selectCoinType.value.name,userId: userId };
   if(coinAddress.value == '' || selectCoinType.value.name == '') {
-    return  NoticeMsg.Message('Please Enter  coin address', "warning");
+    return  NoticeMsg.Message('Please Enter coin address', "warning");
   }
   allApi
     .getbindCoinAddress({ data: req_ })

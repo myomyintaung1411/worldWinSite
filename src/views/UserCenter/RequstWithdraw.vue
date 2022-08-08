@@ -135,13 +135,13 @@ const selectCoinType = ref(coinType[0]);
 const rechageRequst = () => {
  if(selectCoinType.value.name == 'BTC') {
   let isValidBtc =  validate(coinAddress.value)
-  if(!isValidBtc) return NoticeMsg.Message('Please Enter  valid address', "warning");
+  if(!isValidBtc) return NoticeMsg.Message('Please Enter valid address', "warning");
  }
  if(selectCoinType.value.name == 'ETH') {
     var address = coinAddress.value;
     let resp = address.match(/^0x[a-fA-F0-9]{40}$/g)
 //   console.log(resp);
-   if(resp == null) return NoticeMsg.Message('Please Enter  valid address', "warning");
+   if(resp == null) return NoticeMsg.Message('Please Enter valid address', "warning");
  }
  let userId = userId__;
     const req_ = {
