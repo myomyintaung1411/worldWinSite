@@ -42,9 +42,9 @@
         <img src="@/assets/home/noRecord.png" 
         alt="norecord" class="w-fit h-[165px]" />
       </div>
-      <div class="py-3  w-full">
+      <!-- <div class="py-3  w-full">
         <p class="text-gray-300 tracking-wide text-base font-medium">{{t('coin_add')}}</p>
-      </div>
+      </div> -->
     </div>
   </div>
   <!-- desktop  -->
