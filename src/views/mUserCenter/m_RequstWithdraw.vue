@@ -142,7 +142,7 @@ const rechageRequst = () => {
  }
  let userId = userId__;
     const req_ = {
-        username: user?.value.name, coin: coin.value,
+        username: user?.value.name, coins: coin.value,
         coin_address: coinAddress.value, conType: selectCoinType.value.name, userId: userId,
     };
   if(coinAddress.value == '' || selectCoinType.value.name == '' || coin.value == '') {

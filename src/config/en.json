@@ -31,7 +31,7 @@
     "enter_u":"Please Enter Username",
     "enter_p":"Please Enter Password",
     "enter_code":"Please Enter Verification Code",
-    "agent_code":"Please Enter Your Reference Code",
+    "agent_code":"Please Enter Your Invitation Code",
     "enter_confirm_p":"Please Enter Confirm Password",
     "reg_t":"Register a new account",
     "reg_later":"Login Later",
