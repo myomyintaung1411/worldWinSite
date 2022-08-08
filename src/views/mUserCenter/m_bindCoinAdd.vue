@@ -104,10 +104,10 @@ const masks = reactive({
 });
 
 const coinType = reactive([
-  { id: 1, name: "BTC" },//全部
-  { id: 2, name: "ETH" },//下分
+  // { id: 1, name: "BTC" },//全部
+  // { id: 2, name: "ETH" },//下分
   { id: 3, name: "TRC20" },//上分
-  { id: 1, name: "ERC20" },//上分
+  { id: 4, name: "ERC20" },//上分
 ]);
 
 
@@ -125,14 +125,19 @@ const bindCoinAdrr = () => {
   let isValidBtc =  validate(coinAddress.value)
   if(!isValidBtc) return NoticeMsg.Message('Please Enter  valid address', "warning");
  }
- if(selectCoinType.value.name == 'ETH') {
+ if(selectCoinType.value.name == 'ETH' || selectCoinType.value.name == 'ERC20') {
     var address = coinAddress.value;
     let resp = address.match(/^0x[a-fA-F0-9]{40}$/g)
-//   console.log(resp);
    if(resp == null) return NoticeMsg.Message('Please Enter  valid address', "warning");
-
-  //if(!isValidBtc) return NoticeMsg.Message('Please Enter a valid address', "warning");
  }
+
+  if(selectCoinType.value.name == 'TRC20'){
+   const isValidTRc = coinAddress.value.startsWith('T')
+   if(coinAddress.value.length < 34 || !isValidTRc){
+    return NoticeMsg.Message('Please Enter valid address', "warning");
+   }
+ }
+
  let userId = userId__;
   const req_ = { coinAddress:selectCoinType.value.name + ',' + coinAddress.value,conType:selectCoinType.value.name,userId: userId };
   if(coinAddress.value == '' || selectCoinType.value.name == '') {
