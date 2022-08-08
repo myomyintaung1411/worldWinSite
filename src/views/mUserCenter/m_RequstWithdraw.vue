@@ -63,7 +63,7 @@
             <span class="text-gray-300 font-medium tracking-wide text-sm px-2">Enter  Amount</span>
             <form @click.prevent class="py-1 px-2">
                 <div class="flex text-center items-center relative">
-                    <input autocomplete="off" name="coinAddress" type="number" v-model="coin"
+                    <input inputmode="numeric" oninput="this.value = this.value.replace(/\D+/g, '')" autocomplete="off" name="coinAddress"  v-model="coin"
                         class="text-sm placeholder-gray-400 text-gray-300 
                         pl-5 pr-10 border border-gray-400 max-w-sm w-80 py-2
                          focus:outline-none focus:border-blue-400 bg-slate-800"
