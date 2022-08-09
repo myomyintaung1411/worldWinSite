@@ -13,7 +13,7 @@
       </div>-->
     </div>
     <!-- two card -->
-    <div >
+    <div v-if="coinAdd?.length > 0">
       <!-- <div class="grid grid-cols-2 gap-4 w-full px-2">
         <div v-for="max in 1" :key="max" class="w-full">
           <div class="w-full flex rounded-lg justify-between items-center shadow-lg bg-slate-600 py-2 px-3">
@@ -33,7 +33,8 @@
         </div>
       </div>-->
       <!-- multiple card -->
-      <div v-if="coinAdd?.length > 0" class="flex flex-wrap">
+      <div class="text-white px-4 pb-2 text-[16px]  inline-flex ">Please contact customer service after transfer !</div>
+      <div class="flex flex-wrap">
       <div class="mx-2 my-2 w-[320px]" v-for="(coin,i) in coinAdd" :key="i">
         <div  class=" w-full 
         rounded-lg space-y-5 shadow-lg bg-gradient-to-b from-buttonLinearFrom to-buttonLinearTo py-4 px-6">
@@ -56,6 +57,7 @@
         </div>
       </div>
     </div>
+    </div>
     <div v-else class="flex w-full h-full flex-col justify-center items-center">
       <div class="py-3">
         <img src="@/assets/home/noRecord.png" alt="norecord" class="w-[365px] h-[165px]" />
@@ -64,7 +66,6 @@
         <span class="text-gray-300 tracking-wide text-base font-medium">{{t('coin_add')}}</span>
       </div>
 
-    </div>
     </div>
 
 
