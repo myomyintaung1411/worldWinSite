@@ -165,7 +165,7 @@ onMounted(() => {
   </div>
 </template>
 
-<style scoped>
+<style>
 ._home {
   @apply bg-gray-900 text-gray-50 relative;
 }

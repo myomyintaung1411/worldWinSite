@@ -86,12 +86,20 @@ const getUserInfo = () => {
       .catch((e) => {
         console.log(e);
       });
+  }else{
+    console.log("null");
   }
 };
 
 const getServiceLink = () => {
+  
   let userId = userId__;
   const req_ = { userId: userId };
+   if (
+    (userId__ && lToken !== null) ||
+    (userId__ && lToken !== undefined) ||
+    (userId__ && lToken !== "")
+  ) {
   allApi
     .getServiceLink({ data: req_ })
     .then((res) => {
@@ -102,6 +110,7 @@ const getServiceLink = () => {
     .catch((e) => {
       console.log(e);
     });
+  }
 };
 
 const changeWindowSize = () => {

@@ -48,11 +48,11 @@
         <p class="text-gray-300 tracking-wide text-base font-medium">{{t('coin_add')}}</p>
       </div> -->
     </div>
-    <div class="fixed top-2/3 right-1 z-50">
-      <div @click="goService()" class="sidebar__item__3ZxEn bg-slate-900 hover:bg-slate-700 text-white text-center">
+    <div class="sm:hidden sidebar__">
+      <div  @click="goService()" class="sidebar__item__3ZxEn bg-slate-900 hover:bg-slate-700">
         <div>
-          <div class="sidebar__kefu__2c9mp "></div>
-          <p class="text-sm">{{t('service')}}</p>
+          <div class="sidebar__kefu__2c9mp"></div>
+          <p class="text-white">{{t('service')}}</p>
         </div>
       </div>
     </div>
@@ -167,30 +167,5 @@ watch(
 
 </script>
 
-<style  scoped>
-.sidebar__kefu__2c9mp {
-  background-image: url("@/assets/home/kf.png");
-  width: 38px;
-  height: 38px;
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
-  margin: 0px auto;
-}
-.sidebar__item__3ZxEn {
-  width: 69px;
-  height: 80px;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  flex-direction: column;
-  -webkit-box-pack: center;
-  justify-content: center;
-  margin-bottom: 4px;
-  border-top-left-radius: 8px;
-  border-bottom-left-radius: 8px;
-  box-shadow: rgba(167, 172, 186, 0.3) 1px 2px 6px 0px;
-  cursor: pointer;
-  transform: translateX(12px);
-  transition: all 0.3s ease 0s;
-}
+<style>
 </style>

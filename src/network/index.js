@@ -4,6 +4,7 @@ import { useLoading } from 'vue-loading-overlay'
 import Swal from 'sweetalert2'
 import NoticeMsg from '@/utils/alert'
 // 创建axios的一个实例
+import router from '../routes'
 
 let BaseUrl = ''
 if (process.env.NODE_ENV == 'development') {
@@ -67,6 +68,30 @@ instance.interceptors.request.use((config) => {
 instance.interceptors.response.use((response) => {
  // hideLoading()
   // 响应成功
+  // if(response.data.status == 403){
+  //   Swal.fire({
+  //     title: 'Token Expired',
+  //     text: 'Token has expired. Please login again',
+  //     icon: "error",
+  //     showCancelButton: false,
+  //     allowOutsideClick: false,
+  //     backdrop: true,
+  //     confirmButtonText: 'Ok',
+  //     background: "#374151",
+  //     confirmButtonColor: "#a07c51",
+  //     buttonsStyling: {
+  //       color: "red",
+  //     },
+  //     color: "#fff",
+  //   }).then((res) => {
+  //     if (res.isConfirmed) {
+  //        sessionStorage.clear();
+  //        console.log(router)
+  //      // window.location.reload()
+  //       router.push("/login");
+  //     }
+  //   });
+  // }
   console.log('拦截器报错')
   //NoticeMsg.Message("拦截器报错","error")
   return response
@@ -84,6 +109,9 @@ instance.interceptors.response.use((response) => {
         break
       case 401:
         message = '请求错误'
+        break
+      case 403:
+
         break
       case 404:
         message = '请求地址出错'
