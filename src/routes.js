@@ -152,11 +152,11 @@ const routes = [
   //   component: About,
   // },
   // for mobile only
-  {
-    path: '/service',
-    meta: { title: 'Service', requireAuth:true },
-    component: () => import('./views/CustomerService.vue')
-  },
+  // {
+  //   path: '/service',
+  //   meta: { title: 'Service', requireAuth:true },
+  //   component: () => import('./views/CustomerService.vue')
+  // },
   {
     path: '/sportView',
     meta: { title: 'sportView', requireAuth:true },

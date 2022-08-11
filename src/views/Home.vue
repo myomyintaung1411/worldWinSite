@@ -123,12 +123,12 @@ onMounted(() => {
     <GameSection></GameSection>
     <GridCard></GridCard>
     <div class="hidden md:flex sidebar__">
-      <div  @click="goService()" class="sidebar__item__3ZxEn bg-slate-900 hover:bg-slate-700">
+      <!-- <div  @click="goService()" class="sidebar__item__3ZxEn bg-slate-900 hover:bg-slate-700">
         <div>
           <div class="sidebar__kefu__2c9mp"></div>
           <p>{{t('service')}}</p>
         </div>
-      </div>
+      </div> -->
       <div v-show="scY > 800" @click="toTop" class="sidebar__item__3ZxEn bg-slate-900 hover:bg-slate-700">
         <div>
           <div class="sidebar__kefu__2c9mp scroll_img animate-bounce"></div>
@@ -136,14 +136,14 @@ onMounted(() => {
         </div>
       </div>
     </div>
-    <div class="sm:hidden sidebar__">
+    <!-- <div class="sm:hidden sidebar__">
       <div  @click="goService()" class="sidebar__item__3ZxEn bg-slate-900 hover:bg-slate-700">
         <div>
           <div class="sidebar__kefu__2c9mp"></div>
           <p>{{t('service')}}</p>
         </div>
       </div>
-    </div>
+    </div> -->
     <!-- ad banner -->
 
     <div v-show="showAdOne" class="hidden md:block animate-fade fixed right-24 z-50 bottom-1/4 bg-slate-600 rounded-md shadow-lg w-48">

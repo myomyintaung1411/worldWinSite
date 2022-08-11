@@ -48,14 +48,14 @@
         <p class="text-gray-300 tracking-wide text-base font-medium">{{t('coin_add')}}</p>
       </div> -->
     </div>
-    <div class="sm:hidden sidebar__">
+    <!-- <div class="sm:hidden sidebar__">
       <div  @click="goService()" class="sidebar__item__3ZxEn bg-slate-900 hover:bg-slate-700">
         <div>
           <div class="sidebar__kefu__2c9mp"></div>
           <p class="text-white">{{t('service')}}</p>
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
   <!-- desktop  -->
   <!-- <div class="w-full hidden md:block h-screen bg-gray-900">
