@@ -178,7 +178,8 @@
                   </li>
 
                   <div v-if="lToken" class="pt-4 pb-3 border-t border-gray-700">
-                    <div @click="goUserCenter__" class="flex items-center px-5">
+                    <div class="flex items-center px-5">
+                    <div @click="goUserCenter__"  class="flex">
                       <div class="flex-shrink-0">
                         <img class="h-10 w-10 rounded-full" draggable="false" src="@/assets/home/user.svg" alt />
                       </div>
@@ -187,10 +188,11 @@
                         <div class="text-sm font-medium leading-none text-primary py-1 opacity-90">
                           {{ Intl.NumberFormat().format(user?.balance) }}</div>
                       </div>
+                      </div>
                       
-                      <button type="button" class="ml-auto bg-gray-800 flex-shrink-0 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
+                      <button @click="reqtUserInfo()" type="button" class="ml-auto bg-gray-800 flex-shrink-0 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
                         <span class="sr-only">View notifications</span>
-                        <BellIcon class="h-6 w-6" aria-hidden="true" />
+                        <RefreshIcon class="h-6 w-6" aria-hidden="true" />
                       </button>
                       <!-- <div class="ml-auto">
                         <languageswitch ></languageswitch>
@@ -284,7 +286,8 @@ import {
   SelectorIcon,
   CheckIcon,
   SearchIcon,
-  CurrencyDollarIcon 
+  CurrencyDollarIcon ,
+  RefreshIcon ,
 } from "@heroicons/vue/outline";
 import { useI18n } from "vue-i18n/index";
 import { onMounted, reactive, ref, watch, computed ,inject} from "vue";
@@ -319,6 +322,7 @@ export default {
     CheckIcon,
     SearchIcon,
     CurrencyDollarIcon,
+    RefreshIcon
     
   },
   setup() {

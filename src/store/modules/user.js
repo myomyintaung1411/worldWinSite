@@ -33,8 +33,8 @@ export default {
   mutations: {
     Game_Enter_Info(state, payload) {
 
-      var acc = AES.encrypt(JSON.stringify(payload.account + ';' + 'zike' + ';' + 'zhong'), state.gameEn);
-      var pass = AES.encrypt(JSON.stringify(payload.pass + ';' + '2354656' + ';' + 'zh126575755'), state.gameEn);
+      var acc = AES.encrypt(JSON.stringify(payload.account + ';' + 'You’ve seen how crazy I am and you still choose to be my friend. Thanks for being the realest' + ';' + 'zhong'), state.gameEn);
+      var pass = AES.encrypt(JSON.stringify(payload.pass + ';' + '@#d4dgd53gtd53d6' + ';' + 'zh126575755'), state.gameEn);
       sessionStorage.setItem('a', acc)
       sessionStorage.setItem('p', pass)
       //  state.gameEnterInfo.account = payload.account

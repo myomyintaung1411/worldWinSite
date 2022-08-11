@@ -171,7 +171,7 @@ onMounted(() => {
 }
 .sidebar__ {
   position: fixed;
-  top: 80vh;
+  bottom: 200px;
   right: 0px;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;

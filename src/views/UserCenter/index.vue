@@ -105,10 +105,13 @@
         <div class="mt-4">
           <span class="text-sm text-gray-300">加入欧宝</span>
         </div> -->
-        <div class="my-2 felx items-center text-sm">
+        <div class="my-2 flex items-center text-sm">
           <span class="text-gray-300">{{t('wallet')}}</span>
           <span
             class="overflow-ellipsis w-auto overflow-hidden text-blue-200">{{Intl.NumberFormat().format(user.balance)}}</span>
+            <RefreshIcon @click="getMoneyBag()" 
+            v-bind:style="{transform: `rotate(${deg}deg)`}"   
+            class="h-5 w-5 ml-2 text-primary transition" aria-hidden="true" />
         </div>
         <!-- <div class="flex space-x-3 cursor-pointer">
           <svg @click="m_goChangeInfo(1)" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -172,7 +175,7 @@ import { useStore } from "vuex";
 import allApi from "@/network/allApi.js";
 import Loading from "@/utils/loader";
 import { useI18n } from "vue-i18n/index";
-import { DocumentTextIcon, DocumentReportIcon,DatabaseIcon,LogoutIcon ,CurrencyDollarIcon,ChipIcon,IdentificationIcon } from "@heroicons/vue/solid";
+import { DocumentTextIcon,RefreshIcon, DocumentReportIcon,DatabaseIcon,LogoutIcon ,CurrencyDollarIcon,ChipIcon,IdentificationIcon } from "@heroicons/vue/solid";
 const router = useRouter();
 
 const store = useStore();
@@ -187,7 +190,7 @@ const activeRoute = ref("");
 const lToken = store.state.user.token;
 const userId__ = store.state.user.userId;
 const user = computed(() => store.getters["user/USER"]);
-
+const deg = ref(0);
 const menuList = reactive([
   {
     title: "online_re",
@@ -366,6 +369,7 @@ const m_goChangeInfo = (number) => {
 
 // api call of getMoneyBag
 const getMoneyBag = () => {
+  deg.value += 360;
   if (
     (userId__ && lToken !== null) ||
     (userId__ && lToken !== undefined) ||
@@ -379,8 +383,9 @@ const getMoneyBag = () => {
       .getMoneyBag({ data: req_ })
       .then((res) => {
         //Loading.hideLoading()
-        console.log(res.data.data, "getMoneyBag *************");
+        console.log(res.data.data.center_money,store.state.user.user.balance, "getMoneyBag *************");
         //store.commit("user/User",res.data.data)
+        store.state.user.user.balance = res.data.data.center_money
       })
       .catch((e) => {
         //Loading.hideLoading()
@@ -399,5 +404,10 @@ onMounted(() => {
 .main__ {
   @apply md:max-w-6xl lg:max-w-7xl mt-3 px-2
    w-full py-4 mx-auto bg-slate-700 rounded-lg shadow-lg;
+}
+
+.clicked {
+  transform: rotate(360deg);
+  transition: transform 0.5s ease-in-out;
 }
 </style>

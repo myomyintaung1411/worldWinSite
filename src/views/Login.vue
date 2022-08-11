@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen min-w-full w-screen h-screen flex flex-col items-center justify-center bg-gray-800 login__">
+  <div class="min-h-screen min-w-full w-screen h-screen flex flex-col items-center justify-center bg-gray-800 login__  ">
     <!-- <video id="register_video" class="register__video__3tV1S bg-cover   bg-gray-800" autoplay muted preload="preload"
       loop>
       <source src="@/assets/loginV.mp4" type="video/mp4" />
@@ -11,7 +11,7 @@
       <div class="font-medium self-center text-xl sm:text-3xl">{{ t('login_t') }}</div>
       <div class="mt-4 self-center text-md sm:text-sm">{{ t('login_b') }}</div>
 
-      <div class="mt-5">
+      <div class="mt-5 overflow-y-scroll sm:overflow-hidden">
         <form @click.prevent>
           <div class="flex flex-col mb-5">
             <label for="name" class="mb-1 text-xs tracking-wide text-gray-100">{{ t('enter_u') }}</label>
