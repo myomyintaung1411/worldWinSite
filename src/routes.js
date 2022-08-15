@@ -76,6 +76,12 @@ const routes = [
             meta: { title: 'RequstWithdraw' },
             component: () => import('./views/UserCenter/RequstWithdraw.vue')
           },
+          {
+            path: '/changePass',
+            name: 'ChangePass',
+            meta: { title: 'ChangePass' },
+            component: () => import('./views/UserCenter/ChangePass.vue')
+          },
           // {
           //   path: '/betRecord',
           //   name: 'betRecord',
@@ -195,6 +201,12 @@ const routes = [
     name: 'mRequstWithdraw',
     meta: { title: 'mRequstRecharge',requireAuth:true },
     component: () => import('./views/mUserCenter/m_RequstWithdraw.vue')
+  },
+  {
+    path: '/m/m_ChangePass',
+    name: 'mChangePass',
+    meta: { title: 'mChangePass',requireAuth:true },
+    component: () => import('./views/UserCenter/ChangePass.vue')
   },
   // {
   //   path: '/m/m_betRecord',

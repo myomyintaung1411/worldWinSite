@@ -80,5 +80,6 @@
     "already_exist":"已存在此帐号",
     "reg_success":"注册成功，请登录",
     "confirm_notmatch":"两次输入密码不一致",
-    "pass_check":"密码必须包含数字和英文字母"
+    "pass_check":"密码必须包含数字和英文字母",
+    "change_pass":"更改密码"
 }

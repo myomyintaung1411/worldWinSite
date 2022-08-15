@@ -175,8 +175,14 @@ const disableBtn = computed(() => {
 const register = () => {
   if (password.value !== confrimPassword.value)
     return NoticeMsg.Message(t('confirm_notmatch'), "warning");
+   if(password.value.length < 6)
+   return NoticeMsg.Message(`Password must be at least 6 characters long`, "warning");
   if (!/\d/.test(password.value) || !/[a-zA-Z]/.test(password.value))
     return NoticeMsg.Message(t('pass_check'), "warning");
+
+   if(name.value == password.value)
+   return NoticeMsg.Message(`Username and Password can't be the same`, "warning");
+   
   let pass = md5(password.value);
   let data = {
     data: `02;${name.value};${pass};${reference.value};windows`, // 2/1 success

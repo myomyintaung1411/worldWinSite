@@ -78,5 +78,6 @@
     "already_exist":"Esta cuenta ya existe",
     "reg_success":"Registro exitoso, por favor inicie sesión",
     "confirm_notmatch":"Contraseña y confirmar contraseña no coinciden",
-    "pass_check":"La contraseña debe contener números y letras en inglés"
+    "pass_check":"La contraseña debe contener números y letras en inglés",
+    "change_pass":"Cambia la contraseña"
 }

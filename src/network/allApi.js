@@ -93,6 +93,13 @@ export default {
             method: 'post',
             data
         })
+    },
+    changePass(data) {
+        return network({
+            url: '/main/editPw',
+            method: 'post',
+            data
+        })
     }
 
 }

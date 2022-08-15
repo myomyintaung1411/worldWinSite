@@ -153,7 +153,8 @@
             </DocumentTextIcon>
             <ChipIcon v-if="i === 2" class="h-7 w-7 text-primary"></ChipIcon>
             <IdentificationIcon v-if="i === 3" class="h-7 w-7 text-primary"></IdentificationIcon>
-            <LogoutIcon v-if="i === 4" class="h-7 w-7 text-primary"></LogoutIcon>
+            <LockClosedIcon  v-if="i === 4" class="h-7 w-7 text-primary"></LockClosedIcon >
+            <LogoutIcon v-if="i === 5" class="h-7 w-7 text-primary"></LogoutIcon>
             <span class="text-sm px-4 text-white tracking-wide">{{t(menu.title)}}</span>
           </div>
           <div>
@@ -175,7 +176,8 @@ import { useStore } from "vuex";
 import allApi from "@/network/allApi.js";
 import Loading from "@/utils/loader";
 import { useI18n } from "vue-i18n/index";
-import { DocumentTextIcon,RefreshIcon, DocumentReportIcon,DatabaseIcon,LogoutIcon ,CurrencyDollarIcon,ChipIcon,IdentificationIcon } from "@heroicons/vue/solid";
+import { DocumentTextIcon,RefreshIcon, DocumentReportIcon,DatabaseIcon,LogoutIcon ,
+CurrencyDollarIcon,ChipIcon,IdentificationIcon,LockClosedIcon  } from "@heroicons/vue/solid";
 const router = useRouter();
 
 const store = useStore();
@@ -207,6 +209,10 @@ const menuList = reactive([
   {
     title: "recharge_requst",
     path: "/RequstWithdraw",
+  },
+  {
+    title: "change_pass",
+    path: "/changePass",
   },
   //   {
   //   id: 2,
@@ -261,10 +267,10 @@ const m_menuList = reactive([
     title: "recharge_requst",
     path: "/m/m_RequstWithdraw",
   },
-  // {
-  //   title: "投注记录",
-  //   path: "/m/m_betRecord",
-  // },
+  {
+    title: "change_pass",
+    path: "/m/m_ChangePass",
+  },
   {
     title: "logout",
     path: "/login",
@@ -336,7 +342,7 @@ const NavClick = (menu, index) => {
 // here is using for mobileeeeeeeeeeeeeee
 const m_NavClick = (menu, index) => {
   console.log(index, menu);
-  if (index == 4 && menu.path == "/login") {
+  if (index == 5 && menu.path == "/login") {
     sessionStorage.clear();
     window.location.reload();
     router.push("/");
