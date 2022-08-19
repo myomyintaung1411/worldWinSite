@@ -3,59 +3,79 @@
     <div class="sticky top-0 z-10 w-full py-2 px-2 flex items-center bg-slate-700">
       <ChevronLeftIcon @click="goBack" class="w-6 h-6 text-primary" />
       <span class="ml-6 text-gray-200 text-md tracking-wide font-bold">{{t('online_re')}}</span>
-      <!-- <span class="ml-6 text-gray-200 text-sm tracking-wide font-bold">场馆钱包和场馆钱包之间不可以互转</span> -->
     </div>
-    <div v-if="coinAdd != null || coinAdd?.length > 0">
-    <div  class="mx-auto my-3 h-fit w-[80%]" v-for="(coin,i) in coinAdd" :key="i">
-      <div class="w-full mx-auto">
-        <div class="mx-2 my-2 rounded-lg 
+    <div v-if="checkArray()">
+      <div class="mx-auto my-3 h-fit w-[80%]" v-for="(coin,i) in arrayUser(user.adress)" :key="i">
+        <div class="w-full mx-auto">
+          <div class="mx-2 my-2 rounded-lg 
          shadow-lg bg-gradient-to-b from-buttonLinearFrom to-buttonLinearTo py-3 px-3">
-          <p class="text-md font-bold text-gray-700">{{coin.name}}</p>
-          <div class="space-x-2 flex items-center justify-between">
-            <span id="textToBecopied" class="text-md overflow-hidden text-ellipsis w-11/12 text-gray-500 py-2 leading-tight">{{coin.token}}</span>
-            <div @click="copyAddress(coin.token)" title="copy address" class="text-md text-black rounded-full cursor-pointer shadow-lg px-1 inline-block w-fit bg-HomecardBg py-1 leading-tight">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
-              </svg>
+            <!-- <p class="text-md font-bold text-gray-700">{{coin.name}}</p> -->
+            <div class="space-x-2 flex items-center justify-between">
+              <span id="textToBecopied"
+                class="text-md overflow-hidden text-ellipsis w-11/12 text-gray-500 py-2 leading-tight">{{coin.token}}</span>
+              <div @click="copyAddress(coin.token)" title="copy address"
+                class="text-md text-black rounded-full cursor-pointer shadow-lg px-1 inline-block w-fit bg-HomecardBg py-1 leading-tight">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24"
+                  stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                </svg>
+              </div>
             </div>
-          </div>
-          <div class="flex justify-center items-center">
-            <figure class="   relative w-[230px]">
+            <div class="flex justify-center items-center">
+              <figure class="   relative w-[230px]">
                 <vue-qrcode :value="coin.token" class=" w-full  " tag="img" :options="{
                    errorCorrectionLevel: 'M',
                     width:300
                     }"></vue-qrcode>
-            </figure>
+              </figure>
+            </div>
+            <div class="text-[15px] text-gray-700 text-center w-full pt-2">Please contact customer service after
+              transfer !</div>
           </div>
-          <!-- <figure class=" self-center  textc  relative w-[200px]">
-                <vue-qrcode :value="coin.token" class=" w-full  rounded-t-lg" tag="img" :options="{
+        </div>
+      </div>
+    </div>
+    <!-- <div v-else class="flex w-full h-full flex-col mx-auto  justify-center text-center items-center">
+      <div class="py-3">
+        <img src="@/assets/home/noRecord.png" alt="norecord" class="w-fit h-[165px]" />
+      </div>
+      <div class="py-3  w-full">
+        <p class="text-gray-300 tracking-wide text-base font-medium">{{t('coin_add')}}</p>
+      </div>
+    </div> -->
+    <div v-else>
+      <div class="mx-auto my-3 h-fit w-[80%]" v-for="(coin,i) in coinAdd" :key="i">
+        <div class="w-full mx-auto">
+          <div class="mx-2 my-2 rounded-lg 
+         shadow-lg bg-gradient-to-b from-buttonLinearFrom to-buttonLinearTo py-3 px-3">
+            <p class="text-md font-bold text-gray-700">{{coin.name}}</p>
+            <div class="space-x-2 flex items-center justify-between">
+              <span id="textToBecopied"
+                class="text-md overflow-hidden text-ellipsis w-11/12 text-gray-500 py-2 leading-tight">{{coin.token}}</span>
+              <div @click="copyAddress(coin.token)" title="copy address"
+                class="text-md text-black rounded-full cursor-pointer shadow-lg px-1 inline-block w-fit bg-HomecardBg py-1 leading-tight">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24"
+                  stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                </svg>
+              </div>
+            </div>
+            <div class="flex justify-center items-center">
+              <figure class="   relative w-[230px]">
+                <vue-qrcode :value="coin.token" class=" w-full  " tag="img" :options="{
                    errorCorrectionLevel: 'M',
                     width:300
                     }"></vue-qrcode>
-            </figure> -->
-        <div class="text-[15px] text-gray-700 text-center w-full pt-2">Please contact customer service after transfer !</div>
+              </figure>
+            </div>
+            <div class="text-[15px] text-gray-700 text-center w-full pt-2">Please contact customer service after
+              transfer !</div>
+          </div>
         </div>
       </div>
-      <!-- <marquee  behavior="scroll" class=" text-sm text-white">Please contact customer service after transfer !</marquee> -->
     </div>
-    </div>
-    <div v-else class="flex w-full h-full flex-col mx-auto  justify-center text-center items-center">
-      <div class="py-3">
-        <img src="@/assets/home/noRecord.png" 
-        alt="norecord" class="w-fit h-[165px]" />
-      </div>
-      <!-- <div class="py-3  w-full">
-        <p class="text-gray-300 tracking-wide text-base font-medium">{{t('coin_add')}}</p>
-      </div> -->
-    </div>
-    <!-- <div class="sm:hidden sidebar__">
-      <div  @click="goService()" class="sidebar__item__3ZxEn bg-slate-900 hover:bg-slate-700">
-        <div>
-          <div class="sidebar__kefu__2c9mp"></div>
-          <p class="text-white">{{t('service')}}</p>
-        </div>
-      </div>
-    </div> -->
   </div>
   <!-- desktop  -->
   <!-- <div class="w-full hidden md:block h-screen bg-gray-900">
@@ -103,6 +123,18 @@ const goService = () => {
   }
 };
 
+/** check coin address */
+function checkArray() {
+  let val = user.value.adress;
+  if (val?.length > 0 && Array.isArray(val)) {
+    return val;
+  }
+}
+
+const arrayUser = (user) => {
+  return user.map(token => ({token}))
+}
+
 const goBack = () => {
   router.go(-1);
 };
@@ -127,7 +159,7 @@ const getOfficialCoinAddress = () => {
 };
 
 onMounted(()=>{
-  getOfficialCoinAddress()
+   getOfficialCoinAddress()
   window.addEventListener("resize", changeWindowSize);
 })
 
