@@ -98,9 +98,9 @@ const playGame = (n) => {
   }
   console.log(username, pass, "username and pass");
   if (
-    (lToken && gameUrl.value.lotteryUrl && username && pass !== null) ||
-    (lToken && gameUrl.value.lotteryUrl && username && pass !== undefined) ||
-    (lToken && gameUrl.value.lotteryUrl && username && pass !== "")
+    (lToken && gameUrl.value?.sportUrl && username && pass !== null) ||
+    (lToken && gameUrl.value?.sportUrl && username && pass !== undefined) ||
+    (lToken && gameUrl.value?.sportUrl && username && pass !== "")
   ) {
     let data = {
       name: username,
@@ -154,7 +154,8 @@ const playGame = (n) => {
       color: "#fff",
     }).then((res) => {
       if (res.isConfirmed) {
-        // localStorage.clear();
+        //  sessionStorage.clear();
+        //  window.location.reload()
         router.push("/login");
       }
     });
