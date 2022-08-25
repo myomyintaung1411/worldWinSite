@@ -18,11 +18,10 @@
       </div>
 
     </div> -->
-  <div  style="overflow: hidden !important" class="__iframe">
-    <iframe  :src="url"  scrolling="no" seamless="seamless"  frameborder="0" 
-    style="overflow:hidden;height:100%;width:100%" height="100%" width="100%"></iframe>
-</div>
-
+      <div  style="overflow: hidden !important" class="__iframe">
+        <iframe  :src="url"  scrolling="no" seamless="seamless"  frameborder="0" 
+        style="overflow:hidden;height:100%;width:100%" height="100%" width="100%"></iframe>
+    </div>
 </div>
 </template>
 
@@ -51,6 +50,7 @@ const goBack = () => {
 };
 
 onMounted(()=>{
+  console.log("loaded _______________>");
   url.value = route.query.url
 })
 

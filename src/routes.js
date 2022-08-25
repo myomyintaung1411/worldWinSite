@@ -163,17 +163,19 @@ const routes = [
   //   meta: { title: 'Service', requireAuth:true },
   //   component: () => import('./views/CustomerService.vue')
   // },
-  {
+  { name:'sportView',
     path: '/sportView',
-    meta: { title: 'sportView', requireAuth:true },
+    meta: { title: 'sportView', keepAlive:true,isIframe:true, requireAuth:true },
     component: () => import('./views/sportView.vue')
   },
   {
+    name:'Register',
     path: '/register',
     meta: { title: 'Register', requiresVisitor: true },
     component: () => import('./views/Register.vue')
   },
   {
+    name:'Login',
     path: '/login',
     meta: { title: 'Login', requiresVisitor: true },
     component: () => import('./views/Login.vue')
@@ -256,7 +258,7 @@ const routes = [
   //   meta: { title: 'mWithdrawals' },
   //   component: () => import('./views/mUserCenter/m_Withdrawals.vue')
   // },
-  { path: '/:path(.*)', component: NotFound },
+  { path: '/:path(.*)', component: NotFound,name:'NotFound' },
 ]
 
 const router = createRouter({

@@ -170,240 +170,251 @@
 </template>
 
  <script setup>
-import { reactive, ref, watch, computed, onMounted } from "vue";
-import { useRouter, useRoute } from "vue-router";
-import { useStore } from "vuex";
-import allApi from "@/network/allApi.js";
-import Loading from "@/utils/loader";
-import { useI18n } from "vue-i18n/index";
-import { DocumentTextIcon,RefreshIcon, DocumentReportIcon,DatabaseIcon,LogoutIcon ,
-CurrencyDollarIcon,ChipIcon,IdentificationIcon,LockClosedIcon  } from "@heroicons/vue/solid";
-const router = useRouter();
-
-const store = useStore();
-
-const { t } = useI18n();
-
-//this is useRoute for change vue route
-const route = useRoute();
-const activeMenu = ref(0);
-const activeMoney = ref(0);
-const activeRoute = ref("");
-const lToken = store.state.user.token;
-const userId__ = store.state.user.userId;
-const user = computed(() => store.getters["user/USER"]);
-const deg = ref(0);
-const menuList = reactive([
-  {
-    title: "online_re",
-    path: "/wallet",
-  },
-  {
-    title: "t_record",
-    path: "/transRecord",
-  },
-  {
-    title: "bind_coin",
-    path: "/bindCoinAddress",
-  },
-  {
-    title: "recharge_requst",
-    path: "/RequstWithdraw",
-  },
-  {
-    title: "change_pass",
-    path: "/changePass",
-  },
-  //   {
-  //   id: 2,
-  //   title: "转账",
-  //   path: "/transfer",
-  // },
-  // {
-  //   title: "投注记录",
-  //   path: "/betRecord",
-  // },
-  // {
-  //   title: "VIP详情",
-  //   path: "/myVip",
-  // },
-  // {
-  //   title: "消息中心",
-  //   path: "/mail",
-  // },
-  // {
-  //   title: "意见反馈",
-  //   path: "/suggestion",
-  // },
-]);
-const moneyDeposit = reactive([
-  {
-    id: 1,
-    title: "存款",
-    path: "/depost",
-  },
-  {
-    id: 2,
-    title: "转账",
-    path: "/transfer",
-  },
-  { id: 3, title: "取款", path: "/withdrawals" },
-]);
-//mobile
-const m_menuList = reactive([
-  {
-    title: "online_re",
-    path: "/m/m_wallet",
-  },
-  {
-    title: "t_record",
-    path: "/m/m_transRecord",
-  },
-    {
-    title: "bind_coin",
-    path: "/m/m_bindCoinAddress",
-  },
-    {
-    title: "recharge_requst",
-    path: "/m/m_RequstWithdraw",
-  },
-  {
-    title: "change_pass",
-    path: "/m/m_ChangePass",
-  },
-  {
-    title: "logout",
-    path: "/login",
-  },
-  // {
-  //   title: "VIP详情",
-  //   path: "/m/m_myVip",
-  // },
-  // {
-  //   title: "消息中心",
-  //   path: "/m/m_mail",
-  // },
-  // {
-  //   title: "意见反馈",
-  //   path: "/m/m_suggestion",
-  // },
-]);
-const m_moneyDeposit = reactive([
-  {
-    id: 1,
-    title: "存款",
-    path: "/m/m_depost",
-  },
-  {
-    id: 2,
-    title: "转账",
-    path: "/m/m_transfer",
-  },
-  { id: 3, title: "取款", path: "/m/m_withdrawals" },
-]);
-
-watch(
-  () => route.path,
-  () => {
-    console.log(route.path, "watching");
-    activeRoute.value = route.path;
-  },
-  { immediate: true, deep: true }
-);
-
-const goChangeInfo = (number) => {
-  switch (number) {
-    case 1:
-      router.push("/phonePwd");
-      break;
-    case 2:
-      console.log("2");
-      break;
-    case 3:
-      console.log("3");
-      break;
-    case 4:
-      router.push("/banks");
-      break;
-
-    default:
-      break;
-  }
-};
-const goDeposit = (money, index) => {
-  activeMoney.value = index;
-  router.push(money.path);
-};
-const NavClick = (menu, index) => {
-  activeMenu.value = index;
-  router.push(menu.path);
-};
-
-// here is using for mobileeeeeeeeeeeeeee
-const m_NavClick = (menu, index) => {
-  console.log(index, menu);
-  if (index == 5 && menu.path == "/login") {
-    sessionStorage.clear();
-    window.location.reload();
-    router.push("/");
-    return;
-  }
-  router.push(menu.path);
-};
-const m_goDeposit = (m, index) => {
-  router.push(m.path);
-};
-const m_goChangeInfo = (number) => {
-  switch (number) {
-    case 1:
-      router.push("/m/m_phonePwd");
-      break;
-    case 2:
-      console.log("2");
-      break;
-    case 3:
-      console.log("3");
-      break;
-    case 4:
-      console.log("4");
-      break;
-
-    default:
-      break;
-  }
-};
-
-// api call of getMoneyBag
-const getMoneyBag = () => {
-  deg.value += 360;
-  if (
-    (userId__ && lToken !== null) ||
-    (userId__ && lToken !== undefined) ||
-    (userId__ && lToken !== "")
-  ) {
-    // Loading.showLoading()
-    let userId = userId__;
-    let token = lToken;
-    const req_ = { userId: userId, token: token };
-    allApi
-      .getMoneyBag({ data: req_ })
-      .then((res) => {
-        //Loading.hideLoading()
-        console.log(res.data.data.center_money,store.state.user.user.balance, "getMoneyBag *************");
-        //store.commit("user/User",res.data.data)
-        store.state.user.user.balance = res.data.data.center_money
-      })
-      .catch((e) => {
-        //Loading.hideLoading()
-        console.log(e);
-      });
-  }
-};
-
-onMounted(() => {
-  getMoneyBag();
-});
-</script>
+ import { reactive, ref, watch, computed, onMounted } from "vue";
+ import { useRouter, useRoute } from "vue-router";
+ import { useStore } from "vuex";
+ import allApi from "@/network/allApi.js";
+ import Loading from "@/utils/loader";
+ import { useI18n } from "vue-i18n/index";
+ import { DocumentTextIcon,RefreshIcon, DocumentReportIcon,DatabaseIcon,LogoutIcon ,
+ CurrencyDollarIcon,ChipIcon,IdentificationIcon,LockClosedIcon  } from "@heroicons/vue/solid";
+ const router = useRouter();
+ 
+ const store = useStore();
+ 
+ const { t } = useI18n();
+ 
+ //this is useRoute for change vue route
+ const route = useRoute();
+ const activeMenu = ref(0);
+ const activeMoney = ref(0);
+ const activeRoute = ref("");
+ const lToken = store.state.user.token;
+ const userId__ = store.state.user.userId;
+ const user = computed(() => store.getters["user/USER"]);
+ const deg = ref(0);
+ const menuList = reactive([
+   {
+     title: "online_re",
+     path: "/wallet",
+   },
+   {
+     title: "t_record",
+     path: "/transRecord",
+   },
+   {
+     title: "bind_coin",
+     path: "/bindCoinAddress",
+   },
+   {
+     title: "recharge_requst",
+     path: "/RequstWithdraw",
+   },
+   {
+     title: "change_pass",
+     path: "/changePass",
+   },
+   {
+     title: "logout",
+     path: "/login",
+   }
+   
+   //   {
+   //   id: 2,
+   //   title: "转账",
+   //   path: "/transfer",
+   // },
+   // {
+   //   title: "投注记录",
+   //   path: "/betRecord",
+   // },
+   // {
+   //   title: "VIP详情",
+   //   path: "/myVip",
+   // },
+   // {
+   //   title: "消息中心",
+   //   path: "/mail",
+   // },
+   // {
+   //   title: "意见反馈",
+   //   path: "/suggestion",
+   // },
+ ]);
+ const moneyDeposit = reactive([
+   {
+     id: 1,
+     title: "存款",
+     path: "/depost",
+   },
+   {
+     id: 2,
+     title: "转账",
+     path: "/transfer",
+   },
+   { id: 3, title: "取款", path: "/withdrawals" },
+ ]);
+ //mobile
+ const m_menuList = reactive([
+   {
+     title: "online_re",
+     path: "/m/m_wallet",
+   },
+   {
+     title: "t_record",
+     path: "/m/m_transRecord",
+   },
+     {
+     title: "bind_coin",
+     path: "/m/m_bindCoinAddress",
+   },
+     {
+     title: "recharge_requst",
+     path: "/m/m_RequstWithdraw",
+   },
+   {
+     title: "change_pass",
+     path: "/m/m_ChangePass",
+   },
+   {
+     title: "logout",
+     path: "/login",
+   },
+   // {
+   //   title: "VIP详情",
+   //   path: "/m/m_myVip",
+   // },
+   // {
+   //   title: "消息中心",
+   //   path: "/m/m_mail",
+   // },
+   // {
+   //   title: "意见反馈",
+   //   path: "/m/m_suggestion",
+   // },
+ ]);
+ const m_moneyDeposit = reactive([
+   {
+     id: 1,
+     title: "存款",
+     path: "/m/m_depost",
+   },
+   {
+     id: 2,
+     title: "转账",
+     path: "/m/m_transfer",
+   },
+   { id: 3, title: "取款", path: "/m/m_withdrawals" },
+ ]);
+ 
+ watch(
+   () => route.path,
+   () => {
+     console.log(route.path, "watching");
+     activeRoute.value = route.path;
+   },
+   { immediate: true, deep: true }
+ );
+ 
+ const goChangeInfo = (number) => {
+   switch (number) {
+     case 1:
+       router.push("/phonePwd");
+       break;
+     case 2:
+       console.log("2");
+       break;
+     case 3:
+       console.log("3");
+       break;
+     case 4:
+       router.push("/banks");
+       break;
+ 
+     default:
+       break;
+   }
+ };
+ const goDeposit = (money, index) => {
+   activeMoney.value = index;
+   router.push(money.path);
+ };
+ const NavClick = (menu, index) => {
+   activeMenu.value = index;
+   if (index == 5 && menu.path == "/login") {
+     sessionStorage.clear();
+     window.location.reload();
+     router.push("/");
+     return;
+   }
+   router.push(menu.path);
+ };
+ 
+ // here is using for mobileeeeeeeeeeeeeee
+ const m_NavClick = (menu, index) => {
+   console.log(index, menu);
+   if (index == 5 && menu.path == "/login") {
+     sessionStorage.clear();
+     window.location.reload();
+     router.push("/");
+     return;
+   }
+   router.push(menu.path);
+ };
+ const m_goDeposit = (m, index) => {
+   router.push(m.path);
+ };
+ const m_goChangeInfo = (number) => {
+   switch (number) {
+     case 1:
+       router.push("/m/m_phonePwd");
+       break;
+     case 2:
+       console.log("2");
+       break;
+     case 3:
+       console.log("3");
+       break;
+     case 4:
+       console.log("4");
+       break;
+ 
+     default:
+       break;
+   }
+ };
+ 
+ // api call of getMoneyBag
+ const getMoneyBag = () => {
+   deg.value += 360;
+   if (
+     (userId__ && lToken !== null) ||
+     (userId__ && lToken !== undefined) ||
+     (userId__ && lToken !== "")
+   ) {
+     // Loading.showLoading()
+     let userId = userId__;
+     let token = lToken;
+     const req_ = { userId: userId, token: token };
+     allApi
+       .getMoneyBag({ data: req_ })
+       .then((res) => {
+         //Loading.hideLoading()
+         console.log(res.data.data.center_money,store.state.user.user.balance, "getMoneyBag *************");
+         //store.commit("user/User",res.data.data)
+         store.state.user.user.balance = res.data.data.center_money
+       })
+       .catch((e) => {
+         //Loading.hideLoading()
+         console.log(e);
+       });
+   }
+ };
+ 
+ onMounted(() => {
+   getMoneyBag();
+ });
+ </script>
 
 
 <style  scoped>

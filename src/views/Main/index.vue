@@ -21,8 +21,8 @@ import Footer from "@/components/Footer.vue";
 const store = useStore();
 const router = useRouter();
 const route = useRoute();
- const lToken = store.state.user.token;
- const userId__ = store.state.user.userId;
+const lToken = store.state.user.token;
+const userId__ = store.state.user.userId;
 
 const getBannerInfo = () => {
   // Loading.showLoading();
@@ -31,7 +31,7 @@ const getBannerInfo = () => {
     .then((res) => {
       //Loading.hideLoading();
       console.log(res, "banner res is");
-      store.commit("app/Banner_",res.data.data)
+      store.commit("app/Banner_", res.data.data)
     })
     .catch((e) => {
       // Loading.hideLoading();
@@ -47,13 +47,13 @@ const getGameUrl = () => {
   ) {
 
     let userId = userId__;
-   let t = lToken;
-    const req_ = { userId: userId};
+    let t = lToken;
+    const req_ = { userId: userId };
     allApi
       .getGameUrl({ data: req_ })
       .then((res) => {
         console.log(res, "getgame url res is");
-        store.commit("app/Game_Url",res.data.data)
+        store.commit("app/Game_Url", res.data.data)
       })
       .catch((e) => {
         console.log(e);
@@ -62,19 +62,19 @@ const getGameUrl = () => {
 };
 const getAppUrl = () => {
 
-    allApi
-      .getAppLink()
-      .then((res) => {
-        console.log(res, "getgame getAppLink ------------------------------------->");
-        store.commit("app/getApp_Url",res.data.data)
-      })
-      .catch((e) => {
-        console.log(e);
-      });
+  allApi
+    .getAppLink()
+    .then((res) => {
+      console.log(res, "getgame getAppLink ------------------------------------->");
+      store.commit("app/getApp_Url", res.data.data)
+    })
+    .catch((e) => {
+      console.log(e);
+    });
 };
 
 const getUserInfo = () => {
-   if (
+  if (
     (userId__ && lToken !== null) ||
     (userId__ && lToken !== undefined) ||
     (userId__ && lToken !== "")
@@ -90,7 +90,7 @@ const getUserInfo = () => {
         //   router.push('/login')
         // }
         console.log(res, "getUserInfo *************");
-        store.commit("user/User",res.data.data)
+        store.commit("user/User", res.data.data)
       })
       .catch((e) => {
         console.log(e);
@@ -99,33 +99,33 @@ const getUserInfo = () => {
 };
 
 const getServiceLink = () => {
-  
+
   let userId = userId__;
   const req_ = { userId: userId };
-   if (
+  if (
     (userId__ && lToken !== null) ||
     (userId__ && lToken !== undefined) ||
     (userId__ && lToken !== "")
   ) {
-  allApi
-    .getServiceLink({ data: req_ })
-    .then((res) => {
-      console.log("getServiceLink", res);
-      store.commit("app/Service", res.data.service_link);
-      //serviceLink.value = res.data.service_link;
-    })
-    .catch((e) => {
-      console.log(e);
-    });
+    allApi
+      .getServiceLink({ data: req_ })
+      .then((res) => {
+        console.log("getServiceLink", res);
+        store.commit("app/Service", res.data.service_link);
+        //serviceLink.value = res.data.service_link;
+      })
+      .catch((e) => {
+        console.log(e);
+      });
   }
 };
 
 onMounted(() => {
-   getServiceLink()
-   getUserInfo()
-   getBannerInfo();
-   getGameUrl();
-   getAppUrl()
+  getServiceLink()
+  getUserInfo()
+  getBannerInfo();
+  getGameUrl();
+  getAppUrl()
 });
 </script>
 

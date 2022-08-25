@@ -82,13 +82,13 @@
           </li>
           <Menu v-if="lToken" as="div" class="ml-3 relative z-20">
             <div>
-              <MenuButton
+              <MenuButton @click="goUserCenter"
                 class="bg-gray-800 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:focus:ring-primary">
-                <span class="sr-only">Open user menu</span>
+                <!-- <span class="sr-only">Open user menu</span> -->
                 <img class="h-8 w-8 rounded-full" src="@/assets/home/user.svg" alt />
               </MenuButton>
             </div>
-            <transition enter-active-class="transition ease-out duration-100"
+            <!-- <transition enter-active-class="transition ease-out duration-100"
               enter-from-class="transform opacity-0 scale-95" enter-to-class="transform opacity-100 scale-100"
               leave-active-class="transition ease-in duration-75" leave-from-class="transform opacity-100 scale-100"
               leave-to-class="transform opacity-0 scale-95">
@@ -105,7 +105,7 @@
                 </div>
                 </MenuItem>
               </MenuItems>
-            </transition>
+            </transition> -->
           </Menu>
           <!-- <languageswitch></languageswitch> -->
         </ul>
@@ -362,7 +362,6 @@ export default {
       { id: 1, name: "Chinese" },
       { id: 2, name: "English" },
     ]);
-
     //const user = store.state.user.user
     const SignOut = () => {
       sessionStorage.clear();

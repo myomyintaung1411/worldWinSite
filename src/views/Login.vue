@@ -50,7 +50,7 @@
             </div>
           </div>
 
-          <div class="flex flex-col mb-6">
+          <!-- <div class="flex flex-col mb-6">
             <label for="password" class="mb-1 text-xs sm:text-sm tracking-wide text-gray-100">{{ t('enter_code') }}</label>
             <div class="relative">
               <div class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400">
@@ -62,22 +62,13 @@
               <div
                 class="inline-flex items-center justify-center absolute right-3 top-0 h-full w-10 text-gray-400 md:cursor-pointer">
                 <div class="yanzheng h-fit absolute right-0" @click="refreshCode">
-                  <!-- <Identify class="yanzheng1" :identifyCode="identifyCode"></Identify> -->
                   <div class="img-verify ">
                     <canvas ref="verify" :width="width" :height="height" @click="handleDraw" class="h-[34px]"></canvas>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-          <!-- <div class="flex flex-col mb-6">
-            <div class="img-verify">
-              <canvas ref="verify" :width="width" :height="height" @click="handleDraw"></canvas>
-            </div>
           </div> -->
-
-
-
           <div class="flex w-full">
             <button :disabled="disableBtn" @click="login" type="submit"
               :class="disableBtn ? 'bg-primary opacity-40 cursor-not-allowed' : 'text-black bg-gradient-to-b from-buttonLinearFrom to-buttonLinearTo'"
@@ -156,7 +147,7 @@ export default {
     })
     onMounted(() => {
       // 初始化绘制图片验证码
-      state.imgCode = draw()
+      //state.imgCode = draw()
     })
 
     // 点击图片重新绘制
@@ -249,7 +240,7 @@ export default {
 
 
     const disableBtn = computed(() => {
-      if (name.value === "" || password.value === "" || code.value === "" ) {
+      if (name.value === "" || password.value === "" ) { //|| code.value === "" 
         return true;
       } else {
         return false;
@@ -261,15 +252,15 @@ export default {
       let data = {
         data: `01;${name.value};${pass};windows;1`,
       };
-      console.log(state.imgCode+ "     state imagecode is ******");
-       if (code.value.replace(/\s/g, "").toLowerCase() != state.imgCode.replace(/\s/g, "").toLowerCase()) {
-        state.imgCode = ''
-        NoticeMsg.Message(
-          t('correct_vir'),
-          "error"
-        );
-        return handleDraw();
-      }
+      // console.log(state.imgCode+ "     state imagecode is ******");
+      //  if (code.value.replace(/\s/g, "").toLowerCase() != state.imgCode.replace(/\s/g, "").toLowerCase()) {
+      //   state.imgCode = ''
+      //   NoticeMsg.Message(
+      //     t('correct_vir'),
+      //     "error"
+      //   );
+      //   return handleDraw();
+      // }
       Loading.showLoading();
       //  Loading.hideLoading()
       console.log("data is", data);
