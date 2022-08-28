@@ -17,8 +17,8 @@
 
       <div class="mt-5 overflow-y-auto ">
         <form @click.prevent>
-          <div class="flex flex-col mb-5">
-            <label for="name" class="mb-1 text-xs tracking-wide text-gray-100">{{ t('enter_u') }}</label>
+          <div class="flex flex-col mb-3">
+            <!-- <label for="name" class="mb-1 text-xs tracking-wide text-gray-100">{{ t('enter_u') }}</label> -->
             <div class="relative">
               <div class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
@@ -33,8 +33,49 @@
               focus:outline-none border-none focus:border-none outline-none" :placeholder="t('enter_u')" />
             </div>
           </div>
-          <div class="flex flex-col mb-5">
-            <label for="email" class="mb-1 text-xs tracking-wide text-gray-100">{{ t('enter_p') }}</label>
+          <div class="flex flex-col mb-3">
+            <!-- <label for="name" class="mb-1 text-xs tracking-wide text-gray-100">Please Enter Email</label> -->
+            <div class="relative">
+              <div class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400">
+                <!-- <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                  stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                </svg> -->
+                <MailIcon class="h-6 w-6"></MailIcon>
+              </div>
+
+              <input v-model.trim="email" id="email" autocomplete="off" type="email" name="email" class="text-sm text-gray-500 placeholder-gray-500 
+              pl-10 pr-4 rounded-2xl border border-gray-400 w-full py-2 
+              focus:outline-none border-none focus:border-none outline-none" placeholder="Please Enter Email Address" />
+            </div>
+          </div>
+          <div class="flex flex-col mb-3">
+            <!-- <label for="name" class="mb-1 text-xs tracking-wide text-gray-100">Please Enter Email</label> -->
+            <div class="relative">
+              <div class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400">
+                <!-- <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                  stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                </svg> -->
+                <MailIcon class="h-6 w-6"></MailIcon>
+              </div>
+
+              <input v-model.trim="verficationCode" id="verficationCode" autocomplete="off" type="text" name="verficationCode" class="text-sm text-gray-500 placeholder-gray-500 
+              pl-10 pr-4 rounded-2xl border border-gray-400 w-full py-2 
+              focus:outline-none border-none focus:border-none outline-none" placeholder=" Enter Verfication Code" />
+              <div
+                class="inline-flex whitespace-nowrap items-center justify-center absolute right-10 top-0 h-full w-10 text-gray-400 md:cursor-pointer">
+                <!-- <EyeIcon v-if="passwordField !== 'password'" @click="ShowVisibility" class="w-4 h-5" />
+                <EyeOffIcon v-else @click="ShowVisibility" class="w-4 h-5 text-yellow-700" /> -->
+                <button type="button" :disabled="codeDisable" class=" bg-yellow-700  py-1 px-2 text-sm text-white" @click="getCode">{{codeMsg}}</button>
+                <!-- <label class="bg-gray-300 hover:bg-gray-400 rounded px-2 py-1 text-sm text-gray-600 font-mono cursor-pointer js-password-label select-none" for="toggle" @click="ShowVisibility">{{passwordField === 'password' ? 'show' : 'hide'}}</label> -->
+              </div>
+            </div>
+          </div>
+          <div class="flex flex-col mb-3">
+            <!-- <label for="email" class="mb-1 text-xs tracking-wide text-gray-100">{{ t('enter_p') }}</label> -->
             <div class="relative">
               <div class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400">
                 <span>
@@ -57,8 +98,8 @@
               </div>
             </div>
           </div>
-          <div class="flex flex-col mb-6">
-            <label for="password" class="mb-1 text-xs tracking-wide text-gray-100">{{ t('enter_confirm_p') }}</label>
+          <div class="flex flex-col mb-3">
+            <!-- <label for="password" class="mb-1 text-xs tracking-wide text-gray-100">{{ t('enter_confirm_p') }}</label> -->
             <div class="relative">
               <div class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400">
                 <span>
@@ -82,8 +123,8 @@
               </div>
             </div>
           </div>
-          <div class="flex flex-col mb-5">
-            <label for="reference" class="mb-1 text-xs tracking-wide text-gray-100">{{ t('agent_code') }}</label>
+          <div class="flex flex-col mb-3">
+            <!-- <label for="reference" class="mb-1 text-xs tracking-wide text-gray-100">{{ t('agent_code') }}</label> -->
             <div class="relative">
               <div class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400">
                 <!-- <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
@@ -129,7 +170,7 @@
 </template>
 
 <script setup>
-import { EyeIcon, EyeOffIcon,CodeIcon  } from "@heroicons/vue/solid";
+import { EyeIcon, EyeOffIcon,CodeIcon,MailIcon   } from "@heroicons/vue/solid";
 import { ref, computed } from "vue";
 import { UserLogin } from "@/network/user.js";
 import { useStore } from "vuex";
@@ -140,12 +181,17 @@ import md5 from "js-md5";
 import { useI18n } from "vue-i18n/index";
 const { t } = useI18n();
 const name = ref("");
+const email = ref("");
 const password = ref("");
 const confrimPassword = ref("");
 const reference = ref("");
 const passwordField = ref("password");
 const C_passwordField = ref("password");
-
+const codeDisable = ref(false)
+const countdown = ref(60)
+const codeMsg = ref('Get Code') 
+const timer = ref(null)
+const verficationCode = ref('')
 const store = useStore();
 const router = useRouter();
 const videoSource = ref("https://senbackkg.yewuxia.com/main-consumer-web/assets-oss/ob/videos/login/video.bc2597160d5dbee099f4250dbaa84271.mp4");
@@ -162,6 +208,7 @@ const C_ShowVisibility = () => {
 const disableBtn = computed(() => {
   if (
     name.value === "" ||
+    email.value === "" ||
     password.value === "" ||
     confrimPassword.value === "" ||
     reference.value === ""
@@ -171,6 +218,33 @@ const disableBtn = computed(() => {
     return false;
   }
 });
+
+function getValidStr(){
+
+        if (countdown.value > 0 && countdown.value <= 60) {
+          countdown.value--;
+          
+            if (countdown.value !== 0) {
+              codeMsg.value = "Resend(" + countdown.value + ")";
+            } else {
+              clearInterval(timer);
+              codeMsg.value = "Get Code";
+              countdown.value = 60;
+              codeDisable.value = false;
+              timer.value = null;
+            }
+          }
+      }
+
+const getCode = () => {
+  console.log(codeDisable.value,"disable");
+  if(codeDisable.value) return
+  codeDisable.value = true
+ if(!timer.value){
+  getValidStr()
+  timer.value = setInterval(getValidStr,1000)
+ }
+}
 
 const register = () => {
   if (password.value !== confrimPassword.value)
@@ -185,7 +259,7 @@ const register = () => {
    
   let pass = md5(password.value);
   let data = {
-    data: `02;${name.value};${pass};${reference.value};windows`, // 2/1 success
+    data: `02;${name.value};${pass};${reference.value}${email.value};windows`, // 2/1 success
   };
   Loading.showLoading()
   UserLogin(data).then((res) => {

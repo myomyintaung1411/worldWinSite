@@ -100,6 +100,13 @@ export default {
             method: 'post',
             data
         })
+    },
+    createEmailCode(data) {
+        return network({
+            url: '/main/mail/createEamilCode',
+            method: 'post',
+            data
+        })
     }
 
 }

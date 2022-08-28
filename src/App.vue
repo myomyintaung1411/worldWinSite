@@ -113,12 +113,21 @@ const getServiceLink = () => {
   }
 };
 
+const createEmailCode = () => {
+  allApi.createEmailCode().then((res)=>{
+  console.log(res,"createEmailCode");
+  }).catch((e)=>{
+    console.log(e);
+  })
+}
+
 const changeWindowSize = () => {
   store.commit("app/CHANGE_WINDOW_SIZE", window.innerWidth);
 };
 
 
 onMounted(() => {
+  createEmailCode()
   getServiceLink()
   getUserInfo()
   getBannerInfo();
