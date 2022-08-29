@@ -1,5 +1,6 @@
 <template>
-  <div class=" min-h-screen min-w-full w-screen h-screen flex flex-col items-center justify-center bg-gray-800 login__">
+  <div
+    class=" overflow-y-auto min-h-screen min-w-full w-screen h-screen flex flex-col items-center justify-center bg-gray-800 login__">
     <!-- <div class="absolute w-screen h-screen min-h-screen max-h-full min-w-full max-w-full overflow-hidden">
       <video id="register_video" class="register__video__3tV1" autoplay preload="preload" loop>
       <source :src="videoSource" type="video/mp4" />
@@ -12,12 +13,12 @@
     </video> -->
     <div
       class=" z-10 flex flex-col  text-gray-200 shadow-md px-4 sm:px-6 md:px-8 lg:px-10 py-8 rounded-3xl w-50 max-w-sm  sm:max-w-md bg-slate-800 sm:bg-transparent sm:opacity-100 bg-opacity-60 ">
-      <div class=" font-medium self-center text-xl sm:text-3xl">{{ t('reg_text') }}</div>
-      <div class="mt-4 self-center text-md sm:text-sm">{{ t('reg_body') }}</div>
+      <div class=" font-medium self-center text-xl sm:text-3xl">{{  t('reg_text')  }}</div>
+      <div class="mt-4 self-center text-md sm:text-sm">{{  t('reg_body')  }}</div>
 
       <div class="mt-5 overflow-y-auto ">
         <form @click.prevent>
-          <div class="flex flex-col mb-3">
+          <div class="flex flex-col mb-4">
             <!-- <label for="name" class="mb-1 text-xs tracking-wide text-gray-100">{{ t('enter_u') }}</label> -->
             <div class="relative">
               <div class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400">
@@ -28,29 +29,25 @@
                 </svg>
               </div>
 
-              <input v-model.trim="name" id="name" autocomplete="off" type="text" name="name" class="text-sm text-gray-500 placeholder-gray-500 
+              <input required v-model.trim="name" id="name" autocomplete="off" type="text" name="name" class="text-sm text-gray-500 placeholder-gray-500 
               pl-10 pr-4 rounded-2xl border border-gray-400 w-full py-2 
               focus:outline-none border-none focus:border-none outline-none" :placeholder="t('enter_u')" />
             </div>
           </div>
-          <div class="flex flex-col mb-3">
+          <div class="flex flex-col mb-4">
             <!-- <label for="name" class="mb-1 text-xs tracking-wide text-gray-100">Please Enter Email</label> -->
             <div class="relative">
               <div class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400">
-                <!-- <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                  stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                </svg> -->
                 <MailIcon class="h-6 w-6"></MailIcon>
               </div>
 
-              <input v-model.trim="email" id="email" autocomplete="off" type="email" name="email" class="text-sm text-gray-500 placeholder-gray-500 
+              <input required v-model.trim="email" id="email" autocomplete="off" type="email" name="email" class="text-sm text-gray-500 placeholder-gray-500 
               pl-10 pr-4 rounded-2xl border border-gray-400 w-full py-2 
-              focus:outline-none border-none focus:border-none outline-none" placeholder="Please Enter Email Address" />
+              focus:outline-none border-none focus:border-none outline-none"
+                placeholder="Please Enter Email Address" />
             </div>
           </div>
-          <div class="flex flex-col mb-3">
+          <div class="flex flex-col mb-4">
             <!-- <label for="name" class="mb-1 text-xs tracking-wide text-gray-100">Please Enter Email</label> -->
             <div class="relative">
               <div class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400">
@@ -62,19 +59,24 @@
                 <MailIcon class="h-6 w-6"></MailIcon>
               </div>
 
-              <input v-model.trim="verficationCode" id="verficationCode" autocomplete="off" type="text" name="verficationCode" class="text-sm text-gray-500 placeholder-gray-500 
+              <input required v-model.trim="verficationCode" id="verficationCode" autocomplete="off" type="text"
+                name="verficationCode" class="text-sm text-gray-500 placeholder-gray-500 
               pl-10 pr-4 rounded-2xl border border-gray-400 w-full py-2 
               focus:outline-none border-none focus:border-none outline-none" placeholder=" Enter Verfication Code" />
               <div
                 class="inline-flex whitespace-nowrap items-center justify-center absolute right-10 top-0 h-full w-10 text-gray-400 md:cursor-pointer">
                 <!-- <EyeIcon v-if="passwordField !== 'password'" @click="ShowVisibility" class="w-4 h-5" />
                 <EyeOffIcon v-else @click="ShowVisibility" class="w-4 h-5 text-yellow-700" /> -->
-                <button type="button" :disabled="codeDisable" class=" bg-yellow-700  py-1 px-2 text-sm text-white" @click="getCode">{{codeMsg}}</button>
-                <!-- <label class="bg-gray-300 hover:bg-gray-400 rounded px-2 py-1 text-sm text-gray-600 font-mono cursor-pointer js-password-label select-none" for="toggle" @click="ShowVisibility">{{passwordField === 'password' ? 'show' : 'hide'}}</label> -->
+                <button :disabled="codeDisable"
+                  :class="!codeDisable ? 'bg-yellow-700  py-1 px-2 text-sm text-white' : ' py-1 px-2 text-black bg-yellow-700 opacity-80 cursor-not-allowed'"
+                  @click="getCode()">{{  codeMsg  }}</button>
+                <!-- <button  :disabled="codeDisable" :class=" !codeDisable ? 'bg-yellow-700  py-1 px-2 text-sm text-white' : 'bg-primary opacity-80 cursor-not-allowed'" @click="getCode()">{{codeMsg}}</button>
+                 <label class="bg-gray-300 hover:bg-gray-400 rounded px-2 py-1 text-sm text-gray-600 font-mono cursor-pointer js-password-label select-none" for="toggle" @click="ShowVisibility">{{passwordField === 'password' ? 'show' : 'hide'}}</label> -->
               </div>
             </div>
+
           </div>
-          <div class="flex flex-col mb-3">
+          <div class="flex flex-col mb-4">
             <!-- <label for="email" class="mb-1 text-xs tracking-wide text-gray-100">{{ t('enter_p') }}</label> -->
             <div class="relative">
               <div class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400">
@@ -87,7 +89,8 @@
                 </span>
               </div>
 
-              <input v-model.trim="password" id="password" :type="passwordField" name="password" autocomplete="off" class="text-sm text-gray-500 
+              <input required v-model.trim="password" id="password" :type="passwordField" name="password"
+                autocomplete="off" class="text-sm text-gray-500 
               placeholder-gray-500 pl-10 pr-4 rounded-2xl border border-gray-400 w-full py-2 
               focus:outline-none border-none focus:border-none outline-none" :placeholder="t('enter_p')" />
               <div
@@ -98,7 +101,7 @@
               </div>
             </div>
           </div>
-          <div class="flex flex-col mb-3">
+          <div class="flex flex-col mb-4">
             <!-- <label for="password" class="mb-1 text-xs tracking-wide text-gray-100">{{ t('enter_confirm_p') }}</label> -->
             <div class="relative">
               <div class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400">
@@ -123,7 +126,7 @@
               </div>
             </div>
           </div>
-          <div class="flex flex-col mb-3">
+          <div class="flex flex-col mb-4">
             <!-- <label for="reference" class="mb-1 text-xs tracking-wide text-gray-100">{{ t('agent_code') }}</label> -->
             <div class="relative">
               <div class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400">
@@ -135,7 +138,8 @@
                 <CodeIcon class="h-6 w-6"></CodeIcon>
               </div>
 
-              <input v-model.trim="reference" id="reference" autocomplete="off" type="text" name="reference" class="text-sm text-gray-500 placeholder-gray-500 
+              <input required v-model.trim="reference" id="reference" autocomplete="off" type="text" name="reference"
+                class="text-sm text-gray-500 placeholder-gray-500 
               pl-10 pr-4 rounded-2xl border border-gray-400 w-full py-2 
               focus:outline-none border-none focus:border-none outline-none" :placeholder="t('agent_code')" />
             </div>
@@ -144,8 +148,8 @@
           <div class="flex w-full">
             <button :disabled="disableBtn" @click="register" type="submit"
               :class="disableBtn ? 'bg-primary opacity-40 cursor-not-allowed' : 'text-black bg-gradient-to-b from-buttonLinearFrom to-buttonLinearTo'"
-              class="flex mt-2 items-center justify-center focus:outline-none text-white text-sm sm:text-base rounded-2xl py-2 w-full transition duration-150 ease-in">
-              <span class="mr-2 uppercase">{{ t('reg') }}</span>
+              class="flex  items-center justify-center focus:outline-none text-white text-sm sm:text-base rounded-2xl py-2 w-full transition duration-150 ease-in">
+              <span class="mr-2 uppercase">{{  t('reg')  }}</span>
               <span :class="!disableBtn ? 'sm:animate-wiggle ' : ''">
                 <svg class="h-6 w-6" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                   viewBox="0 0 24 24" stroke="currentColor">
@@ -160,17 +164,17 @@
     <div class="flex justify-between w-64 md:w-96 items-center mt-6 z-10">
       <a target="_blank" class="inline-flex items-center text-gray-700 font-medium text-sm text-center">
         <span class="ml-2 text-primary">
-          {{ t('alerady_a') }}？
-          <router-link to="/login" class="text-xs ml-2 text-blue-500 font-semibold">{{ t('p_l') }}</router-link>
+          {{  t('alerady_a')  }}？
+          <router-link to="/login" class="text-xs ml-2 text-blue-500 font-semibold">{{  t('p_l')  }}</router-link>
         </span>
       </a>
-      <router-link to="/" class="text-xs ml-10 text-blue-500 font-semibold">{{ t('reg_later') }}</router-link>
+      <router-link to="/" class="text-xs ml-10 text-blue-500 font-semibold">{{  t('reg_later')  }}</router-link>
     </div>
   </div>
 </template>
 
 <script setup>
-import { EyeIcon, EyeOffIcon,CodeIcon,MailIcon   } from "@heroicons/vue/solid";
+import { EyeIcon, EyeOffIcon, CodeIcon, MailIcon } from "@heroicons/vue/solid";
 import { ref, computed } from "vue";
 import { UserLogin } from "@/network/user.js";
 import { useStore } from "vuex";
@@ -178,6 +182,7 @@ import { useRouter } from "vue-router";
 import NoticeMsg from "@/utils/alert";
 import Loading from "@/utils/loader";
 import md5 from "js-md5";
+import allApi from "@/network/allApi.js";
 import { useI18n } from "vue-i18n/index";
 const { t } = useI18n();
 const name = ref("");
@@ -189,13 +194,12 @@ const passwordField = ref("password");
 const C_passwordField = ref("password");
 const codeDisable = ref(false)
 const countdown = ref(60)
-const codeMsg = ref('Get Code') 
+const codeMsg = ref('Get Code')
 const timer = ref(null)
 const verficationCode = ref('')
 const store = useStore();
 const router = useRouter();
 const videoSource = ref("https://senbackkg.yewuxia.com/main-consumer-web/assets-oss/ob/videos/login/video.bc2597160d5dbee099f4250dbaa84271.mp4");
-
 const ShowVisibility = () => {
   passwordField.value =
     passwordField.value === "password" ? "text" : "password";
@@ -211,7 +215,8 @@ const disableBtn = computed(() => {
     email.value === "" ||
     password.value === "" ||
     confrimPassword.value === "" ||
-    reference.value === ""
+    reference.value === "" ||
+    verficationCode.value === ""
   ) {
     return true;
   } else {
@@ -219,47 +224,101 @@ const disableBtn = computed(() => {
   }
 });
 
-function getValidStr(){
+// function getValidStr(){
 
-        if (countdown.value > 0 && countdown.value <= 60) {
-          countdown.value--;
-          
-            if (countdown.value !== 0) {
-              codeMsg.value = "Resend(" + countdown.value + ")";
-            } else {
-              clearInterval(timer);
-              codeMsg.value = "Get Code";
-              countdown.value = 60;
-              codeDisable.value = false;
-              timer.value = null;
-            }
-          }
-      }
+//         if (countdown.value > 0 && countdown.value <= 5) {
+//           countdown.value--;
 
-const getCode = () => {
-  console.log(codeDisable.value,"disable");
-  if(codeDisable.value) return
-  codeDisable.value = true
- if(!timer.value){
+//           console.log(codeDisable.value,"disable");
+//             if (countdown.value !== 0) {
+//               // codeDisable.value = true;
+//               codeMsg.value = "Resend(" + countdown.value + ")";
+//             } else {
+//               clearInterval(timer);
+//               codeMsg.value = "Get Code";
+//               countdown.value = 5;
+//                codeDisable.value = false;
+//               timer.value = null;
+//             }
+//           }
+//       }
+
+
+const createEmailCode = () => {
+  let data = { email: email.value }
+  allApi.createEmailCode(data).then((res) => {
+    console.log(res, "createEmailCode");
+    if (res.data.success == true) {
+      console.log("success *************************")
+      // clearTimeout(timer.value)
+      // codeMsg.value = "Get Code";
+      // codeDisable.value = false
+      // countdown.value = 60;
+    } else {
+      return NoticeMsg.Message('Getting Code failed', "error");
+    }
+  }).catch((e) => {
+    console.log(e);
+    //catch error then reset timer
+    clearTimeout(timer.value) 
+    codeMsg.value = "Get Code";
+    codeDisable.value = false
+    countdown.value = 60;
+    return NoticeMsg.Message('network error, please try again to get code', "error");
+  })
+}
+
+const getValidStr = () => {
+  console.log(email.value, "ttttttttttt");
+
+  console.log(codeDisable.value, "disable");
+  codeMsg.value = "Resend(" + countdown.value + ")";
+  countdown.value--;
+  if (countdown.value == 59) {
+    console.log("countdown value is", countdown.value);
+    createEmailCode()
+  }
+  if (countdown.value <= 0) {
+    countdown.value = 60;
+    codeMsg.value = "Get Code";
+    codeDisable.value = false
+  } else {
+    codeDisable.value = true;
+    timer.value = setTimeout(() => {
+      getValidStr()
+    }, 1000);
+  }
+}
+
+function validateEmail(val) {
+  var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(val);
+}
+
+function getCode() {
+  if(email.value == '') return NoticeMsg.Message('Email address is required', "warning");
+  if (validateEmail(email.value)) {
+    console.log("valid email");
+  } else {
+    return NoticeMsg.Message('Please Enter a valid email address', "warning");
+  }
   getValidStr()
-  timer.value = setInterval(getValidStr,1000)
- }
 }
 
 const register = () => {
   if (password.value !== confrimPassword.value)
     return NoticeMsg.Message(t('confirm_notmatch'), "warning");
-   if(password.value.length < 6)
-   return NoticeMsg.Message(`Password must be at least 6 characters long`, "warning");
+  if (password.value.length < 6)
+    return NoticeMsg.Message(`Password must be at least 6 characters long`, "warning");
   if (!/\d/.test(password.value) || !/[a-zA-Z]/.test(password.value))
     return NoticeMsg.Message(t('pass_check'), "warning");
 
-   if(name.value == password.value)
-   return NoticeMsg.Message(`Username and Password can't be the same`, "warning");
-   
+  if (name.value == password.value)
+    return NoticeMsg.Message(`Username and Password can't be the same`, "warning");
+
   let pass = md5(password.value);
   let data = {
-    data: `02;${name.value};${pass};${reference.value}${email.value};windows`, // 2/1 success
+    data: `02;${name.value};${pass};${reference.value};${email.value};${verficationCode.value};windows`, // 2/1 success
   };
   Loading.showLoading()
   UserLogin(data).then((res) => {
@@ -284,11 +343,12 @@ const register = () => {
 </script>
 
 <style scoped>
-.login__{
+.login__ {
   background-image: url("@/assets/home/tt.jpg");
   background-size: cover;
   background-repeat: no-repeat;
 }
+
 video {
   height: 100vh;
   width: 100%;

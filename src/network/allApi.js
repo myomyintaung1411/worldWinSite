@@ -103,7 +103,7 @@ export default {
     },
     createEmailCode(data) {
         return network({
-            url: '/main/mail/createEamilCode',
+            url: '/main/createEmailCode',
             method: 'post',
             data
         })
