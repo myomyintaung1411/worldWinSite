@@ -250,6 +250,7 @@ const createEmailCode = () => {
     console.log(res, "createEmailCode");
     if (res.data.success == true) {
       console.log("success *************************")
+      return NoticeMsg.Message('Email code send successfully , Please check in your mailbox', "success");
       // clearTimeout(timer.value)
       // codeMsg.value = "Get Code";
       // codeDisable.value = false
