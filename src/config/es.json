@@ -2,6 +2,9 @@
     "en": "inglés",
     "zh": "chino",
     "es": "España",
+    "de":"alemán",
+    "it":"italiano",
+    "fr":"francés",
     "ok": "Ok",
     "h": "Hogar",
     "s": "Deporte",
@@ -79,5 +82,11 @@
     "reg_success":"Registro exitoso, por favor inicie sesión",
     "confirm_notmatch":"Contraseña y confirmar contraseña no coinciden",
     "pass_check":"La contraseña debe contener números y letras en inglés",
-    "change_pass":"Cambia la contraseña"
+    "change_pass":"Cambia la contraseña",
+
+    "email__req":"La dirección de correo electrónico es obligatoria",
+    "val_email":"Ingrese una dirección de correo electrónico válida",
+    "user__pass":"El nombre de usuario y la contraseña no pueden ser iguales",
+    "enter_email":"Ingrese la dirección de correo electrónico",
+    "enter_veri":"Ingresar código de verificación"
 }

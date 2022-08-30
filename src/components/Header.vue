@@ -123,12 +123,15 @@
 
           <div v-if="isMenuOpen" class="absolute top-0 left-0 w-full z-10">
             <div class="p-5 bg-gray-900 rounded shadow-sm h-auto">
+              
               <div class="flex items-center justify-between mb-4">
                 <div class=" rounded-full">
                   <img src="@/assets/home/world-win-logo.png" alt="logo" draggable="false"
                     class="w-32 md:w-32 lg:w-44 h-8" />
                 </div>
-                
+               <div>
+                <!-- <languageswitch></languageswitch> -->
+               </div>
                 <div>
                   <button aria-label="Close Menu" title="Close Menu"
                     class="p-2 -mt-2 -mr-2 transition duration-200 rounded hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
@@ -154,6 +157,7 @@
                       class="font-medium tracking-wide block hover:bg-gray-700 px-3 py-2 transition-colors duration-200">
                       {{ t('s') }}</div>
                   </li>
+
                   <!-- <li>
                     <a @click="TabClick(3)" href="#" :class="activeRoute === '/lottery' ? 'text-primary' : 'text-gray-50'"
                       aria-label="Lottery" title="Lottery"

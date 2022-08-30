@@ -36,23 +36,6 @@
                       </div>
                     </div>
                   </RadioGroupOption>
-                  <RadioGroupOption as="template" value="cz" v-slot="{ active, checked }">
-                    <div :class="[
-                active
-                  ? 'ring-2 ring-offset-2 ring-offset-primary ring-white ring-opacity-60'
-                  : '',
-                checked ? 'bg-primary bg-opacity-75 text-white ' : 'bg-slate-900  ',
-              ]" class="relative text-white flex w-fit px-7 py-1 rounded-lg shadow-md cursor-pointer focus:outline-none">
-                      <div class="flex items-center justify-between w-full">
-                        <div class="flex items-center">
-                          <div class="text-sm flex items-center justify-center space-x-3 w-fit">
-                            <RadioGroupLabel as="p" :class="checked ? 'text-white' : 'text-white'" class="font-medium w-fit">{{t('zh')}}</RadioGroupLabel>
-                            <img src="@/assets/ch.svg" alt class="w-8 h-8" />
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </RadioGroupOption>
                   <RadioGroupOption as="template" value="es" v-slot="{ active, checked }">
                     <div :class="[
                 active
@@ -65,6 +48,74 @@
                           <div class="text-sm flex items-center justify-center space-x-3 w-fit">
                             <RadioGroupLabel as="p" :class="checked ? 'text-white' : 'text-white'" class="font-medium w-fit">{{t('es')}}</RadioGroupLabel>
                             <img src="@/assets/spain.svg" alt class="w-8 h-8" />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </RadioGroupOption>
+                  <RadioGroupOption as="template" value="de" v-slot="{ active, checked }">
+                    <div :class="[
+                active
+                  ? 'ring-2 ring-offset-2 ring-offset-primary ring-white ring-opacity-60'
+                  : '',
+                checked ? 'bg-primary bg-opacity-75 text-white ' : 'bg-slate-900  ',
+              ]" class="relative text-white flex w-fit px-7 py-1 rounded-lg shadow-md cursor-pointer focus:outline-none">
+                      <div class="flex items-center justify-between w-full">
+                        <div class="flex items-center">
+                          <div class="text-sm flex items-center justify-center space-x-3 w-fit">
+                            <RadioGroupLabel as="p" :class="checked ? 'text-white' : 'text-white'" class="font-medium w-fit">{{t('de')}}</RadioGroupLabel>
+                            <img src="@/assets/germany.svg" alt class="w-8 h-8" />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </RadioGroupOption>
+                  <RadioGroupOption as="template" value="fr" v-slot="{ active, checked }">
+                    <div :class="[
+                active
+                  ? 'ring-2 ring-offset-2 ring-offset-primary ring-white ring-opacity-60'
+                  : '',
+                checked ? 'bg-primary bg-opacity-75 text-white ' : 'bg-slate-900  ',
+              ]" class="relative text-white flex w-fit px-7 py-1 rounded-lg shadow-md cursor-pointer focus:outline-none">
+                      <div class="flex items-center justify-between w-full">
+                        <div class="flex items-center">
+                          <div class="text-sm flex items-center justify-center space-x-3 w-fit">
+                            <RadioGroupLabel as="p" :class="checked ? 'text-white' : 'text-white'" class="font-medium w-fit">{{t('fr')}}</RadioGroupLabel>
+                            <img src="@/assets/france.svg" alt class="w-8 h-8" />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </RadioGroupOption>
+                  <RadioGroupOption as="template" value="it" v-slot="{ active, checked }">
+                    <div :class="[
+                active
+                  ? 'ring-2 ring-offset-2 ring-offset-primary ring-white ring-opacity-60'
+                  : '',
+                checked ? 'bg-primary bg-opacity-75 text-white ' : 'bg-slate-900  ',
+              ]" class="relative text-white flex w-fit px-7 py-1 rounded-lg shadow-md cursor-pointer focus:outline-none">
+                      <div class="flex items-center justify-between w-full">
+                        <div class="flex items-center">
+                          <div class="text-sm flex items-center justify-center space-x-3 w-fit">
+                            <RadioGroupLabel as="p" :class="checked ? 'text-white' : 'text-white'" class="font-medium w-fit">{{t('it')}}</RadioGroupLabel>
+                            <img src="@/assets/italian.svg" alt class="w-8 h-8" />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </RadioGroupOption>
+                  <RadioGroupOption as="template" value="cz" v-slot="{ active, checked }">
+                    <div :class="[
+                active
+                  ? 'ring-2 ring-offset-2 ring-offset-primary ring-white ring-opacity-60'
+                  : '',
+                checked ? 'bg-primary bg-opacity-75 text-white ' : 'bg-slate-900  ',
+              ]" class="relative text-white flex w-fit px-7 py-1 rounded-lg shadow-md cursor-pointer focus:outline-none">
+                      <div class="flex items-center justify-between w-full">
+                        <div class="flex items-center">
+                          <div class="text-sm flex items-center justify-center space-x-3 w-fit">
+                            <RadioGroupLabel as="p" :class="checked ? 'text-white' : 'text-white'" class="font-medium w-fit">{{t('zh')}}</RadioGroupLabel>
+                            <img src="@/assets/ch.svg" alt class="w-8 h-8" />
                           </div>
                         </div>
                       </div>

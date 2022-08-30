@@ -44,7 +44,7 @@
               <input required v-model.trim="email" id="email" autocomplete="off" type="email" name="email" class="text-sm text-gray-500 placeholder-gray-500 
               pl-10 pr-4 rounded-2xl border border-gray-400 w-full py-2 
               focus:outline-none border-none focus:border-none outline-none"
-                placeholder="Please Enter Email Address" />
+                :placeholder="t('enter_email')" />
             </div>
           </div>
           <div class="flex flex-col mb-4">
@@ -62,7 +62,7 @@
               <input required v-model.trim="verficationCode" id="verficationCode" autocomplete="off" type="text"
                 name="verficationCode" class="text-sm text-gray-500 placeholder-gray-500 
               pl-10 pr-4 rounded-2xl border border-gray-400 w-full py-2 
-              focus:outline-none border-none focus:border-none outline-none" placeholder=" Enter Verfication Code" />
+              focus:outline-none border-none focus:border-none outline-none" :placeholder=" t('enter_veri')" />
               <div
                 class="inline-flex whitespace-nowrap items-center justify-center absolute right-10 top-0 h-full w-10 text-gray-400 md:cursor-pointer">
                 <!-- <EyeIcon v-if="passwordField !== 'password'" @click="ShowVisibility" class="w-4 h-5" />
@@ -297,7 +297,7 @@ function validateEmail(val) {
 }
 
 function getCode() {
-  if(email.value == '') return NoticeMsg.Message('Email address is required', "warning");
+  if(email.value == '') return NoticeMsg.Message(t('email__req'), "warning");
   if (validateEmail(email.value)) {
     console.log("valid email");
   } else {
@@ -310,12 +310,12 @@ const register = () => {
   if (password.value !== confrimPassword.value)
     return NoticeMsg.Message(t('confirm_notmatch'), "warning");
   if (password.value.length < 6)
-    return NoticeMsg.Message(`Password must be at least 6 characters long`, "warning");
+    return NoticeMsg.Message(t('val_email'), "warning");
   if (!/\d/.test(password.value) || !/[a-zA-Z]/.test(password.value))
     return NoticeMsg.Message(t('pass_check'), "warning");
 
   if (name.value == password.value)
-    return NoticeMsg.Message(`Username and Password can't be the same`, "warning");
+    return NoticeMsg.Message(t('user__pass'), "warning");
 
   let pass = md5(password.value);
   let data = {
