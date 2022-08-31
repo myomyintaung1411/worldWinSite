@@ -17,6 +17,8 @@
     "total": "Los activos totales",
     "online_re": "Recarga en línea",
     "t_record": "Transacción",
+    "bind_coin":"Vincular dirección de moneda",
+    "recharge_requst":"Solicitar Retiro",
     "service": "Servicio",
     "top": "volver arriba",
     "e_sport": "e-deporte",
@@ -88,5 +90,6 @@
     "val_email":"Ingrese una dirección de correo electrónico válida",
     "user__pass":"El nombre de usuario y la contraseña no pueden ser iguales",
     "enter_email":"Ingrese la dirección de correo electrónico",
-    "enter_veri":"Ingresar código de verificación"
+    "enter_veri":"Ingresar código de verificación",
+    "contact__":"Póngase en contacto con el servicio de atención al cliente después de la transferencia"
 }

@@ -30,8 +30,7 @@
                     }"></vue-qrcode>
               </figure>
             </div>
-            <div class="text-[15px] text-gray-700 text-center w-full pt-2">Please contact customer service after
-              transfer !</div>
+            <div class="text-[15px] text-gray-700 text-center w-full pt-2">{{t('contact__')}}</div>
           </div>
         </div>
       </div>

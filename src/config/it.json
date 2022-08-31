@@ -91,6 +91,7 @@
     "val_email":"Inserisci un indirizzo email valido",
     "user__pass":"Nome utente e password non possono essere uguali",
     "enter_email": "Inserisci l'indirizzo e-mail",
-    "enter_veri":"Inserisci il codice di verifica"
+    "enter_veri":"Inserisci il codice di verifica",
+    "contact__":"Si prega di contattare il servizio clienti dopo il trasferimento"
 
 }

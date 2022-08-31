@@ -39,7 +39,7 @@
     </div>
     </div> -->
     <div v-if="checkArray()">
-      <div class="text-white px-4 pb-2 text-[16px]  inline-flex ">Please contact customer service after transfer !</div>
+      <div class="text-white px-4 pb-2 text-[16px]  inline-flex ">{{t('contact__')}}</div>
       <div class="flex flex-wrap">
         <div class="mx-2 my-2 w-[320px]" v-for="(coin,i) in arrayUser(user.adress)" :key="i">
           <div class=" w-full 

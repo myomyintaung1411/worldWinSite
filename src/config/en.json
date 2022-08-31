@@ -91,6 +91,7 @@
     "val_email":"Please Enter a valid email address",
     "user__pass":"Username and Password can't be the same",
     "enter_email":"Please Enter Email Address",
-    "enter_veri":"Enter Verfication Code"
+    "enter_veri":"Enter Verfication Code",
+    "contact__":"Please contact customer service after transfer !"
    
 }
