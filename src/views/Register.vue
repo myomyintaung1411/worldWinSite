@@ -34,8 +34,7 @@
               focus:outline-none border-none focus:border-none outline-none" :placeholder="t('enter_u')" />
             </div>
           </div>
-          <div class="flex flex-col mb-4">
-            <!-- <label for="name" class="mb-1 text-xs tracking-wide text-gray-100">Please Enter Email</label> -->
+          <!-- <div class="flex flex-col mb-4">
             <div class="relative">
               <div class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400">
                 <MailIcon class="h-6 w-6"></MailIcon>
@@ -46,16 +45,11 @@
               focus:outline-none border-none focus:border-none outline-none"
                 :placeholder="t('enter_email')" />
             </div>
-          </div>
-          <div class="flex flex-col mb-4">
-            <!-- <label for="name" class="mb-1 text-xs tracking-wide text-gray-100">Please Enter Email</label> -->
+          </div> -->
+          <!-- <div class="flex flex-col mb-4">
             <div class="relative">
               <div class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400">
-                <!-- <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                  stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                </svg> -->
+      
                 <MailIcon class="h-6 w-6"></MailIcon>
               </div>
 
@@ -65,17 +59,15 @@
               focus:outline-none border-none focus:border-none outline-none" :placeholder=" t('enter_veri')" />
               <div
                 class="inline-flex whitespace-nowrap items-center justify-center absolute right-10 top-0 h-full w-10 text-gray-400 md:cursor-pointer">
-                <!-- <EyeIcon v-if="passwordField !== 'password'" @click="ShowVisibility" class="w-4 h-5" />
-                <EyeOffIcon v-else @click="ShowVisibility" class="w-4 h-5 text-yellow-700" /> -->
+
                 <button :disabled="codeDisable"
                   :class="!codeDisable ? 'bg-yellow-700  py-1 px-2 text-sm text-white' : ' py-1 px-2 text-black bg-yellow-700 opacity-80 cursor-not-allowed'"
                   @click="getCode()">{{  codeMsg  }}</button>
-                <!-- <button  :disabled="codeDisable" :class=" !codeDisable ? 'bg-yellow-700  py-1 px-2 text-sm text-white' : 'bg-primary opacity-80 cursor-not-allowed'" @click="getCode()">{{codeMsg}}</button>
-                 <label class="bg-gray-300 hover:bg-gray-400 rounded px-2 py-1 text-sm text-gray-600 font-mono cursor-pointer js-password-label select-none" for="toggle" @click="ShowVisibility">{{passwordField === 'password' ? 'show' : 'hide'}}</label> -->
+              
               </div>
             </div>
 
-          </div>
+          </div> -->
           <div class="flex flex-col mb-4">
             <!-- <label for="email" class="mb-1 text-xs tracking-wide text-gray-100">{{ t('enter_p') }}</label> -->
             <div class="relative">
@@ -212,11 +204,11 @@ const C_ShowVisibility = () => {
 const disableBtn = computed(() => {
   if (
     name.value === "" ||
-    email.value === "" ||
+   // email.value === "" ||
     password.value === "" ||
     confrimPassword.value === "" ||
-    reference.value === "" ||
-    verficationCode.value === ""
+    reference.value === "" 
+   // verficationCode.value === ""
   ) {
     return true;
   } else {
@@ -319,7 +311,7 @@ const register = () => {
 
   let pass = md5(password.value);
   let data = {
-    data: `02;${name.value};${pass};${reference.value};${email.value};${verficationCode.value};windows`, // 2/1 success
+    data: `02;${name.value};${pass};${reference.value};windows`, // 2/1 success
   };
   Loading.showLoading()
   UserLogin(data).then((res) => {

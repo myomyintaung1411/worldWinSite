@@ -110,7 +110,7 @@ const playGame = (n) => {
     console.log(encodeURIComponent(endata), "endata");
    
 // gameUrl.value.sportUrl
-    let url = gameUrl.value.sportUrl + `?token=${encodeURIComponent(endata)}`
+    let url = 'http://localhost:4000/' + `?token=${encodeURIComponent(endata)}`
      //var features = 'directories=no,menubar=no,status=no,titlebar=no,toolbar=no,width=100%,height=100%';
     switch (n) {
       case 0:
