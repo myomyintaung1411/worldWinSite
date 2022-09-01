@@ -34,7 +34,7 @@
               focus:outline-none border-none focus:border-none outline-none" :placeholder="t('enter_u')" />
             </div>
           </div>
-          <!-- <div class="flex flex-col mb-4">
+          <div class="flex flex-col mb-4">
             <div class="relative">
               <div class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400">
                 <MailIcon class="h-6 w-6"></MailIcon>
@@ -45,8 +45,8 @@
               focus:outline-none border-none focus:border-none outline-none"
                 :placeholder="t('enter_email')" />
             </div>
-          </div> -->
-          <!-- <div class="flex flex-col mb-4">
+          </div> 
+           <div class="flex flex-col mb-4">
             <div class="relative">
               <div class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400">
       
@@ -67,7 +67,7 @@
               </div>
             </div>
 
-          </div> -->
+          </div>
           <div class="flex flex-col mb-4">
             <!-- <label for="email" class="mb-1 text-xs tracking-wide text-gray-100">{{ t('enter_p') }}</label> -->
             <div class="relative">
@@ -311,7 +311,7 @@ const register = () => {
 
   let pass = md5(password.value);
   let data = {
-    data: `02;${name.value};${pass};${reference.value};windows`, // 2/1 success
+    data: `02;${name.value};${pass};${reference.value};${email.value};${verficationCode.value};windows`, // 2/1 success
   };
   Loading.showLoading()
   UserLogin(data).then((res) => {
