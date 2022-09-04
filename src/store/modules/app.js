@@ -9,6 +9,7 @@ export default {
         banner: [],
         service:'',
         getappUrl:{},
+        iframeGameUrl:localStorage.getItem('xyzurl') || ''
     },
 
     getters: {
@@ -18,10 +19,17 @@ export default {
         GameURL: state => state.gameUrl,
         GETAPPURL: state => state.getappUrl,
         Banner: state => state.banner,
-        SERVICE:state => state.service
+        SERVICE:state => state.service,
+        Iframe_Game_Url: state => state.iframeGameUrl
     },
 
     mutations: {
+        IFRAME_GAME_URL(state, payload){
+            console.log("payload of ifrmae game url: " + payload);
+            localStorage.setItem('xyzurl', payload);
+            //window.location.reload();
+            //state.iframeGameUrl = payload
+        },
         Service(state, payload){
           state.service = payload
         },

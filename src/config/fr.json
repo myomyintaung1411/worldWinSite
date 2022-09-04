@@ -92,7 +92,8 @@
     "user__pass":"Le nom d'utilisateur et le mot de passe ne peuvent pas être identiques",
     "enter_email":"Veuillez entrer l'adresse e-mail",
     "enter_veri":"Entrez le code de vérification",
-    "contact__":"Veuillez contacter le service client après le transfert"
+    "contact__":"Veuillez contacter le service client après le transfert",
+    "play_now":"joue maintenant"
 
 
 }

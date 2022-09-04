@@ -36,7 +36,7 @@
                       </div>
                     </div>
                   </RadioGroupOption>
-                  <RadioGroupOption as="template" value="es" v-slot="{ active, checked }">
+                  <!-- <RadioGroupOption as="template" value="es" v-slot="{ active, checked }">
                     <div :class="[
                 active
                   ? 'ring-2 ring-offset-2 ring-offset-primary ring-white ring-opacity-60'
@@ -52,7 +52,7 @@
                         </div>
                       </div>
                     </div>
-                  </RadioGroupOption>
+                  </RadioGroupOption> -->
                   <RadioGroupOption as="template" value="de" v-slot="{ active, checked }">
                     <div :class="[
                 active
@@ -70,7 +70,7 @@
                       </div>
                     </div>
                   </RadioGroupOption>
-                  <RadioGroupOption as="template" value="fr" v-slot="{ active, checked }">
+                  <!-- <RadioGroupOption as="template" value="fr" v-slot="{ active, checked }">
                     <div :class="[
                 active
                   ? 'ring-2 ring-offset-2 ring-offset-primary ring-white ring-opacity-60'
@@ -120,7 +120,7 @@
                         </div>
                       </div>
                     </div>
-                  </RadioGroupOption>
+                  </RadioGroupOption> -->
                 </div>
               </RadioGroup>
             </div>
@@ -156,6 +156,9 @@ import {
 } from "@heroicons/vue/outline";
 import { useI18n } from "vue-i18n/index";
 import { onMounted, reactive, ref, watch, computed } from "vue";
+import { useRouter, useRoute } from "vue-router";
+import { useStore } from "vuex";
+
 export default {
   components: {
     Disclosure,
@@ -180,11 +183,22 @@ export default {
   setup() {
    const { t } = useI18n();
     const lang = ref(localStorage.getItem("l") || "en");
+    const iframeUrl = computed(() => store.getters["app/Iframe_Game_Url"]);
+    const router = useRouter();
+    const route = useRoute();
+    const store = useStore();
+
     const changeLanguage = () => {
-      console.log("l;ee");
       localStorage.setItem("l", lang.value);
       window.location.reload();
     };
+
+    // const changeLanguage = () => {
+    //   localStorage.setItem("l", lang.value);
+    //   let url = iframeUrl.value.slice(0,-2) + lang.value
+    //   store.commit('app/IFRAME_GAME_URL',url)
+    //   window.location.reload();
+    // };
     return {
       lang,
       changeLanguage,

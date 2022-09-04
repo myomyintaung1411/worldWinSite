@@ -91,5 +91,6 @@
      "user__pass":"用户名和密码不能相同",
      "enter_email":"请输入邮箱地址",
      "enter_veri":"输入验证码",
-     "contact__":"转账后请联系客服"
+     "contact__":"转账后请联系客服",
+     "play_now":"现在播放"
 }

@@ -6,19 +6,19 @@
 
         <div class=" mx-0 md:mx-2 relative" @click="playGame(0)">
           <img  src="@/assets/home/card1.jpg" draggable="false" alt class="object-cover cursor-pointer object-center w-full rounded-t-md h-64" />
-          <button class=" absolute bottom-0  left-1/2 transform -translate-x-1/2 -translate-y-1/2   game__play_div">Play Now</button>
+          <button class=" absolute bottom-0  left-1/2 transform -translate-x-1/2 -translate-y-1/2   game__play_div">{{t('play_now')}}</button>
         </div>
       </div>
       <div class="relative my-1 md:hover:translate-y-2 lg:space-x-0 transition duration-300 md:space-y-0 p-0 sm:p-1 md:p-3 w-full mx-0 sm:w-1/3 md:w-1/3 lg:w-1/3">
         <div class="mx-0 md:mx-2 relative" @click="playGame(1)">
           <img  src="@/assets/card2.jpg" draggable="false" alt class="object-cover cursor-pointer object-center w-full rounded-t-md h-64" />
-          <button class=" absolute bottom-0  left-1/2 transform -translate-x-1/2 -translate-y-1/2   game__play_div">Play Now</button>
+          <button class=" absolute bottom-0  left-1/2 transform -translate-x-1/2 -translate-y-1/2   game__play_div">{{t('play_now')}}</button>
         </div>
       </div>
       <div class="relative my-1 md:hover:translate-y-2 lg:space-x-0 transition duration-300 md:space-y-0 p-0 sm:p-1 md:p-3 w-full mx-0 sm:w-1/3 md:w-1/3 lg:w-1/3">
         <div class="mx-0 md:mx-2 relative" @click="playGame(2)">
           <img  src="@/assets/card3.jpg" draggable="false" alt class="object-cover cursor-pointer object-center w-full rounded-t-md h-64" />
-          <button class=" absolute bottom-0  left-1/2 transform -translate-x-1/2 -translate-y-1/2   game__play_div">Play Now</button>
+          <button class=" absolute bottom-0  left-1/2 transform -translate-x-1/2 -translate-y-1/2   game__play_div">{{t('play_now')}}</button>
         </div>
       </div>
     </div>
@@ -30,19 +30,19 @@
 
         <div class=" mx-0 md:mx-2 relative" @click="playGame(3)">
           <img  src="@/assets/home/card1.jpg" draggable="false" alt class="object-cover cursor-pointer object-center w-full rounded-t-md h-64" />
-          <button class=" absolute bottom-0  left-1/2 transform -translate-x-1/2 -translate-y-1/2   game__play_div">Play Now</button>
+          <button class=" absolute bottom-0  left-1/2 transform -translate-x-1/2 -translate-y-1/2   game__play_div">{{t('play_now')}}</button>
         </div>
       </div>
       <div class="relative my-1 md:hover:translate-y-2 lg:space-x-0 transition duration-300 md:space-y-0 p-0 sm:p-1 md:p-3 w-full mx-0 sm:w-1/3 md:w-1/3 lg:w-1/3">
         <div class="mx-0 md:mx-2 relative" @click="playGame(4)">
           <img  src="@/assets/card2.jpg" draggable="false" alt class="object-cover cursor-pointer object-center w-full rounded-t-md h-64" />
-          <button class=" absolute bottom-0  left-1/2 transform -translate-x-1/2 -translate-y-1/2   game__play_div">Play Now</button>
+          <button class=" absolute bottom-0  left-1/2 transform -translate-x-1/2 -translate-y-1/2   game__play_div">{{t('play_now')}}</button>
         </div>
       </div>
       <div class="relative my-1 md:hover:translate-y-2 lg:space-x-0 transition duration-300 md:space-y-0 p-0 sm:p-1 md:p-3 w-full mx-0 sm:w-1/3 md:w-1/3 lg:w-1/3">
         <div class="mx-0 md:mx-2 relative" @click="playGame(5)">
           <img  src="@/assets/card3.jpg" draggable="false" alt class="object-cover cursor-pointer object-center w-full rounded-t-md h-64" />
-          <button class=" absolute bottom-0  left-1/2 transform -translate-x-1/2 -translate-y-1/2   game__play_div">Play Now</button>
+          <button class=" absolute bottom-0  left-1/2 transform -translate-x-1/2 -translate-y-1/2   game__play_div">{{t('play_now')}}</button>
         </div>
       </div>
     </div>
@@ -69,7 +69,7 @@ const gameEn = computed(() => store.getters["user/Game_En"]);
 const UserInfo = store.getters["user/GAME_ENTER_INFO"];
 
 const iframeUrl = ref(null)
-
+const lang = ref(localStorage.getItem("l") || "en");
 const card = reactive([
   {
     src: "../../assets/home/but1.png",
@@ -110,17 +110,22 @@ const playGame = (n) => {
     console.log(encodeURIComponent(endata), "endata");
    
 // gameUrl.value.sportUrl
-    let url = gameUrl.value.sportUrl + `?token=${encodeURIComponent(endata)}`
+    let url = gameUrl.value.sportUrl + `?token=${encodeURIComponent(endata)}` + `&lang=${lang.value}`
+    let mobileUrl = gameUrl.value.sportUrl + `?token=${encodeURIComponent(endata)}`
+    // store.commit('app/IFRAME_GAME_URL',url)
+    
      //var features = 'directories=no,menubar=no,status=no,titlebar=no,toolbar=no,width=100%,height=100%';
     switch (n) {
       case 0:
-        router.push({path:'/sportView',query:{url:url}})
+      
+        router.push({path:'/sportView',query:{url:mobileUrl}})
+        //window.location.reload()
         break;
       case 1:
-        router.push({path:'/sportView',query:{url:url}})
+        router.push({path:'/sportView',query:{url:mobileUrl}})
         break;
       case 2:
-        router.push({path:'/sportView',query:{url:url}})
+        router.push({path:'/sportView',query:{url:mobileUrl}})
         break;
       case 3:
          window.open(url)

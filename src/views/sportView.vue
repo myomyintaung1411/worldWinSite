@@ -44,14 +44,24 @@ const { t } = useI18n();
  const iframeShow = ref(false)
 const router = useRouter();
 const route = useRoute();
+ 
+const store = useStore()
+const iframeUrl = computed(() => store.getters["app/Iframe_Game_Url"]);
+const lang = ref(localStorage.getItem("l") || "en");
 
 const goBack = () => {
   router.replace("/");
 };
 
 onMounted(()=>{
-  console.log("loaded _______________>");
-  url.value = route.query.url
+  url.value = route.query.url + `&lang=${lang.value}`
+  console.log("loaded _______________>",url.value);
+  // if(iframeUrl.value == undefined || iframeUrl.value == null || iframeUrl.value == ''){
+  //   url.value = iframeUrl.value
+  //   window.location.reload()
+  // } else{
+  //   url.value = iframeUrl.value
+  // }
 })
 
 function onTapItem(mouseEvent) { // you can remove the `mouseEvent` argument

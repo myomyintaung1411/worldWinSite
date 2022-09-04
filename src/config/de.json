@@ -52,7 +52,7 @@
     "l_":"Neueste Technologie",
     "lasted_":"Das mit modernster Technologie unabhängig entwickelte Finanzverarbeitungssystem kann wirklich extrem schnelle Einzahlungen, Auszahlungen und Überweisungen erzielen. Exklusive Netzwerkoptimierungstechnologie, um Ihnen ein erstklassiges Spielerlebnis zu bieten und die Netzwerklatenz zu maximieren!",
     "footer_t": "World Win verfügt über legale Lizenzen, die von der European Malta MGA und der Philippine Government (PAGCOR) ausgestellt wurden. Es ist auf den Britischen Jungferninseln registriert und ein von der International Association anerkanntes legales Unternehmen. Bitte stellen Sie sicher, dass Sie mindestens 18 Jahre alt sind Jahre alt, bevor Sie sich registrieren und Spaß haben!",
-    "app_down":"App-Download",
+    "app_down":"Anwendung herunterladen",
     "down_text":"Fußball, Tennis, Basketball, alles, was Sie brauchen, ist bei World Win Sport. Mit der umfassendsten Unterhaltung und der wettbewerbsfähigsten APP der Branche präsentiert Ihnen World Win ein anderes und farbenfrohes ultimatives Erlebnis.",
     "game_sec":"Spielbereich",
     "game_sec_text":"Liste der verfügbaren Spiele, die Sie in World Win Sports spielen können.",
@@ -92,5 +92,6 @@
     "user__pass":"Benutzername und Passwort dürfen nicht identisch sein",
     "enter_email":"Bitte E-Mail-Adresse eingeben",
     "enter_veri":"Bestätigungscode eingeben",
-    "contact__":"Bitte wenden Sie sich nach der Überweisung an den Kundenservice"
+    "contact__":"Bitte wenden Sie sich nach der Überweisung an den Kundenservice",
+    "play_now":"Jetzt spielen"
 }

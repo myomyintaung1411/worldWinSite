@@ -107,7 +107,7 @@
               </MenuItems>
             </transition> -->
           </Menu>
-          <!-- <languageswitch></languageswitch> -->
+          <languageswitch></languageswitch>
         </ul>
         <div class="md:hidden">
           <button aria-label="Open Menu" title="Open Menu"
@@ -130,7 +130,8 @@
                     class="w-32 md:w-32 lg:w-44 h-8" />
                 </div>
                <div>
-                <!-- <languageswitch></languageswitch> -->
+                <!-- mobile languageswitch -->
+                <languageswitch></languageswitch>
                </div>
                 <div>
                   <button aria-label="Close Menu" title="Close Menu"
@@ -356,12 +357,12 @@ export default {
     
     const lToken = computed(() => store.getters["user/LToken"]);
     const user = computed(() => store.getters["user/USER"]);
-    const lang = ref(localStorage.getItem("l") || "cz");
+    const lang = ref(localStorage.getItem("l") || "en");
 
     const gameUrl = computed(() => store.getters["app/GameURL"]);
     const userId__ = store.state.user.userId;
     const gameEn = computed(() => store.getters["user/Game_En"]);
-
+    
     const status = reactive([
       { id: 1, name: "Chinese" },
       { id: 2, name: "English" },
@@ -369,15 +370,10 @@ export default {
     //const user = store.state.user.user
     const SignOut = () => {
       sessionStorage.clear();
+      //localStorage.clear();
       window.location.reload();
       router.push("/");
       // window.location.reload();
-    };
-
-    const changeLanguage = () => {
-      console.log("l;ee");
-      localStorage.setItem("l", lang.value);
-      window.location.reload();
     };
 
     const reqtUserInfo = () => {
@@ -510,7 +506,8 @@ export default {
         };
         var endata = AES.encrypt(JSON.stringify(data), gameEn.value);
         console.log(encodeURIComponent(endata), "endata");
-        let url = gameUrl.value.sportUrl + `?token=${encodeURIComponent(endata)}`
+        let url = 'http://192.168.1.9:4000/' + `?token=${encodeURIComponent(endata)}` + `&lang=${lang.value}`
+        let mobileUrl = 'http://192.168.1.9:4000/' + `?token=${encodeURIComponent(endata)}`
         switch (n) {
           case 2:
             // window.open(
@@ -522,7 +519,7 @@ export default {
             break;
             //22 is for mobile
           case 22:
-            router.push({path:'/sportView',query:{url:url}})
+            router.push({path:'/sportView',query:{url:mobileUrl}})
             break;
           // case 3:
           //   window.open(
@@ -574,7 +571,6 @@ export default {
       currentTime,
       showMoney,
       SignOut,
-      changeLanguage,
       reqtUserInfo,
       goUserCenter,
       goUserCenter__,

@@ -91,5 +91,6 @@
     "user__pass":"El nombre de usuario y la contraseña no pueden ser iguales",
     "enter_email":"Ingrese la dirección de correo electrónico",
     "enter_veri":"Ingresar código de verificación",
-    "contact__":"Póngase en contacto con el servicio de atención al cliente después de la transferencia"
+    "contact__":"Póngase en contacto con el servicio de atención al cliente después de la transferencia",
+    "play_now":"Reproducir ahora"
 }
