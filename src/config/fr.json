@@ -93,7 +93,9 @@
     "enter_email":"Veuillez entrer l'adresse e-mail",
     "enter_veri":"Entrez le code de vérification",
     "contact__":"Veuillez contacter le service client après le transfert",
-    "play_now":"joue maintenant"
+    "play_now":"joue maintenant",
+    "android_down":"Télécharger Android",
+    "ios_down":"Télécharger IOS"
 
 
 }

@@ -93,5 +93,7 @@
     "enter_email":"Bitte E-Mail-Adresse eingeben",
     "enter_veri":"Bestätigungscode eingeben",
     "contact__":"Bitte wenden Sie sich nach der Überweisung an den Kundenservice",
-    "play_now":"Jetzt spielen"
+    "play_now":"Jetzt spielen",
+    "android_down":"Android herunterladen",
+    "ios_down":"IOS herunterladen"
 }

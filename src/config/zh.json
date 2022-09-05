@@ -92,5 +92,7 @@
      "enter_email":"请输入邮箱地址",
      "enter_veri":"输入验证码",
      "contact__":"转账后请联系客服",
-     "play_now":"现在播放"
+     "play_now":"现在播放",
+     "android_down":"下载安卓应用",
+     "ios_down":"下载IOS应用程序"
 }

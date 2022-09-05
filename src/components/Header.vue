@@ -506,8 +506,8 @@ export default {
         };
         var endata = AES.encrypt(JSON.stringify(data), gameEn.value);
         console.log(encodeURIComponent(endata), "endata");
-        let url = 'http://192.168.1.9:4000/' + `?token=${encodeURIComponent(endata)}` + `&lang=${lang.value}`
-        let mobileUrl = 'http://192.168.1.9:4000/' + `?token=${encodeURIComponent(endata)}`
+        let url = gameUrl.value.sportUrl + `?token=${encodeURIComponent(endata)}` + `&lang=${lang.value}`
+        let mobileUrl = gameUrl.value.sportUrl + `?token=${encodeURIComponent(endata)}`
         switch (n) {
           case 2:
             // window.open(

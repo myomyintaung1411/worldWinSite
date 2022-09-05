@@ -92,5 +92,7 @@
     "enter_email":"Ingrese la dirección de correo electrónico",
     "enter_veri":"Ingresar código de verificación",
     "contact__":"Póngase en contacto con el servicio de atención al cliente después de la transferencia",
-    "play_now":"Reproducir ahora"
+    "play_now":"Reproducir ahora",
+    "android_down":"Descargar Android",
+    "ios_down":"Descargar IOS"
 }

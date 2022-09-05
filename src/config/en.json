@@ -93,6 +93,9 @@
     "enter_email":"Please Enter Email Address",
     "enter_veri":"Enter Verfication Code",
     "contact__":"Please contact customer service after transfer !",
-    "play_now":"Play Now"
+    "play_now":"Play Now",
+    "android_down":"Download Android App",
+    "ios_down":"Download IOS App"
+
    
 }

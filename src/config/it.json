@@ -93,6 +93,8 @@
     "enter_email": "Inserisci l'indirizzo e-mail",
     "enter_veri":"Inserisci il codice di verifica",
     "contact__":"Si prega di contattare il servizio clienti dopo il trasferimento",
-    "play_now":"Riproduci ora"
+    "play_now":"Riproduci ora",
+    "android_down":"Scarica Android",
+    "ios_down":"Scarica IOS"
 
 }

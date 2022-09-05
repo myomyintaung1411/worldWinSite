@@ -57,7 +57,7 @@
                      <a :href="gameUrl.android" target="_blank" class="mt-1
                      game__play_div
                     
-                    ">Download Android App</a>
+                    ">{{t('android_down')}}</a>
                   </div>
                 </a>
               </div>
@@ -82,7 +82,7 @@
                     <a :href="gameUrl.ios" target="_blank" class="mt-1
                      game__play_div
                     
-                    ">Download IOS App</a>
+                    ">{{t('ios_down')}}</a>
                   </div>
                 </a>
               </div>
