@@ -117,40 +117,46 @@ const selectCoinType = ref(coinType[0]);
 
 
 const bindCoinAdrr = () => {
- if(selectCoinType.value.name == 'BTC') {
-  let isValidBtc =  validate(coinAddress.value)
-  if(!isValidBtc) return NoticeMsg.Message('Please Enter  valid address', "warning");
- }
- if(selectCoinType.value.name == 'ETH' || selectCoinType.value.name == 'ERC20') {
-    var address = coinAddress.value;
-    let resp = address.match(/^0x[a-fA-F0-9]{40}$/g)
-   if(resp == null) return NoticeMsg.Message('Please Enter valid address', "warning");
- }
- 
- if(selectCoinType.value.name == 'TRC20'){
-   const isValidTRc = coinAddress.value.startsWith('T')
-   if(coinAddress.value.length < 34 || !isValidTRc){
-    return NoticeMsg.Message('Please Enter valid address', "warning");
-   }
- }
+  if (
+    (userId__ && lToken !== null) ||
+    (userId__ && lToken !== undefined) ||
+    (userId__ && lToken !== "")
+  ) {
+    if (selectCoinType.value.name == 'BTC') {
+      let isValidBtc = validate(coinAddress.value)
+      if (!isValidBtc) return NoticeMsg.Message('Please Enter  valid address', "warning");
+    }
+    if (selectCoinType.value.name == 'ETH' || selectCoinType.value.name == 'ERC20') {
+      var address = coinAddress.value;
+      let resp = address.match(/^0x[a-fA-F0-9]{40}$/g)
+      if (resp == null) return NoticeMsg.Message('Please Enter valid address', "warning");
+    }
 
- let userId = userId__;
-  const req_ = { coinAddress:selectCoinType.value.name + ',' + coinAddress.value,conType:selectCoinType.value.name,userId: userId };
-  if(coinAddress.value == '' || selectCoinType.value.name == '') {
-    return  NoticeMsg.Message('Please Enter coin address', "warning");
-  }
-  allApi
-    .getbindCoinAddress({ data: req_ })
-    .then((res) => {
+    if (selectCoinType.value.name == 'TRC20') {
+      const isValidTRc = coinAddress.value.startsWith('T')
+      if (coinAddress.value.length < 34 || !isValidTRc) {
+        return NoticeMsg.Message('Please Enter valid address', "warning");
+      }
+    }
+
+    let userId = userId__;
+    const req_ = { coinAddress: selectCoinType.value.name + ',' + coinAddress.value, conType: selectCoinType.value.name, userId: userId };
+    if (coinAddress.value == '' || selectCoinType.value.name == '') {
+      return NoticeMsg.Message('Please Enter coin address', "warning");
+    }
+    allApi
+      .getbindCoinAddress({ data: req_ })
+      .then((res) => {
         if (res.data.success == true) {
-            coinAddress.value = ''
-            return NoticeMsg.Message('success', "success");
+          coinAddress.value = ''
+          return NoticeMsg.Message('success', "success");
         }
-      console.log("getbindCoinAddress", res);
-    })
-    .catch((e) => {
-      console.log(e);
-    });
+        console.log("getbindCoinAddress", res);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  }
 }
 
 const RequestTransRec = () => {

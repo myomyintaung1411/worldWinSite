@@ -106,6 +106,7 @@ const store = useStore();
 const user = computed(() => store.getters["user/USER"]);
 const service = computed(() => store.getters["app/SERVICE"]);
 const coinAdd = ref(null)
+const lToken = store.state.user.token;
 const userId__ = store.state.user.userId;
 const { toClipboard } = useClipboard()
 const innerWidth = ref(window.innerWidth);
@@ -139,6 +140,11 @@ const goBack = () => {
 };
 
 const getOfficialCoinAddress = () => {
+  if (
+    (userId__ && lToken !== null) ||
+    (userId__ && lToken !== undefined) ||
+    (userId__ && lToken !== "")
+  ) {
   let userId = userId__;
   const req_ = { userId: userId };
    Loading.showLoading();
@@ -155,6 +161,7 @@ const getOfficialCoinAddress = () => {
       console.log(e);
       Loading.hideLoading();
     });
+  }
 };
 
 onMounted(()=>{

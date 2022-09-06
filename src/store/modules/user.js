@@ -7,8 +7,8 @@ export default {
     /* User */
     user: {},
     login: false,
-    token: sessionStorage.getItem('t') || '',
-    userId: sessionStorage.getItem('u_i') || '',
+    token: localStorage.getItem('t') || '',
+    userId: localStorage.getItem('u_i') || '',
     //token: '',
     //userId: '',
     gameEn: {
@@ -34,16 +34,16 @@ export default {
     Game_Enter_Info(state, payload) {
       var acc = AES.encrypt(JSON.stringify(payload.account + ';' + 'You’ve seen how crazy I am and you still choose to be my friend. Thanks for being the realest' + ';' + 'zhong'), state.gameEn);
       var pass = AES.encrypt(JSON.stringify(payload.pass + ';' + '@#d4dgd53gtd53d6' + ';' + 'zh126575755'), state.gameEn);
-      sessionStorage.setItem('a', acc)
-      sessionStorage.setItem('p', pass)
+      localStorage.setItem('a', acc)
+      localStorage.setItem('p', pass)
       //  state.gameEnterInfo.account = payload.account
       //  state.gameEnterInfo.pass = payload.pass
     },
     Login_Info(state, payload) {
       state.userId = payload[2] // userId
       state.token = payload[4] // token
-      sessionStorage.setItem('t', payload[4]) // token
-      sessionStorage.setItem("u_i", payload[2])
+      localStorage.setItem('t', payload[4]) // token
+      localStorage.setItem("u_i", payload[2])
     },
     IS_LOGIN(state, payload) {
       state.login = payload

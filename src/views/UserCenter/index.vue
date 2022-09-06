@@ -342,7 +342,7 @@
  const NavClick = (menu, index) => {
    activeMenu.value = index;
    if (index == 5 && menu.path == "/login") {
-     sessionStorage.clear();
+     localStorage.clear();
      window.location.reload();
      router.push("/");
      return;
@@ -354,7 +354,7 @@
  const m_NavClick = (menu, index) => {
    console.log(index, menu);
    if (index == 5 && menu.path == "/login") {
-     sessionStorage.clear();
+     localStorage.clear();
      window.location.reload();
      router.push("/");
      return;

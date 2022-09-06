@@ -121,6 +121,11 @@ const goBack = () => {
 
 
 const bindCoinAdrr = () => {
+  if (
+    (userId__ && lToken !== null) ||
+    (userId__ && lToken !== undefined) ||
+    (userId__ && lToken !== "")
+  ) {
  if(selectCoinType.value.name == 'BTC') {
   let isValidBtc =  validate(coinAddress.value)
   if(!isValidBtc) return NoticeMsg.Message('Please Enter  valid address', "warning");
@@ -155,6 +160,7 @@ const bindCoinAdrr = () => {
     .catch((e) => {
       console.log(e);
     });
+  }
 }
 
 const RequestTransRec = () => {

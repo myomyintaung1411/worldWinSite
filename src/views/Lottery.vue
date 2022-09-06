@@ -85,8 +85,8 @@ const changedTab = (index) => {
 const goLotteryGame = () => {
   let  username;
   let pass
-  let acc = sessionStorage.getItem("a");
-  let local_pass = sessionStorage.getItem("p");
+  let acc = localStorage.getItem("a");
+  let local_pass = localStorage.getItem("p");
   console.log(acc, local_pass, "acc and local pass");
   if (
     (acc && local_pass !== null) ||

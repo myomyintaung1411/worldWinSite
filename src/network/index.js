@@ -49,7 +49,7 @@ instance.interceptors.request.use((config) => {
    //showLoading()
   // 每次发送请求之前判断是否存在token，如果存在，则统一在http请求的header都加上token，不用每次请求都手动添加了
   //const token = window.localStorage.getItem('t')
-  const token = window.sessionStorage.getItem('t')
+  const token = window.localStorage.getItem('t')
   // token && (config.headers.Authorization = token)
   config.headers.token = token
   // 若请求方式为post，则将data参数转为JSON字符串
@@ -68,30 +68,30 @@ instance.interceptors.request.use((config) => {
 instance.interceptors.response.use((response) => {
  // hideLoading()
   // 响应成功
-  // if(response.data.status == 403){
-  //   Swal.fire({
-  //     title: 'Token Expired',
-  //     text: 'Token has expired. Please login again',
-  //     icon: "error",
-  //     showCancelButton: false,
-  //     allowOutsideClick: false,
-  //     backdrop: true,
-  //     confirmButtonText: 'Ok',
-  //     background: "#374151",
-  //     confirmButtonColor: "#a07c51",
-  //     buttonsStyling: {
-  //       color: "red",
-  //     },
-  //     color: "#fff",
-  //   }).then((res) => {
-  //     if (res.isConfirmed) {
-  //        sessionStorage.clear();
-  //        console.log(router)
-  //      // window.location.reload()
-  //       router.push("/login");
-  //     }
-  //   });
-  // }
+  if(response.data.status == 403){
+    Swal.fire({
+      title: 'Token Expired',
+      text: 'Token has expired. Please login again',
+      icon: "error",
+      showCancelButton: false,
+      allowOutsideClick: false,
+      backdrop: true,
+      confirmButtonText: 'Ok',
+      background: "#374151",
+      confirmButtonColor: "#a07c51",
+      buttonsStyling: {
+        color: "red",
+      },
+      color: "#fff",
+    }).then((res) => {
+      if (res.isConfirmed) {
+         localStorage.clear();
+         console.log(router)
+       // window.location.reload()
+        router.push("/login");
+      }
+    });
+  }
   console.log('拦截器报错')
   //NoticeMsg.Message("拦截器报错","error")
   return response
@@ -111,7 +111,7 @@ instance.interceptors.response.use((response) => {
         message = '请求错误'
         break
       case 403:
-
+        console.log("403 ---------->",status);
         break
       case 404:
         message = '请求地址出错'

@@ -309,7 +309,7 @@ const register = () => {
   if (name.value == password.value)
     return NoticeMsg.Message(t('user__pass'), "warning");
 
-  let pass = md5(password.value);
+  let pass = md5(password.value); //${email.value};${verficationCode.value}
   let data = {
     data: `02;${name.value};${pass};${reference.value};${email.value};${verficationCode.value};windows`, // 2/1 success
   };
@@ -330,6 +330,7 @@ const register = () => {
     router.push("/login");
   }).catch((e) => {
     console.log(e);
+    NoticeMsg.Message('unknown error', "error");
     Loading.hideLoading()
   });
 };

@@ -78,54 +78,61 @@ const goBack = () => {
 };
 const user = computed(() => store.getters["user/USERID"]);
 const userInfo = computed(() => store.getters["user/USER"]);
-
+const lToken = store.state.user.token;
+const userId__ = store.state.user.userId;
 const changePass = () => {
-    if (oldpass.value == '' || newpass.value == '' || confirmpass.value == '') {
-        return NoticeMsg.Message('Please Enter All Fields', "warning");
-    }
-    if (newpass.value !== confirmpass.value)
-        return NoticeMsg.Message(t('confirm_notmatch'), "warning");
+    if (
+        (userId__ && lToken !== null) ||
+        (userId__ && lToken !== undefined) ||
+        (userId__ && lToken !== "")
+    ) {
+        if (oldpass.value == '' || newpass.value == '' || confirmpass.value == '') {
+            return NoticeMsg.Message('Please Enter All Fields', "warning");
+        }
+        if (newpass.value !== confirmpass.value)
+            return NoticeMsg.Message(t('confirm_notmatch'), "warning");
 
-    if (newpass.value.length < 6)
-        return NoticeMsg.Message(`Password must be at least 6 characters long`, "warning");
+        if (newpass.value.length < 6)
+            return NoticeMsg.Message(`Password must be at least 6 characters long`, "warning");
 
-    if (oldpass.value == newpass.value)
-        return NoticeMsg.Message('New Password need to be different', "warning");
+        if (oldpass.value == newpass.value)
+            return NoticeMsg.Message('New Password need to be different', "warning");
 
-    if (!/\d/.test(newpass.value) || !/[a-zA-Z]/.test(newpass.value))
-        return NoticeMsg.Message(t('pass_check'), "warning");
+        if (!/\d/.test(newpass.value) || !/[a-zA-Z]/.test(newpass.value))
+            return NoticeMsg.Message(t('pass_check'), "warning");
 
-    let old_pass = md5(oldpass.value);
-    let new_pass = md5(newpass.value);
-    let userId = user.value
-    let data = {
-        userId: userId,
-        old_password: old_pass,
-        pw: new_pass
-    };
-    console.log("req of change password", data);
-    if (userId) {
-        Loading.showLoading()
-        allApi.changePass({ data }).then((res) => {
-            console.log(res);
-            Loading.hideLoading()
-            if (res.data.success == 'false') {
-                return NoticeMsg.Message('Incorrect old password !', "error");
-            }
-            if (res.data.success == true ) {
-                store.commit("user/Game_Enter_Info", {
-                    account: userInfo.value.name,
-                    pass: newpass.value,
-                });
-                oldpass.value = '',
-                newpass.value = ''
-                confirmpass.value = ''
-                return NoticeMsg.Message('Password changed successfully !', "success");
-            }
-        }).catch((e) => {
-            console.log(e);
-            Loading.hideLoading()
-        })
+        let old_pass = md5(oldpass.value);
+        let new_pass = md5(newpass.value);
+        let userId = user.value
+        let data = {
+            userId: userId,
+            old_password: old_pass,
+            pw: new_pass
+        };
+        console.log("req of change password", data);
+        if (userId) {
+            Loading.showLoading()
+            allApi.changePass({ data }).then((res) => {
+                console.log(res);
+                Loading.hideLoading()
+                if (res.data.success == 'false') {
+                    return NoticeMsg.Message('Incorrect old password !', "error");
+                }
+                if (res.data.success == true) {
+                    store.commit("user/Game_Enter_Info", {
+                        account: userInfo.value.name,
+                        pass: newpass.value,
+                    });
+                    oldpass.value = '',
+                        newpass.value = ''
+                    confirmpass.value = ''
+                    return NoticeMsg.Message('Password changed successfully !', "success");
+                }
+            }).catch((e) => {
+                console.log(e);
+                Loading.hideLoading()
+            })
+        }
     }
 }
 </script>

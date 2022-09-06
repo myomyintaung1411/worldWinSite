@@ -182,22 +182,29 @@ const arrayUser = (user) => {
 }
 
 const getOfficialCoinAddress = () => {
-  let userId = userId__;
-  const req_ = { userId: userId };
-  //Loading.showLoading();
-  allApi
-    .getOfficialCoinAddress({ data: req_ })
-    .then((res) => {
-      // Loading.hideLoading();
-      console.log("getOfficialCoinAddress", res.data.coin_info);
-      let removeCC = JSON.parse(res.data.coin_info)
-      coinAdd.value = removeCC;
-      console.log(removeCC, "removeCC");
-    })
-    .catch((e) => {
-       //Loading.hideLoading();
-      console.log(e);
-    });
+
+  if (
+    (userId__ && lToken !== null) ||
+    (userId__ && lToken !== undefined) ||
+    (userId__ && lToken !== "")
+  ) {
+    let userId = userId__;
+    const req_ = { userId: userId };
+    //Loading.showLoading();
+    allApi
+      .getOfficialCoinAddress({ data: req_ })
+      .then((res) => {
+        // Loading.hideLoading();
+        console.log("getOfficialCoinAddress", res.data.coin_info);
+        let removeCC = JSON.parse(res.data.coin_info)
+        coinAdd.value = removeCC;
+        console.log(removeCC, "removeCC");
+      })
+      .catch((e) => {
+        //Loading.hideLoading();
+        console.log(e);
+      });
+  }
 };
 // const getbindCoinAddress = () => {
 //   let userId = userId__;
