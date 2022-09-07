@@ -12,120 +12,15 @@ import Footer from "@/components/Footer.vue";
 const store = useStore();
 const router = useRouter();
 const route = useRoute();
-const lToken = store.state.user.token;
-const userId__ = store.state.user.userId;
-
-const getBannerInfo = () => {
-  // Loading.showLoading();
-  allApi
-    .getBannerInfo()
-    .then((res) => {
-      //Loading.hideLoading();
-      console.log(res, "banner res is");
-      store.commit("app/Banner_", res.data.data)
-    })
-    .catch((e) => {
-      // Loading.hideLoading();
-      console.log(e);
-    });
-};
-
-const getGameUrl = () => {
-  if (
-    (userId__ && lToken !== null) ||
-    (userId__ && lToken !== undefined) ||
-    (userId__ && lToken !== "")
-  ) {
-
-    let userId = userId__;
-    let t = lToken;
-    const req_ = { userId: userId };
-    allApi
-      .getGameUrl({ data: req_ })
-      .then((res) => {
-        console.log(res, "getgame url res is");
-        store.commit("app/Game_Url", res.data.data)
-      })
-      .catch((e) => {
-        console.log(e);
-      });
-  }
-};
-const getAppUrl = () => {
-
-  allApi
-    .getAppLink()
-    .then((res) => {
-      console.log(res, "getgame getAppLink ------------------------------------->");
-      store.commit("app/getApp_Url", res.data.data)
-    })
-    .catch((e) => {
-      console.log(e);
-    });
-};
-
-const getUserInfo = () => {
-  if (
-    (userId__ && lToken !== null) ||
-    (userId__ && lToken !== undefined) ||
-    (userId__ && lToken !== "")
-  ) {
-    let userId = userId__;
-    let t = lToken;
-    const req_ = { userId: userId, token: t };
-    allApi
-      .getUserInfo({ data: req_ })
-      .then((res) => {
-        // if(res.data.status == 403){
-        //   localStorage.clear()
-        //   router.push('/login')
-        // }
-        console.log(res, "getUserInfo *************");
-        store.commit("user/User", res.data.data)
-      })
-      .catch((e) => {
-        console.log(e);
-      });
-  } else {
-    console.log("null");
-  }
-};
-
-const getServiceLink = () => {
-
-  let userId = userId__;
-  const req_ = { userId: userId };
-  if (
-    (userId__ && lToken !== null) ||
-    (userId__ && lToken !== undefined) ||
-    (userId__ && lToken !== "")
-  ) {
-    allApi
-      .getServiceLink({ data: req_ })
-      .then((res) => {
-        console.log("getServiceLink", res);
-        store.commit("app/Service", res.data.service_link);
-        //serviceLink.value = res.data.service_link;
-      })
-      .catch((e) => {
-        console.log(e);
-      });
-  }
-};
-
-
 
 const changeWindowSize = () => {
   store.commit("app/CHANGE_WINDOW_SIZE", window.innerWidth);
 };
 
-
 onMounted(() => {
-  getServiceLink()
-  getUserInfo()
-  getBannerInfo();
-  getGameUrl();
-  getAppUrl()
+  // getBannerInfo();
+  // getGameUrl();
+  // getAppUrl()
   store.commit("app/CHANGE_WINDOW_SIZE", window.innerWidth);
   window.addEventListener("resize", changeWindowSize);
 });

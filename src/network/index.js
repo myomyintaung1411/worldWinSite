@@ -68,10 +68,11 @@ instance.interceptors.request.use((config) => {
 instance.interceptors.response.use((response) => {
  // hideLoading()
   // 响应成功
+  
   if(response.data.status == 403){
     Swal.fire({
-      title: 'Token Expired',
-      text: 'Token has expired. Please login again',
+      title: 'Session Expired',
+      text: 'Session has expired. Please login again',
       icon: "error",
       showCancelButton: false,
       allowOutsideClick: false,
@@ -85,12 +86,13 @@ instance.interceptors.response.use((response) => {
       color: "#fff",
     }).then((res) => {
       if (res.isConfirmed) {
-         localStorage.clear();
-         console.log(router)
-       // window.location.reload()
-        router.push("/login");
+          window.localStorage.clear();
+          //window.location.reload()
+          router.go("/login");
+          return
       }
     });
+    return
   }
   console.log('拦截器报错')
   //NoticeMsg.Message("拦截器报错","error")

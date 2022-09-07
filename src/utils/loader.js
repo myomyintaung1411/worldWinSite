@@ -12,6 +12,6 @@ export default {
     hideLoading() {
         setTimeout(() => {
             loading.hide()
-        }, 2000)
+        }, 500)
     }
 }
