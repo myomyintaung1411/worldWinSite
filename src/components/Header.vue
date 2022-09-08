@@ -496,9 +496,9 @@ export default {
       }
       console.log(username, pass, "username and pass");
       if (
-        (lToken && gameUrl.value.sportUrl && username && pass !== null) ||
-        (lToken && gameUrl.value.sportUrl && username && pass !== undefined) ||
-        (lToken && gameUrl.value.sportUrl && username && pass !== "")
+        (lToken && gameUrl.value?.sportUrl && username && pass !== null) ||
+        (lToken && gameUrl.value?.sportUrl && username && pass !== undefined) ||
+        (lToken && gameUrl.value?.sportUrl && username && pass !== "")
       ) {
         let data = {
           name: username,

@@ -95,7 +95,9 @@
     "contact__":"Please contact customer service after transfer !",
     "play_now":"Play Now",
     "android_down":"Download Android App",
-    "ios_down":"Download IOS App"
+    "ios_down":"Download IOS App",
+    "invalid_code":"Invalid Code or Code is already in use",
+    "email_already_use":"Email is already in use"
 
    
 }

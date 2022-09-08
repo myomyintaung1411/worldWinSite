@@ -95,6 +95,8 @@
     "contact__":"Si prega di contattare il servizio clienti dopo il trasferimento",
     "play_now":"Riproduci ora",
     "android_down":"Scarica Android",
-    "ios_down":"Scarica IOS"
+    "ios_down":"Scarica IOS",
+    "invalid_code":"Codice non valido o Codice già in uso",
+    "email_already_use":"email già utilizzata"
 
 }

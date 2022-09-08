@@ -34,7 +34,7 @@
               focus:outline-none border-none focus:border-none outline-none" :placeholder="t('enter_u')" />
             </div>
           </div>
-          <!-- <div class="flex flex-col mb-4">
+          <div class="flex flex-col mb-4">
             <div class="relative">
               <div class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400">
                 <MailIcon class="h-6 w-6"></MailIcon>
@@ -67,7 +67,7 @@
               </div>
             </div>
 
-          </div> -->
+          </div>
           <div class="flex flex-col mb-4">
             <!-- <label for="email" class="mb-1 text-xs tracking-wide text-gray-100">{{ t('enter_p') }}</label> -->
             <div class="relative">
@@ -204,11 +204,11 @@ const C_ShowVisibility = () => {
 const disableBtn = computed(() => {
   if (
     name.value === "" ||
-   // email.value === "" ||
+    email.value === "" ||
     password.value === "" ||
     confrimPassword.value === "" ||
-    reference.value === "" 
-   // verficationCode.value === ""
+    reference.value === "" ||
+    verficationCode.value === ""
   ) {
     return true;
   } else {
@@ -311,7 +311,7 @@ const register = () => {
 
   let pass = md5(password.value); //${email.value};${verficationCode.value}
   let data = {
-    data: `02;${name.value};${pass};${reference.value};windows`, // 2/1 success
+    data: `02;${name.value};${pass};${reference.value};${email.value};${verficationCode.value};windows`, // 2/1 success
   };
   Loading.showLoading()
   UserLogin(data).then((res) => {
@@ -323,6 +323,8 @@ const register = () => {
     if (result[1] === "2") return NoticeMsg.Message(t('no_ref_agent'), "error"); //no reference agent
     if (result[1] === "3") return NoticeMsg.Message(t('reg_failed'), "error"); //register failed
     if (result[1] === "4") return NoticeMsg.Message(t('already_exist'), "error"); //user already exist
+    if (result[1] === "5") return NoticeMsg.Message(t('invalid_code'), "error"); //invalid email code or already use
+    if (result[1] === "6") return NoticeMsg.Message(t('email_already_use'), "error"); //email already use
     name.value = "";
     password.value = "";
     confrimPassword.value = "";
@@ -331,7 +333,7 @@ const register = () => {
   }).catch((e) => {
     console.log(e);
     NoticeMsg.Message('unknown error', "error");
-    Loading.hideLoading()
+    Loading.hideLoading() //companywarner comapnywarner.hr@gmail.com
   });
 };
 </script>

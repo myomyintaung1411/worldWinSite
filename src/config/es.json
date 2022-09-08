@@ -94,5 +94,7 @@
     "contact__":"Póngase en contacto con el servicio de atención al cliente después de la transferencia",
     "play_now":"Reproducir ahora",
     "android_down":"Descargar Android",
-    "ios_down":"Descargar IOS"
+    "ios_down":"Descargar IOS",
+    "invalid_code":"Código no válido o el código ya está en uso",
+    "email_already_use":"Correo electrónico ya está en uso"
 }

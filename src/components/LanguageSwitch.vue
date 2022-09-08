@@ -36,7 +36,7 @@
                       </div>
                     </div>
                   </RadioGroupOption>
-                  <!-- <RadioGroupOption as="template" value="es" v-slot="{ active, checked }">
+                  <RadioGroupOption as="template" value="es" v-slot="{ active, checked }">
                     <div :class="[
                 active
                   ? 'ring-2 ring-offset-2 ring-offset-primary ring-white ring-opacity-60'
@@ -52,7 +52,7 @@
                         </div>
                       </div>
                     </div>
-                  </RadioGroupOption> -->
+                  </RadioGroupOption>
                   <RadioGroupOption as="template" value="de" v-slot="{ active, checked }">
                     <div :class="[
                 active
