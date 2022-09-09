@@ -97,5 +97,6 @@
     "android_down":"Android herunterladen",
     "ios_down":"IOS herunterladen",
     "invalid_code":"Ungültiger Code oder Code wird bereits verwendet",
-    "email_already_use":"E-Mail wird bereits verwendet"
+    "email_already_use":"E-Mail wird bereits verwendet",
+    "pass_length":"Das Passwort muss mindestens 6 Zeichen lang sein"
 }

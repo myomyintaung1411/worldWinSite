@@ -189,7 +189,7 @@
                         <img class="h-10 w-10 rounded-full" draggable="false" src="@/assets/home/user.svg" alt />
                       </div>
                       <div  class="ml-3">
-                        <div class="text-base font-medium leading-none text-white py-1">{{ user.name }}</div>
+                        <div class="text-base font-medium leading-none text-white py-1">{{ user?.name }}</div>
                         <div class="text-sm font-medium leading-none text-primary py-1 opacity-90">
                           {{ Intl.NumberFormat().format(user?.balance) }}</div>
                       </div>

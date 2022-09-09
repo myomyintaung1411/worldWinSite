@@ -13,13 +13,17 @@
 import { onMounted } from "vue";
 import Header from "@/components/Header.vue";
 import Footer from "@/components/Footer.vue";
+import allApi from "@/network/allApi.js";
+import { useStore } from "vuex";
+const store = useStore();
 
+const lToken = store.state.user.token;
+const userId__ = store.state.user.userId;
 
 
 
 
 onMounted(() => {
-  // getBannerInfo();
   // getGameUrl();
   // getAppUrl()
 });

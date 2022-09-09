@@ -97,7 +97,8 @@
     "android_down":"Télécharger Android",
     "ios_down":"Télécharger IOS",
     "invalid_code":"Code invalide ou code déjà utilisé",
-    "email_already_use":"cet email est déjà utilisé"
+    "email_already_use":"cet email est déjà utilisé",
+    "pass_length":"Le mot de passe doit contenir au moins 6 caractères"
 
 
 }

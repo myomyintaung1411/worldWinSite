@@ -434,8 +434,8 @@ const getMoneyBag = () => {
 };
 
 onMounted(() => {
- getGameUrl()
- getMoneyBag();
+  getGameUrl()
+  getMoneyBag();
 });
 </script>
 

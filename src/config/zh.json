@@ -96,5 +96,6 @@
      "android_down":"下载安卓应用",
      "ios_down":"下载IOS应用程序",
      "invalid_code":"无效代码或代码已在使用中",
-     "email_already_use":"电子邮件已在使用中"
+     "email_already_use":"电子邮件已在使用中",
+     "pass_length":"密码必须至少有6个字符长"
 }

@@ -36,7 +36,7 @@ import AES from "@/utils/aes";
 import { useI18n } from "vue-i18n/index";
 import { ChevronLeftIcon } from "@heroicons/vue/outline";
 import Header from "@/components/Header.vue";
-
+import allApi from "@/network/allApi.js";
 const activeBtn = ref(1);
 const mobiletab = ref(0);
 const url = ref('')
@@ -47,11 +47,46 @@ const route = useRoute();
  
 const store = useStore()
 const iframeUrl = computed(() => store.getters["app/Iframe_Game_Url"]);
-const lang = ref(localStorage.getItem("l") || "en");
+const user = computed(() => store.getters["user/USER"]);
 
+const lang = ref(localStorage.getItem("l") || "en");
+const lToken = store.state.user.token;
+const userId__ = store.state.user.userId;
 const goBack = () => {
   router.replace("/");
 };
+
+const getUserInfo = () => {
+  if (
+    (userId__ && lToken !== null) ||
+    (userId__ && lToken !== undefined) ||
+    (userId__ && lToken !== "")
+  ) {
+    let userId = userId__;
+    let t = lToken;
+    const req_ = { userId: userId, token: t };
+    allApi
+      .getUserInfo({ data: req_ })
+      .then((res) => {
+        // if(res.data.status == 403){
+        //   localStorage.clear()
+        //   //window.location.reload();
+        //   router.go('/login')
+        //   return;
+        // }
+        console.log(res, "getUserInfo *************");
+        store.commit("user/User", res.data.data)
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  }
+};
+//if user balance is null then call api
+if(user.value.balance == null || isNaN(user.value.balance)){
+  console.log("yes not a number ***********");
+  getUserInfo()
+}
 
 onMounted(()=>{
   url.value = route.query.url + `&lang=${lang.value}`

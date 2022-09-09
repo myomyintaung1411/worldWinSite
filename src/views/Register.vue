@@ -302,7 +302,7 @@ const register = () => {
   if (password.value !== confrimPassword.value)
     return NoticeMsg.Message(t('confirm_notmatch'), "warning");
   if (password.value.length < 6)
-    return NoticeMsg.Message(t('val_email'), "warning");
+    return NoticeMsg.Message(t('pass_length'), "warning");
   if (!/\d/.test(password.value) || !/[a-zA-Z]/.test(password.value))
     return NoticeMsg.Message(t('pass_check'), "warning");
 

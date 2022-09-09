@@ -97,6 +97,7 @@
     "android_down":"Scarica Android",
     "ios_down":"Scarica IOS",
     "invalid_code":"Codice non valido o Codice già in uso",
-    "email_already_use":"email già utilizzata"
+    "email_already_use":"email già utilizzata",
+    "pass_length":"la password deve essere lunga almeno 6 caratteri"
 
 }

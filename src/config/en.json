@@ -97,7 +97,8 @@
     "android_down":"Download Android App",
     "ios_down":"Download IOS App",
     "invalid_code":"Invalid Code or Code is already in use",
-    "email_already_use":"Email is already in use"
+    "email_already_use":"Email is already in use",
+    "pass_length":"Password must be at least 6 characters long"
 
    
 }

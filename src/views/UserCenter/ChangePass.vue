@@ -93,10 +93,10 @@ const changePass = () => {
             return NoticeMsg.Message(t('confirm_notmatch'), "warning");
 
         if (newpass.value.length < 6)
-            return NoticeMsg.Message(`Password must be at least 6 characters long`, "warning");
+            return NoticeMsg.Message(t('pass_length'), "warning");
 
         if (oldpass.value == newpass.value)
-            return NoticeMsg.Message('New Password need to be different', "warning");
+            return NoticeMsg.Message('New Password should be different from Old Password', "warning");
 
         if (!/\d/.test(newpass.value) || !/[a-zA-Z]/.test(newpass.value))
             return NoticeMsg.Message(t('pass_check'), "warning");
