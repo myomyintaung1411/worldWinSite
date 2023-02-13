@@ -16,7 +16,7 @@
     "js-md5": "^0.7.3",
     "moment": "^2.29.4",
     "qrcode": "^1.5.0",
-    "swiper": "^7.4.1",
+    "swiper": "^9.0.4",
     "v-calendar": "^3.0.0-alpha.6",
     "vue": "^3.2.31",
     "vue-clipboard3": "^2.0.0",
