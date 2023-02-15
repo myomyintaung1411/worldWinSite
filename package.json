@@ -21,7 +21,7 @@
     "vue": "^3.2.31",
     "vue-clipboard3": "^2.0.0",
     "vue-i18n": "^9.1.9",
-    "vue-loading-overlay": "^5.0.1",
+    "vue-loading-overlay": "^6.0.3",
     "vue-router": "^4.0.12",
     "vue-sweetalert2": "^5.0.5",
     "vue3-clipboard": "^1.0.0",
